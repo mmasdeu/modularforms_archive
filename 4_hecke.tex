@@ -1,0 +1,886 @@
+% Hecke Theory
+\section{Double coset operators}
+Let $\Gamma_1$ and $\Gamma_2$ be two congruence subgroups, and let $\alpha\in\GL_2^+(\QQ)$.
+\begin{definition}
+  The \emphh{double coset} $\Gamma_1\alpha\Gamma_2$ is the set
+\[
+\Gamma_1\alpha\Gamma_2=\{\gamma_1\alpha\gamma_2 ~|~ \gamma_1\in\Gamma_1,\gamma_2\in\Gamma_2\}.
+\]
+\end{definition}
+Multiplication gives a left action of $\Gamma_1$ on $\Gamma_1\alpha\Gamma_2$ and another right action of $\Gamma_2$. Consider a decomposition of this double coset into (disjoint) orbits:
+\[
+\Gamma_1\alpha\Gamma_2=\cup \Gamma_1 \beta_j.
+\]
+\begin{lemma}
+  \begin{enumerate}
+  \item If $\Gamma$ is a congruence subgroup and $\alpha\in\GL_2^+(\QQ)$, then $\alpha^{-1}\Gamma\alpha\cap \SL_2(\ZZ)$ is also congruence subgroup.
+  \item Any two congruence subgroups $\Gamma_1$, $\Gamma_2$ are \emphh{commensurable}. That is,
+\[
+[\Gamma_1\colon \Gamma_1\cap\Gamma_2]<\infty\quad\text{ and }\quad [\Gamma_2\colon \Gamma_1\cap\Gamma_2]<\infty.
+\]
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  Let $N$ be a positive integer such that $\Gamma(N)\subseteq \Gamma$, $N\alpha\in M_2(\ZZ)$ and $N\alpha^{-1}\in M_2(\ZZ)$. Set $M=N^3$. Then one can check that $\alpha\Gamma(M)\alpha^{-1} \subseteq \Gamma(N)$,
+which implies that $\Gamma(M)\subseteq \alpha^{-1}\Gamma\alpha$. Since $\Gamma(M)$ is also contained in $\SL_2(\ZZ)$, we are done with the first statement.
+
+For the second assertion, just note that there is some $M$ such that $\Gamma(M)\subseteq \Gamma_1\cap\Gamma_2$. Therefore the indices to compute are bounded above by $[\SL_2(\ZZ)\colon\Gamma(M)]$, which is finite.
+\end{proof}
+
+\begin{proposition}
+  Let $\Gamma_1$ and $\Gamma_2$ be two congruence subgroups, and let $\alpha\in\GL_2^+(\QQ)$. Set $\Gamma_3$ to be the congruence subgroup:
+\[
+\Gamma_3 = (\alpha^{-1}\Gamma_1\alpha)\cap \Gamma_2.
+\]
+The map $\gamma_2\mapsto \Gamma_1\alpha\gamma_2$ induces a bijection
+\[
+\Gamma_3\backslash \Gamma_2 \cong \Gamma_1\backslash \Gamma_1\alpha\Gamma_2.
+\]
+\end{proposition}
+\begin{proof}
+  Consider the map
+\[
+\Gamma_2\to\Gamma_1\backslash (\Gamma_1\alpha\Gamma_2),\quad \gamma_2\mapsto \Gamma_1\alpha\gamma_2.
+\]
+It is clearly surjective. Moreover, two elements $\gamma_2$ and $\gamma_2'$ get mapped to the same orbit if and only if:
+\[
+\Gamma_1\alpha\gamma_2=\Gamma_1\alpha\gamma_2'\iff \gamma_2'\gamma_2^{-1}\in\alpha^{-1}\Gamma_1\alpha,
+\]
+and the latter happens if and only if $\gamma_2$ and $\gamma_2'$ are in the same coset for $(\alpha^{-1}\Gamma_1\alpha) \cap\Gamma_2=\Gamma_3$.
+\end{proof}
+\begin{corollary}
+  Let $\Gamma_2=\cup \Gamma_3\gamma_j$ be a coset decomposition of $\Gamma_3\backslash\Gamma_2$. Then
+\[
+\Gamma_1\alpha\Gamma_2=\cup \Gamma_1\alpha\gamma_j
+\]
+is an orbit decomposition. In particular, the number of orbits of $\Gamma_1\alpha\Gamma_2$ under the action of $\Gamma_1$ is finite.
+\end{corollary}
+
+  Let $f\in M_k(\Gamma_1)$ be a modular form of weight $k$ for a congruence subgroup $\Gamma_1$. Let $\Gamma_1\alpha\Gamma_2$ be a double coset, where $\Gamma_2$ is a congruence subgroup and $\alpha\in\GL_2^+(\QQ)$. The \emphh{action of the double coset} on $f$ is defined as:
+\[
+f|_k (\Gamma_1\alpha\Gamma_2) = \sum f|_k \beta_j,
+\]
+if $\Gamma_1\alpha\Gamma_2=\cup \Gamma_1\beta_j$ is any orbit decomposition.
+
+\begin{remark}
+  The action is well defined, independent of the choice of the $\beta_j$. This is so because $f$ is $k$-invariant under $\Gamma_1$.
+\end{remark}
+The next goal is to show that the double coset operator maps $M_k(\Gamma_1)$ to $M_k(\Gamma_2)$ and preserves cusps forms. We will need a technical lemma to treat the cusp conditions.
+\begin{lemma}
+\label{lemma:cusp-conditions}
+Suppose that for all $\gamma\in\SL_2(\ZZ)$ the function $f|_k\gamma$ has an expansion of the form
+\[
+\sum_{n\geq n_0} a(n)q_N^n,
+\]
+with $n_0$ and $a(n)$ depending on $\gamma$. Let $\alpha\in\GL_2^+(\QQ)$. Then for all $\gamma\in\SL_2(\ZZ)$ the function $f|_k(\alpha\gamma)$ has the expansion
+\[
+\sum_{n\geq an_0} b(n)q_{Nd}^n,
+\]
+where $a$ and $d$ are positive integers depending only on $\alpha$.
+\end{lemma}
+\begin{proof}
+  First, note that, for $a>0$,
+\[
+f|_k\mtx a00a = a^{2(k-1)}a^{-k}f = a^{k-2}f.
+\]
+So without loss of generality we may assume that $\alpha\in M_2(\ZZ)$. Let $\gamma_0\in\SL_2(\ZZ)$ be such that $\gamma_0^{-1}\alpha=\smtx ab0d$ (upper-triangular), with $a$ and $d$ being positive integers. Then:
+\begin{align*}
+f|_k\alpha &= (f|_k\gamma_0)|_k\mtx ab0d = \left(\sum_{n\geq n_0}a(n)e^{\frac{2\pi i n z}{N}}\right)|_k\mtx ab0d\\
+&=(\cdots)\sum_{n\geq n_0} a(n)e^{\frac{2\pi i n(az+b)}{dN}} = (\cdots) q_{Nd}^{an_0}+\cdots
+\end{align*}
+This concludes the proof.
+\end{proof}
+
+\begin{proposition}
+\label{prop:double-coset-operators}
+Let $\Gamma_1$ and $\Gamma_2$ be two congruence subgroups, and let $\alpha\in\GL_2^+(\QQ)$.
+The rule $f\mapsto f|_k\Gamma_1\alpha\Gamma_2$ induces a map $M_k(\Gamma_1)\to M_k(\Gamma_2)$.
+\end{proposition}
+\begin{proof}
+ Write $\Gamma_3=(\alpha^{-1}\Gamma_1\alpha)\cap \Gamma_2$, and consider a coset decomposition $\Gamma_2= \cup \Gamma_3\gamma_j$. One can take as set of representatives $\beta_j=\alpha\gamma_j$. If $\gamma_2\in\Gamma_2$, then $\{\gamma_j\gamma_2\}_j$ is a complete set of representatives for $\Gamma_3\backslash \Gamma_2$, and hence $\{\alpha\gamma_j\gamma_2\}_j$ is a complete set of representatives for $\Gamma_1\backslash\Gamma_1\alpha\Gamma_2$. This implies that $f|_k\Gamma_1\alpha\Gamma_2$ is $k$-invariant for $\Gamma_2$.
+
+If $f$ is holomorphic on $\HH$, then $f|_k\beta_j$ is holomorphic on $\HH$ for any $\beta_j\in\GL_2^+(\QQ)$, so it only remains to check the cusp conditions. But Lemma~\ref{lemma:cusp-conditions} precisely ensures that these are preserved.
+\end{proof}
+
+\subsection{First examples}
+Consider the case $\Gamma_2\subseteq \Gamma_1$ and $\alpha=1$. Then $\Gamma_1\alpha\Gamma_2=\Gamma_1$, and $\Gamma_1=\Gamma_11$ is an orbit decomposition. Therefore $f|_k\Gamma_1\alpha\Gamma_2 = f|_k1 = f$. This just says that $M_k(\Gamma_1)$ is a subspace of $M_k(\Gamma_2)$.
+
+As a more interesting example, given $\alpha\in\GL_2^+(\QQ)$ consider the conjugate $\Gamma'=\alpha^{-1}\Gamma\alpha$. Then $\Gamma\alpha\Gamma'=\Gamma\alpha$ is an orbit decomposition. This implies that acting by $\alpha$ induces a map
+\[
+M_k(\Gamma)\to M_k(\alpha^{-1}\Gamma\alpha).
+\]
+Since the inverse of this map is given by the action of $\alpha^{-1}$, we conclude that $M_k(\Gamma)$ and $M_k(\alpha^{-1}\Gamma\alpha)$ are naturally isomorphic.
+
+Finally, consider the case $\Gamma_1\subseteq \Gamma_2$ and $\alpha=1$. Then $\Gamma_1\alpha\Gamma_2 = \cup \Gamma_1 \beta_j$, where $\beta_j$  is a set of coset representatives for $\Gamma_1\backslash \Gamma_2$. The map
+\[
+f\mapsto \sum_{j} f|_k \beta_j
+\]
+is to be seen as a \emph{trace operator} from $M_k(\Gamma_1)\to M_k(\Gamma_2)$. In particular, it maps $f\in M_k(\Gamma_2)$ to $[\Gamma_2\colon \Gamma_1]f$ and thus it is surjective.
+
+\section{Hecke operators for \texorpdfstring{$\Gamma_1(N)$}{Gamma1(N)}}
+Fix now $\Gamma=\Gamma_1(N)$. We will describe the Hecke operators for the group $\Gamma$.
+
+\subsection{The \texorpdfstring{$T_p$}{Tp} operators}
+Let $p$ be a prime. The \emphh{Hecke operator} at $p$ is defined as:
+\[
+T_p f = f|_k\Gamma_1(N)\mtx{1}{0}{0}{p}\Gamma_1(N).
+\]
+By Proposition~\ref{prop:double-coset-operators}, the operator $T_p$ acts on $M_k(\Gamma_1(N))$.
+
+In order to describe the action of $T_p$ more precisely, we need to understand the double coset $\Gamma_1(N)\smtx 100p\Gamma_1(N)$. Note first that if $\gamma\in \Gamma_1(N)\smtx 100p\Gamma_1(N)$ then:
+\begin{enumerate}
+\item $\det \gamma = p$, and
+\item $\gamma\equiv\smtx 1{*}0p\pmod N$.
+\end{enumerate}
+In fact, the converse is true:
+\begin{lemma}
+  We have that
+\[
+\Gamma_1(N)\mtx{1}{0}{0}{p}\Gamma_1(N)=\left\{\gamma\in M_2(\ZZ)~|~\det\gamma = p,\gamma\equiv \smtx{1}{*}{0}{p}\pmod{N}\right\}.
+\]
+\end{lemma}
+\begin{proof}
+To prove the remaining inclusion, let $\gamma\in M_2(\ZZ)$ have determinant $p$, and satisfy  $\gamma\equiv \smtx 1{*}0p\pmod N$. Consider $L=\ZZ^2$ and
+\[
+L_0=L_0(N)=\{\smat{x\\y}\in L\colon y\equiv 0\pmod N\}.
+\]
+Note that $\gamma L_0\subseteq L_0$. Since $\det \gamma=p>0$, we have:
+\[
+[L\colon\gamma L_0]=[L\colon L_0][L_0\colon\gamma L_0] = Np.
+\]
+Choose a basis of $L$ adapted to $\gamma L_0$. That is, a basis $u$, $v$ such that $\det(u|v)=1$ and such that
+\[
+\gamma L_0=mu\ZZ\oplus nv\ZZ, \text{ with } 0<m\mid n, mn=Np.
+\]
+We will show:
+\begin{enumerate}
+\item $\gamma L_0=u\ZZ\oplus Np v\ZZ$.
+\item $L_0 = u\ZZ\oplus Nv\ZZ$.
+\item $\gamma L = u\ZZ+pv\ZZ$.
+\end{enumerate}
+In fact, since $\gamma\smat{1\\0}\in \gamma L_0$, we have that $\smat{a\\b}\equiv\smat{0\\0}\pmod m$. Since $\gcd(a,N)=1$, this implies that $\gcd(m,N)=1$. Now, if $p\mid m$, then $p\mid n$, and so $p^2\mid mn=Np$. Therefore $p\mid N$, which is a contradiction with $\gcd(m,N)=1$. Therefore $p\nmid m$ and hence $m=1$ and $n=Np$.
+
+The two other facts follow because $L_0\subset L$ is a subgroup of index $N$, and $\gamma L\subset L$ is of index $p$ in $L$. This proves the above three statements.
+
+Next,  set $\gamma_1=(u|v)$, which belongs to $\Gamma_0(N)$ because $u$ belongs to $L_0$. Set also $\gamma_2=(\gamma_1\smtx 100p)^{-1}\gamma$, so that $\gamma=\gamma_1\smtx 100p\gamma_2$. Note that $\gamma_2$ belongs to $\SL_2(\QQ)$. It remains to show that $\gamma_1$ and $\gamma_2$ belong to $\Gamma_1(N)$. This will follow if we can prove:
+\begin{enumerate}
+\item $\gamma_2\in \Gamma_0(N)$.
+\item $\Gamma_0(N)\smtx 100p \Gamma_0(N)=\Gamma_1(N)\smtx 100p\Gamma_0(N)$.
+\item If $\gamma=\gamma_1\smtx 100p\gamma_2$ with $\gamma_1\in \Gamma_1(N)$ and $\gamma_2\in \Gamma_0(N)$, then $\gamma_2$ belongs to $\Gamma_1(N)$.
+\end{enumerate}
+Each of these statements can be easily proved, and we ommit these proofs.
+\end{proof}
+
+\begin{proposition}
+\label{prop:description-hecke}
+  Let $f\in M_k(\Gamma_1(N))$. Then $T_p f$ is given by:
+\[
+T_p f =
+\begin{cases}
+\sum_{j=0}^{p-1} f|_k \mtx 1j0p&p\mid N,\\
+\sum_{j=0}^{p-1} f|_k\mtx 1j0p +f|_k\mtx{mp}{n}{Np}{p}&p\nmid N.
+\end{cases}
+\]
+Here the matrix $\smtx{mp}{n}{Np}{p}$ is chosen such that $\gamma_\infty=\smtx{mp}{n}{N}{1}$ belongs to $\Gamma_1(N)$.
+\end{proposition}
+\begin{proof}
+  We just need to trace the definition of the double coset operator. That is, we need to find an explicit coset decomposition of $\Gamma_3\backslash \Gamma_1(N)$, where
+\[
+\Gamma_3={\mtx 1 0 0 p}^{-1} \Gamma_1(N) \mtx 100p \cap \Gamma_1(N).
+\]
+Define $\Gamma^0(p)$ to be the group of matrices which are lower triangular modulo $p$. It is easy to see that
+\[
+\Gamma_3 = \Gamma_1(N)\cap \Gamma^0(p).
+\]
+Consider the matrices $\gamma_j=\smtx 1j01$, with $j$ ranging from $0$ to $p-1$ inclusive. These are all distinct modulo $\Gamma_1(N)\cap \Gamma^0(p)$ (check it). Given any matrix $\smtx abcd \in\Gamma_1(N)$, note that
+\[
+\mtx abcd \mtx 1{-j}01 = \mtx{a}{-aj+b}{c}{-cj+d}.
+\]
+Therefore if $p\nmid a$ we can make the right-hand side to belong to $\Gamma^0(p)$ for some $j$. This means that if $p$ divides $N$ then $p$ will not divide $a$ (because of the determinant condition), and thus the set $\{\gamma_j\}$ is a complete set of representatives. If $p\nmid N$, we need to consider matrices $\smtx abcd$ with $p\mid a$. Choose some $\gamma_\infty=\smtx{mp}{n}{N}{1}\in\Gamma_1(N)$. Then:
+\[
+\mtx abcd \gamma_\infty^{-1} = \mtx{*}{-na+bmp}{0}{*}.
+\]
+Since $p$ divides $-na+bmp$, the matrix $\smtx abcd$ is in the coset of $\gamma_\infty$ modulo $\Gamma^0(p)$. Hence $\{\gamma_j\}\cup \{\gamma_\infty\}$ forms a complete set of representatives. In order to get the orbit representatives for the double coset, we just need to multiply the $\gamma_j$ by the fixed element $\alpha = \smtx 100p$.
+\end{proof}
+
+\subsection{The diamond \texorpdfstring{$\langle d \rangle$}{d} operators}
+
+We define another (finite) set of operators on $M_k(\Gamma_1(N))$, called the diamond operators. First we need some preliminaries on characters.
+\begin{definition}
+  A \emphh{Dirichlet character} modulo $N$ is a group homomorphism
+\[
+\chi\colon (\ZZ/N\ZZ)^\times\to\CC^\times.
+\]
+\end{definition}
+It can be extended to a map $\chi\colon \ZZ\to \CC$ by the recipe
+\[
+\chi(d) = \begin{cases}
+\chi(d\bmod N)&(d,N)=1\\
+0&(d,N)\neq 1.
+\end{cases}
+\]
+The resulting function is totally multiplicative: it satisfies
+\[
+\chi(d_1d_2)=\chi(d_1)\chi(d_2)\quad \forall d_1,d_2\in\ZZ.
+\]
+Consider the map $\Gamma_0(N)\to\ZZ/N\ZZ^\times$ sending a matrix $\smtx abcd$ to $d\bmod N$. Its kernel is precisely $\Gamma_1(N)$, and therefore we obtain an isomorphism
+\[
+\Gamma_0(N)/\Gamma_1(N)\cong (\ZZ/NZ)^\times,\quad \mtx abcd \Gamma_1(N)\mapsto d\bmod N.
+\]
+
+\begin{definition}
+Given $d\in \ZZ$ coprime to $N$, the \emphh{diamond operator} $\langle d\rangle$ is the operator on $M_k(\Gamma_1(N))$ defined as
+\[
+\langle d \rangle f = f|_k \mtx abc{d'},
+\]
+where $a$, $b$, $c$, $d'$ are chosen so that $\smtx abc{d'}$ belongs to $\Gamma_0(N)$ and $d'\equiv d\pmod N$. 
+\end{definition}
+Note that the above is well defined, and only depends on the class of $d$ modulo $N$. This is precisely because $\Gamma_0(N)/\Gamma_1(N)\cong (\ZZ/NZ)^\times$. The operator $\langle d\rangle$ is a linear invertible map, and thus it makes sense to look at its eigenspaces.
+
+\begin{definition}
+  The \emph{space of modular forms with character} $\chi$ is
+\[
+M_k(\Gamma_0(N),\chi)=\{f\in M_k(\Gamma_1(N))~|~ f|_k\smtx abcd = \chi(d) f,\smtx abcd\in \Gamma_0(N)\}.
+\]
+The \emphh{space of cusp forms with character} $\chi$ is defined similarly and written $S_k(\Gamma_0(N),\chi)$.
+\end{definition}
+
+Note that $M_k(\Gamma_0(N),\chi)$ can also be defined as
+\[
+M_k(\Gamma_0(N),\chi)=\{f\in M_k(\Gamma_1(N))~|~ \langle d\rangle f = \chi(d) f,\quad d\in (\ZZ/N\ZZ)^\times\}.
+\]
+
+\begin{theorem}
+  There is a decomposition of $\CC$-vector spaces
+\[
+M_k(\Gamma_1(N))=\bigoplus_{\chi\bmod N} M_k(\Gamma_0(N),\chi),
+\]
+where the sum runs over the $\phi(N)=\#(\ZZ/N\ZZ)^\times$ Dirichlet characters modulo $N$.
+\end{theorem}
+\begin{proof}
+  Picking a basis of $M_k(\Gamma_1(N))$, we get a representation
+\[
+\rho\colon (\ZZ/N\ZZ)^\times\to \GL_n(\CC),\quad \rho(d)=\langle d\rangle,
+\]
+where $n$ is the dimension of $M_k(\Gamma_1(N))$. Since $(\ZZ/N\ZZ)^\times$ is abelian, the representation $\rho$ decomposes as a sum of irreducible representations, which are necessarily one-dimensional. This means that we can pick a basis for $M_k(\Gamma_1(N))$ such that
+\[
+\rho(d) = \diag(\chi_1(d),\ldots,\chi_n(d)).
+\]
+This means that $\langle d\rangle$ acts as $\chi_i(d)$ on the $i$th component. One just needs to collect then the repeated $\chi$ to form $M_k(\Gamma_0(N),\chi)$.
+\end{proof}
+
+\subsection{Hecke operators on \texorpdfstring{$q$}{q}-expansions}
+In order to study the action of Hecke operators on $q$-expansion, we introduce two simple operators: if $f=\sum a_n q^n$, define:
+\[
+U_p f = \sum a_{np} q^n=\sum a_n q^{n/p}.
+\]
+The second equality is an abuse of notation: we define $q^{n/p}=0$ if $p\nmid n$. We define also:
+\[
+V_p f = f(pz) = \sum a_n q^{np} = \sum a_{n/p} q^n.
+\]
+\begin{lemma}
+  If $f=\sum a_n q^n$, then
+  \begin{enumerate}
+  \item \[
+U_p f = \frac 1p \sum_{j=0}^{p-1} f\left(\frac{z+j}{p}\right) = \sum_{j=0}^{p-1} f|_k \mtx 1j0p.
+\]
+
+\item \[V_p f= p^{1-k} f|_k\mtx p001. \]
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  Note that if $\zeta_p=e^{\frac{2\pi i}{p}}$ is a primitive $p$th root of unity, then
+\[
+\sum_{j=0}^{p-1} \zeta_p^{nj} = \begin{cases}
+p&p\mid n\\
+0&p\nmid n.
+\end{cases}
+\]
+Now compute:
+\[
+\sum_{j=0}^{p-1} f|_k \mtx 1j0p = p^{k-1} p^{-k}\sum_j f\left(\frac{z+j}{p}\right).
+\]
+Since $f$ is $1$-periodic, this is the same as:
+\[
+\frac 1p \sum_j \sum_n a_n e^{2\pi i \frac{z+j}{p}} = \sum_n a_n e^{\frac{2\pi i n z}{p}} \frac 1p \sum_j \zeta_p^{nj}.
+\]
+This proves the first statement. The second statement is clear.
+\end{proof}
+
+ Putting together what we have seen so far, we get a description of $T_p$ in terms of $U_p$, $V_p$ and the diamond operators.
+\begin{theorem}
+We have:
+\[
+T_p f = \begin{cases}
+U_p f&p\mid N,\\
+U_p f + p^{k-1} V_p\langle p\rangle f&p\nmid N.
+\end{cases}
+\]
+\end{theorem}
+\begin{corollary}
+  If $f\in M_k(\Gamma_0(N),\chi)$ then for all $p$ we have:
+\[
+T_p f= U_p f +\chi(p)p^{k-1}V_p f.
+\]
+In particular, if $f\in M_k(\Gamma_0(N))$ then:
+\[
+T_p f =
+\begin{cases}
+  U_p f&p\mid N,\\
+U_p f +p^{k-1}V_pf& p\nmid N.
+\end{cases}
+\]
+\end{corollary}
+Moreover, the relation between $U_p$ and $T_P$ allows us to think of $U_p$ as an operator on modular forms, which possibly raises the level.
+\begin{corollary}
+  \begin{enumerate}
+  \item   If $p\mid N$ then $U_p$ maps $M_k(\Gamma_1(N))$ to itself.
+\item  If $p\nmid N$ then $U_p$ maps $M_k(\Gamma_1(N))$ to $M_k(\Gamma_1(Np))$.
+  \end{enumerate}
+
+\end{corollary}
+
+\begin{example}
+  Consider the Eisenstein series
+\[
+E_k(z)=1-\frac{2k}{B_k}\sum_{n=1}^\infty \sigma_{k-1}(n)q^n\in M_k(\Gamma_1(1)).
+\]
+\begin{proposition}
+We have:
+\[
+T_p E_k = \sigma_{k-1}(p) E_k = (1+p^{k-1})E_k.
+\]
+That is, $E_k$ is an eigenform for all $T_p$, with eigenvalue $\sigma_{k-1}(p)$.
+\end{proposition}
+\begin{proof}
+ In general we have seen that, since $E_k\in M_k(\Gamma_0(1))$),
+\[
+a_n(T_pf)= a_n(U_p f) + p^{k-1} a_n(V_p f) = a_{np}(f)+p^{k-1} a_{n/p}(f).
+\]
+So
+\[
+a_0(T_pE_k) = a_0(E_k) + p^{k-1} a_0(E_k) = \sigma_{k-1}(p) a_0(E_k).
+\]
+For $n\geq 1$, we get
+\[
+a_n(T_pE_k) = \frac{-2k}{B_k}\left(\sigma_{k-1}(np)+p^{k-1}\sigma_{k-1}(n/p)\right),
+\]
+where we understand that $\sigma_{k-1}(n/p)=0$ if $p\nmid n$. We claim that:
+\[
+\sigma_{k-1}(pn) + p^{k-1}\sigma_{k-1}(n/p) = \sigma_{k-1}(p)\sigma_{k-1}(n),\quad \forall n\geq 1.
+\]
+When $p\nmid n$, this is just the multiplicativity of $\sigma_{k-1}$. If $p\mid n$, write $n=p^em$ with $p\nmid m$. Then we need to show that for all $e\geq 1$
+\[
+\sigma_{k-1}(p^{e+1}m) + p^{k-1}\sigma_{k-1}(p^{e-1}m) = \sigma_{k-1}(p)\sigma_{k-1}(p^em).
+\]
+This follows easily by dividing both sides by $\sigma_{k-1}(m)$, which is a common factor of both sides of the equation again by multiplicativity of $\sigma_{k-1}$.
+\end{proof}
+\begin{remark}
+  If $f=1+\sum_{n\geq 1} a_n q^n$ is a modular form for $\SL_2(\ZZ)$ of weight $k$ and it is an eigenform for $T_p$, then the eigenvalue must be $\sigma_{k-1}(p)$, by the first calculation of the above proof. The real content of the proposition is thus that $E_k$ is actually an eigenform.
+\end{remark}
+\end{example}
+\section{The Hecke algebra}
+\begin{definition}
+  Let $N\geq 1$ and $k\in \ZZ$. The \emphh{Hecke algebra} acting on $M_k(\Gamma_1(N))$ is the $\CC$-subalgebra of $\End_\CC M_k(\Gamma_1(N))$ generated by
+\[
+\Big\langle T_p\colon p\text{ prime};\text{ and } \langle d\rangle \colon d\in (\ZZ/N\ZZ)^\times\Big\rangle.
+\]
+The Hecke algebra is denoted by $\bbT(M_k(\Gamma_1(N)))$. Similarly we define $\bbT(S_k(\Gamma_1(N)))$ as a subalgebra of $\End_\CC S_k(\Gamma_1(N))$.
+\end{definition}
+
+\begin{theorem}
+  For every $N\geq 1$ the Hecke algebra $\bbT(M_k(\Gamma_1(N)))$ is commutative.
+\end{theorem}
+\begin{proof}
+We must show that for all primes $p$, $q$ and all elements $e$ and $d$ of $(\ZZ/N\ZZ)^\times$ we have:
+  \begin{enumerate}
+  \item $\langle d\rangle T_p = T_p \langle d\rangle$,
+  \item $\langle d \rangle \langle e\rangle = \langle e\rangle\langle d\rangle$, and
+  \item $T_p T_q = T_q T_p$.
+  \end{enumerate}
+
+First we show (2) and (3) assuming (1). Note that (1) means that $T_p$ preserves the spaces $M_k(\Gamma_0(N),\chi)$ and so it's enough to check (2) and (3) for forms $f\in M_k(\Gamma_0(N),\chi)$. This makes (2) obvious. As for (3), we can use the $q$-expansions: if $f=\sum a_n q^n$, then
+\[
+a_n(T_p f)= a_{pn}(f) + \chi(p)p^{k-1} a_{n/p}(f).
+\]
+Then:
+\begin{align*}
+a_n(T_pT_qf) &= a_{pn}(T_qf) + \chi(p)p^{k-1}a_{n/p}(T_qf)\\
+&=a_{pqn}(f) + \chi(q) q^{k-1} a_{pn/q}(f)+\chi(p)p^{k-1}(a_{nq/p}(f)+\chi(q) q^{k-1} a_{n/(pq)}(f)).
+\end{align*}
+This formula is symmetric in $p$ and $q$ so we are done.
+
+Finally, to prove (1) we must write $\langle d\rangle$ as a double coset. Let $\gamma\equiv \smtx{*}{*}{0}{d}\pmod N$. Write $\Gamma=\Gamma_1(N)$. Then, since $\Gamma$ is normal in $\Gamma_0(N)$, we have
+\[
+\Gamma\gamma\Gamma=\Gamma\gamma,
+\]
+and thus $\langle d\rangle f = f|_k \gamma$. We want to show that $\langle d\rangle^{-1}T_p\langle d\rangle = T_p$. Write $\Gamma\alpha\Gamma=\bigcup_j \Gamma \beta_j$ for the orbit decomposition of the double coset corresponding to $T_p$. We thus need to show that
+\[
+\Gamma\alpha\Gamma=\bigcup_j \Gamma(\gamma\beta_j\gamma^{-1}).
+\]
+We note that
+\[
+\bigcup_j \Gamma (\gamma\beta_j\gamma^{-1}) = \gamma\left(\bigcup_j \Gamma \beta_j\right)\gamma^{-1} = \gamma(\Gamma\alpha\Gamma)\gamma^{-1} = \Gamma(\gamma\alpha\gamma^{-1})\Gamma,
+\]
+and one just checks then that
+\[
+\Gamma\alpha\Gamma = \Gamma(\gamma\alpha\gamma^{-1})\Gamma.
+\]
+\end{proof}
+
+Next, we define operators $T_n$ and $\langle n\rangle$ for all $n\geq 1$. First, define $\langle p\rangle =0$ whenever $p\mid N$. One can implicitly define $T_n$ by the following formula:
+\[
+\sum_{n=1}^\infty T_n n^{-s} = \prod_p \frac{1}{1-T_pp^{-s} + \langle p\rangle p^{k-1-2s}}.
+\]
+This in turn is equivalent to the following conditions:
+\begin{enumerate}
+\item $T_{nm} = T_n T_m$ if $(n,m)=1$,
+\item $T_1 = \operatorname{id}$, and
+\item for all primes $p$ and for all $r\geq 2$,
+\[
+T_{p^r} = T_p T_{p^{r-1}} - p^{k-1}\langle p\rangle T_{p^{r-2}}.
+\]
+\end{enumerate}
+
+From the definition we can see that each $T_n$ is an explicit polynomial on the $T_p$, and therefore all $T_n$ commute with each other.
+
+\begin{theorem}[Action of $T_n$ on $q$-expansions]
+  Suppose $f\in M_k(\Gamma_1(N))$ has an expansion of the form $\sum a_m(f)q^m$. Then $T_n(f)=\sum a_m(T_nf) q^m$, where
+\[
+a_m(T_nf) = \sum_{d\mid (m,n)} d^{k-1}a_{\frac{mn}{d^2}}(\langle d\rangle f).
+\]
+In particular, if $f\in M_k(\Gamma_0(N),\chi)$ then
+\[
+a_m(T_nf)=\sum_{d\mid (m,n)} \chi(d) d^{k-1} a_{\frac{mn}{d^2}}(f).
+\]
+\end{theorem}
+\begin{proof}
+  A long computation.
+\end{proof}
+
+We end this section with the notion of Hecke eigenforms.
+\begin{definition}
+  A \emphh{Hecke eigenform} (or just eigenform) is a non-zero modular form $f\in M_k(\Gamma_1(N))$ which is an eigenvector for all the Hecke algebra $\bbT(M_k(\Gamma_1(N))$. A \emphh{normalized Hecke eigenform} (or normalized eigenform) is an eigenform satisfying $a_1(f)=1$.
+\end{definition}
+
+Let $f\in M_k(\Gamma_1(N))$ be an eigenform, say $T_nf=\lambda_n f$ for all $n$. Then we obtain
+\[
+a_n(f) = a_1(T_n f) = \lambda_n a_1(f),\quad n\geq 1.
+\]
+So if $a_1(f)=0$ then all $a_n(f)=0$ and thus $f=0$. Therefore a non-constant non-zero eigenform must have $a_1(f)\neq 0$ and it may be scaled to a normalized eigenform. In particular, we have the following.
+\begin{theorem}
+  Let $f\in M_k(\Gamma_1(N))$ be a normalized eigenform. Then the eigenvalues of the Hecke operators on $f$ are precisely the coefficients of the $q$-expansion of $f$ at the cusp $\infty$:
+\begin{equation}
+\label{eq:ans-for-hecke}
+T_n f = a_n(f) f,\quad n\geq 1.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Write $\lambda_n$ for the eigenvalue of the Hecke operator $T_n$. By Equation~\eqref{eq:ans-for-hecke} we have $a_n(f) = a_1(T_n f) = \lambda_n a_1(f)$. Since $f$ is normalized, $a_1(f)=1$ and hence $a_n(f) = \lambda_n$.
+\end{proof}
+In fact, the Fourier coefficients of a modular form readily tell whether it is a normalized eigenform:
+\begin{proposition}
+\label{proposition:coeffsnormalizedeigen}
+  Let $f\in M_k(\Gamma_0(N),\chi)$ be a modular form with $q$-expansion $\sum_{n=0}^\infty a_n(f) q^n$. Then $f$ is a normalized eigenform if and only if:
+  \begin{enumerate}
+  \item $a_1(f) = 1$,
+  \item $a_{mn}(f) = a_m(f) a_n(f)$ whenever $(m,n)=1$, and
+\item $a_{p^r}(f) = a_p(f)a_{p^{r-1}}(f) - p^{k-1}\chi(p) a_{p^{r-2}}(f),\quad r\geq 2$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  The implication $\implies$ follows directly from the previous proposition and the definition of the Hecke operators $T_n$. For the converse, if $f\in M_k(\Gamma_0(N),\chi)$ satisfies $(1)$, $(2)$ and $(3)$ then $f$ is already normalized, so to be an eigenform we must show that it satisfies
+\[
+a_m(T_pf)=a_p(f)a_m(f),\quad \forall p\text{ prime}, \forall m\geq 1.
+\]
+If $p\nmid n$ then it follows from the formula that we have for $T_m$ on $q$-expansions that $a_m(T_pf)=a_{pm}(f)$, which by $(2)$ is $a_p(f)a_m(f)$. If $p\mid m$ then writing $m=p^rm'$ with $r\geq 1$ and $p\nmid m'$ we have by the same formula
+\[
+a_m(T_pf) = a_{p^{r+1}m'}(f) + \chi(p)p^{k-1}a_{p^{r-1}m'}(f).
+\]
+Using now conditions $(2)$ and $(3)$ this can be rewritten as $a_p(f)a_m(f)$, as wanted.
+\end{proof}
+\section{Petersson inner product}
+\subsection{Surface integrals}
+Let $V\subseteq \CC$. A $2$-form on $V$ is an expression of the form $\omega = f(z,\bar z)dz\wedge d\bar z$. Note that
+\[
+dz\wedge d\bar z = (dx + i dy)\wedge (dx-idy) = -2idx\wedge dy.
+\]
+The integral of $\omega$ on $V$ is:
+\[
+\int_V \omega = \int_V f(z,\bar z dz\wedge d\bar z=\int\int -2i f(x+iy,x-iy)dxdy.
+\]
+Consider now, for $\alpha\in\GL_2^+(\RR)$, the change $z\mapsto \alpha z$. Then:
+\[
+\Im(\alpha z)=\frac{\det \alpha}{|cz+d|^2}\Im(z),
+\]
+and also
+\[
+d(\alpha z) = \frac{\det \alpha}{(cz+d)^2} dz,\quad \ol{d(\alpha z)} = \frac{\det\alpha}{\ol{(cz+d)^2}} d\bar z.
+\]
+This gives that:
+\[
+d(\alpha z)\wedge d\ol{\alpha z} = \frac{(\det \alpha)^2}{|cz + d|^4} dz\wedge d\bar z.
+\]
+Therefore the $2$-form $\frac{dz\wedge d\bar z}{\Im(z)^2}$ is invariant under changes of the form $z\mapsto \alpha z$. We will work instead with a certain multiple of this $2$-form. Define
+\[
+d\mu(z) = \frac{dx\wedge dy}{y^2} = \frac{-1}{2i} \frac{dz\wedge d\bar z}{\Im(z)^2}.
+\]
+We can define the \emphh{covolume} of $\SL_2(\ZZ)$ as
+\[
+\covol(\SL_2(\ZZ)) = \int_{D^*} d\mu(z).
+\]
+where $D^*$ is a fundamental domain for $\SL_2(\ZZ)$.
+\begin{lemma}
+  \[\covol(\SL_2(\ZZ)) = \frac{\pi}{3}.\]
+\end{lemma}
+\begin{proof}
+  Exercise.
+\end{proof}
+\begin{corollary}
+  If $\varphi$ is a bounded function on $D^*$, then $\int_{D^*} \varphi(z)d\mu(z)$ is a well-defined complex number.
+\end{corollary}
+
+\subsection{Integral over \texorpdfstring{$X(\Gamma)$}{X(Gamma)}}
+Let $\cD$ be a fundamental domain for a congruence subgroup $\Gamma$. Such a fundamental domain is the union (almost disjoint) of translates of $D^*$:
+\[
+\cD=\cup_j \alpha_j D^*,
+\]
+where $\{\alpha_j\}$ is a set of coset representatives for $(\pm 1\cdot \Gamma)\backslash \SL_2(\ZZ)$. If $\varphi$ is $\Gamma$-invariant, then we may define the integral of $\varphi$ on $X(\Gamma)=\Gamma\backslash \HH$ as:
+\[
+\int_{X(\Gamma)} \varphi(\tau) d\mu(\tau) = \sum_j \int_{\alpha_j D^*} \varphi(\tau)d\mu(\tau) = \sum_j\int_{D^*} \varphi(\alpha_j\tau)d\mu(\alpha_j\tau)=\sum_j\int_{D^*} \varphi(\alpha_j\tau)d\mu(\tau).
+\]
+The last term in the above equality shows that the definition is independent of the choice of coset representatives. We may calculate the covolume of $\Gamma$ as:
+\begin{lemma}
+\label{lemma:covolume}
+Let $\Gamma\subset\SL_2(\ZZ)$ be a congruence subgroup. Then
+\[  \covol(\Gamma)= \int_{X(\Gamma)} d\mu(\tau) = [\PSL_2(\ZZ)\colon \ol \Gamma]\covol(\SL_2(\ZZ)) = \frac{\pi}{3} [\PSL_2(\ZZ)\colon \ol\Gamma].\]
+\end{lemma}
+
+Let $f$ and $g$ be two cusp forms for $\Gamma$ of weight $k$, and set $\varphi(\tau)=f(\tau)\ol{g(\tau)}\Im(\tau)^k$.
+\begin{lemma}
+ The function $\varphi$ is $\Gamma$-invariant and, for all $\alpha\in \SL_2(\ZZ)$, the translate $\varphi(\alpha\tau)$ is bounded on $D^*$.
+\end{lemma}
+\begin{proof}
+  If $\gamma$ belongs to $\Gamma$, then we may compute:
+\[
+\varphi(\gamma\tau)=f|_k\gamma j(\gamma,\tau)^{-k}\ol{g|_k\gamma j(\gamma,\tau)^{-k}} j(\gamma,\tau)^{2k}\Im(z)^k = \varphi(\tau).
+\]
+If $\alpha$ belongs to $\SL_2(\ZZ)$, then:
+\[
+\varphi(\alpha\tau)=f|_k\alpha \ol{g|_k\alpha}\Im(\tau)^k = O(q_h)\ol{O(q_h)} y^k = O(|q_h|^2 y^k).
+\]
+This approaches $0$ as $y$ approaches infinity, because $q_h = e^{\frac{2\pi i (x+iy)}{z}}$. This gives boundedness.
+\end{proof}
+
+The previous lemma allows us to define an inner product on the spaces of cusp forms:
+\begin{definition}
+  The \emphh{Petersson inner product} of $f$ and $g$ is:
+\[
+\langle f,g\rangle_\Gamma = \frac{1}{\covol(\Gamma)}\int_{X(\Gamma)} f(\tau)\ol{g(\tau)} \Im(\tau)^kd\mu(\tau).
+\]
+\end{definition}
+\begin{remark}
+  For the above to converge it is enough that one of the forms $f$ and $g$ is in $S_k$. Therefore the product of a modular form with a cusp form is well defined.
+\end{remark}
+\begin{remark}
+  The reason to divide by $\covol(\Gamma)$ is that, in this way, if $\Gamma\subseteq \Gamma'$ then
+\[
+\langle f,g\rangle_\Gamma=\langle f,g\rangle_{\Gamma'}.
+\]
+\end{remark}
+\begin{proposition}
+  The Petersson inner product is a positive-definite hermitian product on the $\CC$-vector space $S_k(\Gamma)$. That is:
+  \begin{enumerate}
+  \item $\langle a_1 f_1 + a_2 f_2,g\rangle_\Gamma = a_1\langle f_1,g\rangle_\Gamma + a_2\langle f_2,g\rangle_\Gamma$.
+  \item $\langle g,f\rangle_\Gamma = \ol{\langle f,g\rangle_\Gamma}$.
+  \item $\langle f,f\rangle\geq 0$, with equality if and only if $f=0$.
+  \end{enumerate}
+\end{proposition}
+
+Although the Petersson inner product does not extend to all of $M_k(\Gamma)$, it still allows us to define an ``orthogonal complement to $S_k(\Gamma)$:
+\begin{definition}
+  The \emphh{Eisenstein space} of $M_k(\Gamma)$ is the space
+\[
+\cE_k(\Gamma) = \{f\in M_k(\Gamma)~|~ \langle f,g\rangle_\Gamma =0 \quad \forall g\in S_k(\Gamma)\}.
+\]
+\end{definition}
+\subsection{Adjoint operators}
+If $\langle\cdot,\cdot\rangle$ is an hermitian product on a $\CC$-vector space $V$ and $T\colon V\to V$ is a linear operator, the \emphh{adjoint} of $T$ is defined as the operator $T^*$ which satisfies:
+\[
+\langle Tf,g\rangle = \langle f,T^*g\rangle.
+\]
+The goal of this subsection is to calculate the adjoint operators to the Hecke operators. We will need the following technical result.
+\begin{lemma}
+  Let $\Gamma\subset\SL_2(\ZZ)$ be a congruence subgroup and let $\alpha\in \GL_2^+(\QQ)$.
+  \begin{enumerate}
+  \item If $\varphi\colon\HH\to \CC$ is continuous, bounded and $\Gamma$-invariant then:
+\[
+\int_{\alpha^{-1}\Gamma\alpha\backslash\HH} \varphi(\alpha\tau)d\mu(\tau) = \int_{\Gamma\backslash\HH} \varphi(\tau)d\mu(\tau).
+\]
+\item If $\alpha^{-1}\Gamma\alpha$ is contained in $\SL_2(\ZZ)$ then $\Gamma$ and $\alpha^{-1}\Gamma\alpha$ have equal covolumes and indices in $\SL_2(\ZZ)$.
+\item Let $n=[\Gamma\colon\alpha^{-1}\Gamma\alpha\cap\Gamma] = [\Gamma\colon \alpha\Gamma\alpha^{-1}\cap\Gamma]$. There are matrices $\beta_1,\ldots,\beta_n\in\GL_2^+(\QQ)$ inducing disjoint unions
+\[
+\Gamma\alpha\Gamma = \bigcup \Gamma \beta_j = \bigcup \beta_j \Gamma.
+\]
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  The first two statements are easy and follow from the change of variables formula and Lemma~\ref{lemma:covolume}. The equality of indices in (3) follows by applying (2) to $\alpha\Gamma\alpha^{-1}\cap\Gamma$ instead of $\Gamma$ and using multiplicativity of indices. Therefore there exist $\gamma_1,\ldots\gamma_n$ and $\tilde\gamma_1,\ldots,\tilde\gamma_n$ in $\Gamma$ such that
+\[
+\Gamma = \bigcup (\alpha^{-1}\Gamma\alpha \cap \Gamma)\gamma_j = \bigcup (\alpha\Gamma\alpha^{-1}\cap \Gamma)\tilde\gamma_j^{-1}.
+\]
+By how coset representatives are linked to orbit representatives in a double coset, we get:
+\[
+\Gamma\alpha\Gamma = \bigcup \Gamma \alpha\gamma_j,\quad \Gamma\alpha^{-1}\Gamma=\bigcup \Gamma\alpha^{-1}\tilde\gamma_j^{-1}.
+\]
+By taking inverses in the second decomposition we get
+\[
+\Gamma\alpha\Gamma = \bigcup \tilde\gamma_j\alpha\Gamma.
+\]
+Suppose that $\Gamma\alpha\gamma_j\cap \tilde\gamma_j\alpha\Gamma = \emptyset$. Then
+\[
+\Gamma\alpha\gamma_j\subset\bigcup_{i\neq j} \tilde\gamma_i\alpha\Gamma.
+\]
+Multiply from the right by $\Gamma$ to get $\Gamma\alpha\Gamma\subset \bigcup_{i\neq j} \tilde\gamma_i\alpha\Gamma$,  a contradiction with the decomposition of $\Gamma\alpha\Gamma$ into $n$ orbits for $\Gamma$. Therefore we deduce that $\Gamma\alpha\gamma_j$ intersects $\tilde\gamma_j\alpha\Gamma$, for each $j$. Let $\beta_j$ be any element in this intersection. This gives
+\[
+\Gamma\alpha\Gamma=\bigcup\Gamma\beta_j = \bigcup\beta_j\Gamma.
+\]
+\end{proof}
+This allows us to compute adjoints of double coset operators.
+\begin{proposition}
+\label{prop:adjoints-double-cosets}
+  Let $\Gamma\subseteq \SL_2(\ZZ)$ be a congruence subgroup and let $\alpha\in\GL_2^+(\QQ)$. Let $\alpha^*=\det(\alpha)\alpha^{-1}$ be the classical adjoint to $\alpha$. Then
+  \begin{enumerate}
+  \item If $\alpha^{-1}\Gamma\alpha\subseteq \SL_2(\ZZ)$, and $f\in S_k(\Gamma)$ and $g\in S_k(\alpha^{-1}\Gamma\alpha)$,
+\[
+\langle f|_k\alpha,g\rangle_{\alpha^{-1}\Gamma\alpha}=\langle f,g|_k\alpha^*\rangle_\Gamma.
+\]
+\item For all $f,g\in S_k(\Gamma)$,
+\[
+\langle f|_k[\Gamma\alpha\Gamma],g\rangle = \langle f,g|_k[\Gamma\alpha^*\Gamma]\rangle.
+\]
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+We prove only (1). The second statement follows easily. We will use the equalities that we have already seen:
+\[
+j(\alpha,\alpha^*z) = j(\alpha\alpha^*,z)j(\alpha^*,z)^{-1} = \det \alpha j(\alpha^*,z)^{-1},\quad \Im(\alpha^*z) = \frac{\det\alpha^*}{|j(\alpha^*,z)|^2} \Im(z).
+\]
+Let $M=\covol(\Gamma)=\covol(\alpha^{-1}\Gamma\alpha)$. Then we compute:
+\begin{align*}
+M\langle f|_k\alpha,g\rangle_{\alpha^{-1}\Gamma\alpha} &=  \int_{\alpha^{-1}\Gamma\alpha\backslash\HH} (\det\alpha)^{k-1}j(\alpha,z)^{-k}f(\alpha z) \ol{g(z)} \Im(z)^k d\mu(z)\\
+&= \int_{\Gamma\backslash\HH} (\det\alpha)^{k-1}j(\alpha,\alpha^*z)^{-k} f(z)\ol{g(\alpha^*z)}\Im(\alpha^*z)^kd\mu(z)\\
+&=\int_{\Gamma\backslash \HH} (\det\alpha)^{k-1}(\det\alpha)^{-k}f(z)j(\alpha^*,z)^k\ol{g(\alpha^*z)} \frac{(\det\alpha^*)^k}{|j(\alpha^*,z)|^{2k}}\Im(z)^kd\mu(z)\\
+&=\int_{\Gamma\backslash\HH} f(z)(\det \alpha)^{k-1} \ol{j(\alpha^*,z)}^{-k} \ol{g(\alpha^*z)} \Im(z)^kd\mu(z)\\
+&=\int_{\Gamma\backslash\HH} f(z)\ol{g|_k\alpha^*(z)} \Im(z)^kd\mu(z) = M\langle f,g|_k\alpha^*\rangle_\Gamma.
+\end{align*}
+\end{proof}
+\begin{definition}
+  A linear operator $T$ is \emphh{normal} if it commutes with its adjoint:
+\[ T T^* = T^* T.\]
+\end{definition}
+\begin{theorem}
+  Consider the $\CC$-vector space $S_k(\Gamma_1(N))$. If $p\nmid N$ then:
+\[
+\langle p\rangle^* = \langle p\rangle^{-1} = \langle p^{-1}\rangle,\text{ and } T_p^* = \langle p\rangle^{-1} T_p.
+\]
+\end{theorem}
+\begin{proof}
+Write $\langle p\rangle = [\Gamma\alpha\Gamma]$, where $\alpha\in\Gamma_0(N)$ is such that modulo $N$ is congruent to $\smtx ab0p$. By the Proposition~\ref{prop:adjoints-double-cosets}, we have that $\langle p\rangle^*$ consists on acting with $\alpha^*=\det\alpha \alpha^{-1}$. Since $\det\alpha=1$, then $\alpha^*=\alpha^{-1}$ and thus $\langle p\rangle^* = \langle p^{-1}\rangle = \langle p\rangle^{-1}$.
+
+As for the second part, we set $\alpha=\smtx 100p$ and we need to compute $\Gamma\alpha^*\Gamma$. Note that
+\[
+\alpha^*=\mtx p001=\mtx{1}{n}{N}{mp} ^{-1} \mtx 100p \mtx{p}{n}{N}{m},\quad mp-nN=1.
+\]
+In the right-hand side, the first matrix is in $\Gamma_1(N)$ and the last is in $\Gamma_0(N)$. Since $\Gamma_0(N)$ is normal in $\Gamma_1(N)$, we get
+\[
+\Gamma_1(N)\mtx p001\Gamma_1(N)=\Gamma_1(N)\mtx 100p\Gamma_1(N)\mtx pnNm.
+\]
+Since $m\equiv p^{-1}\pmod N$, the matrix $\mtx pnNm$ acts as $\langle p^{-1}\rangle$. Therefore:
+\[
+T_p^*f = \sum_j f|_k\beta_j \mtx pnNm = (T_pf)|_k \mtx pnNm = \langle p^{-1}\rangle T_p f.
+\]
+
+\end{proof}
+\begin{corollary}
+  If $n$ is coprime to $N$, the Hecke operators $T_n$ and $\langle n\rangle$ are normal.
+\end{corollary}
+
+\begin{theorem}[Spectral theorem]
+  Let $T$ be a normal operator on a finite dimensional $\CC$-vector space. Then $T$ has an orthogonal basis of eigenvectors.
+\end{theorem}
+Applying this theorem multiple times we deduce that if a $\CC$-vector space has a family of normal, pairwise commuting operators then it has a basis of simultaneous eigenvectors. Particularizing to our situation, we get the following result.
+\begin{corollary}
+  The space $S_k(\Gamma_1(N))$ has an orthogonal basis of simultaneous eigenforms for all the $T_n$ and $\langle n\rangle$ with $(n,N)=1$.
+\end{corollary}
+\begin{proof}
+  Apply the spectral theorem for the first of the $T_n$, to get an orthogonal basis of eigenforms. To each of the subspaces one can apply the second of the $T_n$ to refine the basis, thanks to the fact that the Hecke operators commute with each other and hence preserve eigenspaces. The process terminates after a finite number of steps because $S_k(\Gamma_1(N))$ is finite-dimensional.
+\end{proof}
+
+
+  Consider $S_k(\SL_2(\ZZ)) = S_k(\Gamma_1(1))$. It has a basis of eigenforms for \emph{all} the Hecke operators $T_n$ (and $\langle n\rangle$). We may normalize the eigenforms $f$ so that $a_1(f)=1$. Then we will obtain:
+\[
+T_n f = a_n(f) f,\quad \forall n.
+\]
+Therefore each system of eigenvalues $\{a_n(f)\}_{n\geq 1}$ corresponds to a \emph{unique} eigenform $f$. We say that $S_k(\SL_2(\ZZ))$ satisfies \emphh{multiplicity one}. In other words, $S_k(\SL_2(\ZZ))$ decomposes into a direct sum of one-dimensional eigenspaces. In the next section we investigate when this fails to be true, and what can be done to remedy it.
+
+\section{Atkin-Lehner-Li theory}
+Let us consider $S_k(\Gamma_1(N))$ for an arbitrary $N$. We have already seen that there is a basis of simultaneous eigenforms for the $T_n$ and $\langle n\rangle$ operators, as long as $n$ is coprime to $N$. We want to investigate if the components of this basis are also eigenforms for the remaining Hecke operators and if multiplicity one is satisfied.
+
+Recall the operator $V_d\colon M_k(\Gamma_1(M))\to M_k(\Gamma_1(Md))$ which was introduced before for $d$ a prime:
+\[
+(V_d f)(\tau) = f(d\tau) = d^{1-k} f|_k\mtx d001.
+\]
+If $(t,d)=1$ then it is easy to check that $V_d U_t = U_t V_d$, and hence $V_d T_n = T_n V_d$ whenever $(n,d)=1$.
+
+\subsection{Examples}
+
+  Both $\Delta(z)$ and $\Delta(2z)$ are cusp forms in $S_{12}(\Gamma_1(2))$. Write
+\[
+\Delta = \sum_{n\geq 1} \tau(n) q^n,
+\]
+so that $T_p \Delta=\tau(p)\Delta$ for all $p$. Here, by $T_2$ we mean the Hecke operator as acting on $S_{12}(\SL_2(\ZZ))$. By what we have seen above, we have:
+\[
+T_p(\Delta(2z)) = \tau(p)\Delta(2z),\quad p\neq 2.
+\]
+Therefore $\Delta(z)$ and $\Delta(2z)$ have, when considered in $S_{12}(\Gamma_1(2))$, the same ``system of eigenvalues'' $\{\tau(n)\}_{(n,2)=1}$. Therefore $S_{12}(\Gamma_1(2))$ does not satisfy multiplicity one.
+
+However, the Hecke operator $T_2=U_2$ as acting on $S_{12}(\Gamma_1(2))$ satisfies:
+\[
+U_2(\Delta(2z)) = \Delta(z),\text{ and } U_2(\Delta(z)) = T_2\Delta - 2^{11}V_2(\Delta) = -24\Delta - 2^{11} \Delta(2z).
+\]
+Therefore $U_2$ acts on $S_{12}(\Gamma_1(2))$ with matrix
+\[
+[U_2] = \mtx{-24}{1}{-2^{11}}{0},
+\]
+which is diagonalizable. The eigenvectors
+\[
+f_{\pm} = \frac{-3 \pm \sqrt{137}}{512} \Delta(z) + \Delta(2z)
+\]
+can be completed to give a basis of eigenforms for all the $T_n$.
+
+
+  The following example shows that sometimes one may not get a basis of eigenforms for all $T_p$. Let $f\in S_2(\Gamma_1(N))$ be an eigenform for $\{T_q\}_{q\nmid N}\cup\{U_q\}_{q\mid N}$, and let $p\nmid N$. Let $S$ be the following $4$-dimensional $\CC$-vector subspace of $S_2(\Gamma_1(Np^3))$:
+\[
+S = \operatorname{span}_\CC \{f(\tau),f(p\tau),f(p^2\tau),f(p^3\tau)\}.
+\]
+Since $T_q$ commutes with $V_p$, the subspace $S$ is stable under $\{T_q\}_{q\nmid Np^3}$. Moreover,
+$S$ is also stable under $\{T_q=U_q\}_{q\mid N}$. The following result shows that $S$ does not satisfy multiplicity one.
+\begin{proposition}
+  \begin{enumerate}
+  \item $S$ is stable under $\{T_q\}_{q\nmid Np^3} \cup \{T_q=U_q\}_{q \mid N}\cup \{T_p=U_p\}$.
+  \item The matrix of $U_p$ is not diagonalizable.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Exercise.
+\end{proof}
+
+\subsection{New and old forms}
+\label{sec:newforms}
+
+Suppose that $M\mid N$ are two positive integers. There are many ways to embed $S_k(\Gamma_1(M))$ into $S_k(\Gamma_1(N))$. For example, for any $d$ such that $dM\mid N$, we can map $f$ to $V_df$.
+
+\begin{definition}
+  The \emphh{space of old forms}, denoted by $S_k(\Gamma_1(N))^\text{old}$ is:
+\[
+S_k(\Gamma_1(N))^\text{old} = \operatorname{span}_\CC \left\{ V_d(S_k(\Gamma_1(M))) ~\colon~ dM\mid N, M\neq N\right\}.
+\]
+The \emphh{space of new forms}, denoted by $S_k(\Gamma_1(N))^\text{new}$ is the orthogonal complement (with respect to the Petersson inner product) of $S_k(\Gamma_1(N))^\text{old}$ in $S_k(\Gamma_1(N))$.
+\end{definition}
+
+\begin{theorem}
+ The spaces  $S_k(\Gamma_1(N))^\text{old}$ and $S_k(\Gamma_1(N))^\text{new}$ are stable under \emph{all} Hecke operators.
+\end{theorem}
+\begin{proof}
+  Let $\ell$ be a prime dividing $N$. We may define
+\[
+S_k(\Gamma_1(N))^{\ell-\text{old}} = \iota S_k(\Gamma_1(N/\ell)) + V_\ell S_k(\Gamma_1(N/\ell)),
+\]
+where $\iota$ is embedding induced by $f\mapsto f$. In this way,
+\[
+S_k(\Gamma_1(N))^\text{old} = \sum_{\ell \mid N} S_k(\Gamma_1(N))^{\ell-\text{old}},
+\]
+where the sum runs over prime divisors $\ell$ of $N$. What we will prove is that each of the spaces $S_k(\Gamma_1(N))^{\ell-\text{old}}$ is stable under the diamond operators, the Hecke operators $T_p$, and their adjoints. Note also that if $V\subset S_k(\Gamma_1(N))$ is a subspace which stable under an operator $T$, then the orthogonal complement to $V$ is stable under the adjoint $T^*$.
+
+Let $f\in S_k(\Gamma_1(N/\ell))$, and let $T$ be one of the Hecke operators above. We must prove that $T(\iota f)$ and $T(V_\ell f)$ are in $S_k(\Gamma_1(N))^{\ell-\text{old}}$. Consider the matrix $\smtx abcd \in \Gamma_0(N)$, which defines the operator $\langle d\rangle$ on $S_k(\Gamma_1(N))$ and on $S_k(\Gamma_1(N/\ell))$. This shows that $\langle d\rangle$ preserves $\iota S_k(\Gamma_1(N/\ell))$. Next, note that that
+\[
+\mtx \ell 0 0 1\mtx abcd = \mtx a{b\ell}{c/\ell}{d} \mtx \ell 0 0 1.
+\]
+Since $c/\ell$ is an integer which is divisible by $N/\ell$, the matrix $\smtx a{b\ell}{c/\ell}d$ defines the operator $\langle d\rangle$ on $S_k(\Gamma_1(N/\ell))$. Therefore the matrix equality above gives $\langle d\rangle(V_\ell f) = V_\ell(\langle d\rangle \iota f)$.
+
+Next we prove that the operators $T_p$ also preserve $S_k(\Gamma_1(N))^{\ell-\text{old}}$. If $p$ does not divide $N$ this is easy to show that $T_p$ preserves both $V_\ell S_k(\Gamma_1(N/\ell))$ and $\iota S_k(\Gamma_1(N/\ell))$. When $p$ does divide $N$ but $p\neq \ell$, the same argument works. We now consider $T_\ell$. Suppose that $\ell$ divides $N$ exactly once. Then
+\[
+T_\ell(\iota f) = \iota U_\ell f,\text{ and }\quad T_\ell(V_\ell f) = \iota f.
+\]
+However, in $S_k(\Gamma_1(N/\ell))$ we have
+\[
+\iota T_\ell f = T_\ell (\iota f ) + \ell^{k-1}V_\ell(\langle \ell\rangle f),\text{ so } T_\ell(\iota f) = \iota T_\ell f - \ell^{k-1} V_\ell(\langle\ell\rangle f).
+\]
+In particular we see that $T_\ell(\iota f)$ and $T_\ell(V_\ell f)$ are in $S_k(\Gamma_1(N))^{\ell-\text{old}}$.
+
+Finally if $\ell^2$ divides $N$ then $T_\ell$ acts as $U_\ell$ in both $S_k(\Gamma_1(N/\ell))$ and $S_k(\Gamma_1(N))$, and hence
+\[
+T_\ell \iota f = \iota T_\ell f,\quad T_\ell V_d f = \iota f.
+\]
+
+It only remains to show that the adjoint of $T_p$ preserves $S_k(\Gamma_1(N))^{\ell-\text{old}}$ when $p$ divides $N$ (when $p$ does not divide $N$, the adjoints of Hecke operators are in the Hecke algebra and hence preserves the old subspace. In this case, consider the Fricke operator $w_N$ acting on $S_k(\Gamma_1(N))$ by
+\[
+f\mapsto f|_k W_N,\quad W_N=\mtx 0{-1}{N}0.
+\]
+(note that $W_N$ normalizes $\Gamma_1(N)$). We can check:
+\[
+(w_N f)(z) = z^{-k}f(-1/(Nz)).
+\]
+Also, note that $W_N\smtx 100p W_N^{-1} = \smtx p001$, and thus $T_p^* = w_N^{-1} T_p w_N$. One can then compute:
+\[
+w_N\iota f = \ell^k V_\ell w_{N/\ell} f,\text{ and } w_N V_\ell f = \iota w_{N/\ell} f.
+\]
+Therefore $w_N$ (and hence $T_p^*$) preserves the old subspace.
+\end{proof}
+
+We say that $f\in S_k(\Gamma_1(N))^\text{new}$ is a \emphh{newform} if it is an \emph{eigenform} for all Hecke operators, which is \emph{normalized} so that the leading coefficient is $1$.
+\begin{theorem}[Strong Multiplicity One]
+Consider the space $S_k(\Gamma_1(N))^\text{new}$ for $N\geq 1$.
+  \begin{enumerate}
+  \item The space $S_k(\Gamma_1(N))^\text{new}$ has a basis of newforms.
+  \item If $f\in S_k(\Gamma_1(N))^\text{new}$ is an eigenvector for $\{T_q\}_{q\nmid N}$ then $f$ is a scalar multiple of a newform (hence an eigenvector for \emph{all} the Hecke operators.
+  \item If  $f\in S_k(\Gamma_1(N))^\text{new}$ and $g\in S_k(\Gamma_1(M))^\text{new}$ are both newforms satisfying $a_q(f)=a_q(g)$ for all but finitely many primes $q$, then $N=M$ and $f=g$.
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  This  was proven by Atkin--Lehner in 1970 and a partial proof can be found in~\cite{diamond-shurman}.
+\end{proof}
+
+\begin{corollary}
+\label{cor:atkinlehner}
+  \begin{enumerate}
+  \item   If $f$ is a newform, then there is a Dirichlet character $\chi$ such that $f\in S_k(\Gamma_0(N),\chi)$.
+\item If $\{\lambda_n\}_{(n,N)=1}$ is a system of eigenvalues for the $T_n$ such that $(n,N)=1$, then $\exists !$ newform $f\in S_k(\Gamma_1(M))^\text{new}$ for some $M\mid N$, such that $T_nf = \lambda_n f$ for all $n$ satisfying $(n,N)=1$.
+  \end{enumerate}
+\end{corollary}
+
+Finally, we see that the new subspaces give a complete description of $S_k(\Gamma_1(N))$ and $S_k(\Gamma_0(N))$.
+\begin{theorem}
+  There are direct sum decompositions
+\[
+S_k(\Gamma_1(N)) = \bigoplus_{M\mid N} \bigoplus_{dM \mid N} V_d\left(S_k(\Gamma_1(M))^\text{new}\right),
+\]
+and
+\[
+S_k(\Gamma_0(N)) = \bigoplus_{M\mid N} \bigoplus_{dM \mid N} V_d\left(S_k(\Gamma_0(M))^\text{new}\right).
+\]
+\end{theorem}
+\begin{proof}
+  Write $S_k(\Gamma_1(N))=W_1\oplus\cdots\oplus W_t$, where each of the $W_i$ is a simultaneous eigenspace for $\{T_n\}_{(n,N)=1}\cup \{\langle n\rangle\}$. Each form $f\in W_i$ has the same ``package'' of eigenvalues $\{\lambda_n\}_{(n,N)=1}$. Therefore by Corollary~\ref{cor:atkinlehner}(2) this $f$ comes from a unique newform $f_i\in S_k(\Gamma_1(M_i))^\text{new}$ for some $M_i\mid N$. Therefore
+\[
+W_i=\bigoplus_{dM_i\mid N} \CC V_d(f_i)
+\]
+as wanted. Since each of these spaces is stable under the diamond operators, we get the second decomposition by further taking the subspaces on which they act trivially.
+\end{proof}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 

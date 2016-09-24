@@ -1,0 +1,251 @@
+In this chapter we study the connection of modular forms with $L$-functions.
+
+\section{Basic definitions}
+\label{sec:levelone}
+
+Let $f\in M_k(\Gamma_1(N))$ be a modular form, given by a $q$-expansion $f=\sum_{n=0}^\infty a_nq^n$.
+
+\begin{definition}
+  The \emphh{L-function} of $f$ is the function of $s\in\CC$ given formally as
+\[
+L(f,s)=\sum_{n=1}^\infty a_n n^{-s}.
+\]
+\end{definition}
+
+\begin{proposition}
+  If $f\in S_k(\Gamma_1(N))$ is a cusp form then $L(f,s)$ converges absolutely for all $s$ such that $\Re(s)>k/2+1$. If $f\in M_k(\Gamma_1(N))$ is not a cusp form then $L(f,s)$ converges absolutely for all $s$ with $\Re(s)>k$.
+\end{proposition}
+\begin{proof}
+  We have seen in Theorem~\ref{theorem:growthcusps} and Corollary~\ref{corollary:growthmodforms} that $|a_n|\leq Mn^{r(k)}$ for some constant $M$, where $r(k)=k/2$ when $f$ is a cusp form and $r(k)=k-1$ when $f$ is not a cusp form. Although those results were stated and proven only for level $1$, they hold true (with essentially the same proofs) for higher levels. Therefore if $\Re(s)>r(k)+1$ then
+\[
+|\sum_{n\geq 0} a_nn^{-s}|\leq M \sum_{n\geq 0} n^{r(k)-\Re(s)} < \infty.
+\]
+\end{proof}
+
+The $L$-functions attached to normalized eigenforms have a very remarkable decomposition, known as \emphh{Euler product expansion}. In fact, having this property characterizes normalized eigenforms, as the following result states.
+\begin{theorem}
+  Let $f\in M_k(\Gamma_0(N),\chi)$ be a modular form with $q$-expansion $f=\sum_{n\geq 0} a_n q^n$. Then $f$ is a normalized eigenform if and only if $L(f,s)$ has an Euler product expansion
+\[
+L(f,s)=\prod_{p\text{ prime}} (1-a_pp^{-s}+\chi(p)p^{k-1-2s})^{-1}.
+\]
+\end{theorem}
+\begin{proof}
+  By Proposition~\ref{proposition:coeffsnormalizedeigen} we need to show that conditions $(1)$, $(2)$ and $(3)$ of loc.cit. are equivalent to $L(f,s)$ having an Euler product. For a fixed prime $p$, condition $(2)$ says
+\[
+a_{p^r}(f) = a_p(f)a_{p^{r-1}}(f) - p^{k-1}\chi(p) a_{p^{r-2}}(f).
+\]
+Multiplying by $t^r$ and summing over all $r\geq 2$ we see that $(2)$ is equivalent to
+\[
+\sum_{r=2}^\infty a_{p^r}(f)t^r=a_p(f)t\sum_{r=1}^\infty a_{p^{r}}(f)-p^{k-1}\chi(p)t^2\sum_{r=0}^\infty a_{p^{r}}(f),
+\]
+or
+\[
+\left(\sum_{r\geq 0} a_{p^r}(f)t^r\right)(1-a_p(f)t+\chi(p)p^{k-1}t^2) = a_1(f)+a_p(f)t(1-a_1(f)).
+\]
+Since we are assuming that $a_1(f)=1$ we get, by substituting $t=p^{-s}$, the equality
+\begin{align}
+\label{eq:eulerfactor}
+\sum_{r=0}^{\infty} a_{p^r}(f)p^{-rs} &= (1-a_p(f)p^{-s}+\chi(p)p^{k-1-2s})^{-1}.
+\end{align}
+Conversely, if this equality holds then letting $s$ approach $\infty$ we get $a_1(f)=1$, and the other implications can also be reversed to show that Equation~\ref{eq:eulerfactor} is equivalent to conditions $(1)$ and $(2)$ for the $a_n(f)$'s.
+
+The Fundamental Theorem of Arithmetic implies that if $g$ is any function of prime powers, then
+\[
+\prod_p \sum_{r=0}^\infty g(p^r) = \sum_{n=1}^\infty \prod_{p^r\| n} g(p^r).
+\]
+Using this fact, it is easy to see that Equation~\ref{eq:eulerfactor} and condition $(3)$ are equivalent to the existence of the Euler product, thus finishing the proof.
+\end{proof}
+
+\section{L-functions of Eisenstein series}
+Let $\chi\colon\ZZ\to\CC$ be a primitive Dirichlet character modulo $N$. One can attach an L-function to $\chi$ via the formula
+\[
+L(\chi,s)=\sum_{n=1}^\infty \chi(n)n^{-s},\quad \Re(s)>1.
+\]
+\begin{proposition}
+  The L-function of $\chi$ extends to an entire function of on $\CC$ unless $\chi=1$, in which case $L(1,s)=\zeta(s)$ has a simple pole at $s=1$.
+\end{proposition}
+\begin{proof}
+  Omitted.
+\end{proof}
+
+We also have an Euler product:
+\begin{proposition}
+  There is an Euler product decomposition
+\[
+L(\chi,s)=\prod_{p\text{ prime}} \frac{1}{1-\chi(p)p^{-s}}.
+\]
+\end{proposition}
+\begin{proof}
+  Exercise.
+\end{proof}
+
+We have defined the L-function of any modular form. In particular, if $\chi_1$ and $\chi_2$ are primitive Dirichlet characters modulo $N_1$ and $N_2$ respectively, then we can consider the L-function $L(E_k^{\chi_1,\chi_2},s)$.
+\begin{example}
+  Consider the Eisenstein series for the full modular group $E_k(z)\in M_k(\SL_2(\ZZ))$. In Proposition~\ref{prop:Ek-is-eigen} we have seen that $E_k$ is an eigenform for all the Hecke algebra, satisfying $T_p E_k = \sigma_{k-1}(p) E_k$. If we normalize $E_k$ using its first coefficient (instead of the zero-th) and call the resulting Eisenstein series $\bar E_K$, then we have $a_p(\bar E_k) = \sigma_{k-1}(p) = 1+p^{k-1}$. Therefore
+\[
+L(\bar E_k,s) = \prod_{p\text{ prime}}\frac{1}{1-(1+p^{k-1})p^{-s}+p^{k-1-2s}}=\prod_{p\text{ prime}}\frac{1}{1-p^{-s}}\frac{1}{1-p^{k-1-s}}=\zeta(s)\zeta(s-k+1).
+\]
+\end{example}
+The factorization of the example holds in much more generality. Denote by $\bar E_k^{\chi_1,\chi_2}=\frac{1}{2} E_k^{\chi_1,\chi_2}$, where $E_k^{\chi_1,\chi_2}$ were defined in Theorem~\ref{th:eisenstein-gamma1}.
+\begin{proposition}
+  The L-function attached to the Eisenstein series $\bar E_k^{\chi_1,\chi_2}$ has a factorization
+\[
+L(\bar E_k^{\chi_1,\chi_2},s)=L(\chi_1,s)L(\chi_2,s-k+1).
+\]
+\end{proposition}
+\begin{proof}
+  Exercise.
+\end{proof}
+The idea that one can extract from this is that the Eisenstein series are quite simple, and their L-functions are not too interesting since they can be understood from the (simpler) L-functions attached to characters. In stark contrast, the L-functions attached to cusp forms have much deeper connections.
+
+\section{L-functions of cusp forms}
+We focus from now on on cusp forms. The next striking property of L-functions of cusp forms is known as \emphh{functional equation}, a symmetry property of deep consequences. In order to state it precisely, we first define the \emphh{Gamma-function}, which appears often in number theory, as
+\[
+\Gamma(s)=\int_0^\infty t^s e^{-t}\frac{dt}{t}.
+\]
+Note that $\Gamma(n+1)= n!$ for all integers $n\geq 1$, so we can think of $\Gamma$ as an analytic function interpolating the factorials. The Gamma-function enters also in the definition of another complex function, for which the symmetry property is more apparent.
+\begin{definition}
+  The \emphh{completed L-function} of $f\in S_k(\Gamma_1(N))$ is
+\[
+\Lambda(f,s)=(2\pi)^{-s}\Gamma(s)L(f,s),\quad \Re(s)>k/2+1.
+\]
+\end{definition}
+The next result gives an integral formula for the completed L-function.
+\begin{proposition}
+  We have
+\[
+\Lambda(f,s)=\int_0^\infty f(it)t^s\frac{dt}{t},\quad \Re(s)>k/2+1.
+\]
+This is called the \emphh{Mellin transform} of $f$.
+\end{proposition}
+\begin{proof}
+  We first remark that the integral makes sense, since
+\[
+|\int_0^\infty f(it)t^s\frac{dt}{t}| << \int_0^\infty t^{-k/2+s} \frac{dt}{t},
+\]
+which converges for $\Re(s)>k/2+1$. Now we compute
+\[
+\Lambda(f,s) = (2\pi)^{-s} \left(\int_0^\infty t^s e^{-t}\frac{dt}{t}\right)\sum a_n n^{-s} = \sum_{n=1}^\infty a_n\int_0^\infty \left(\frac{t}{2\pi n}\right)^s e^{-t}\frac{dt}{t}.
+\]
+By doing a change of variables $t\mapsto t/(2\pi n)$ in each term, the above expression becomes
+\[
+\sum_{n=1}^\infty a_n\int_0^\infty t^s e^{-2\pi n t}\frac{dt}{t} = \int_0^\infty \left(\sum_{n=1}^\infty a_n e^{-2\pi nt}\right) t^s\frac{dt}{t} = \int_0^\infty f(it)t^s\frac{dt}{t},
+\]
+which gives the desired equality.
+\end{proof}
+
+In order to extend $\Lambda(f,s)$ (and thus $L(f,s)$) to $s\in\CC$ we need to avoid integrating near the real axis. We will also need to consider the operator $W_N$ given by
+\[
+W_N(f)= i^k N^{1-k/2} f|_k \mtx{0}{-1}{N}{0}.
+\]
+It is an idempotent operator: $W_N^2=W_N$, and one easily sees that it is self-adjoint: $\langle W_Nf,g\rangle = \langle f,W_Ng\rangle$ for $f,g\in S_k(\Gamma_1(N))$. Consider the $+$ and $-$-eigenspaces
+\[
+S_k(\Gamma_1(N))^{\pm} = \{f\in S_k(\Gamma_1(N)) ~|~ W_Nf = \pm f\},
+\]
+which gives an orthogonal decomposition of $S_k = S_k^+\oplus S_k^-$.
+
+\begin{theorem}
+Suppose that $f\in S_k(\Gamma_1(N))^\pm$. Then the function $\Lambda(f,s)$ extends to an entire function on $\CC$, which satisfies the functional equation
+\[
+\Lambda(f,s)=\pm N^{s-k/2}\Lambda(f,k-s).
+\]
+In particular, the $L$-function $L(f,s)$ has an analytic continuation to all of $\CC$.
+\end{theorem}
+\begin{proof}
+Define $\Lambda_N(s)=N^{s/2}\Lambda(f,s)$, and note that we must show that $\Lambda_N(s) = \pm \Lambda_N(k-s)$. By changing $t\mapsto t/\sqrt{N}$ we get
+\[
+\Lambda_N(s)=N^{s/2}\int_0^\infty f(it)t^s\frac{dt}{t} = \int_0^\infty f(it/\sqrt{N}) t^s\frac{dt}{t}.
+\]
+We break the integral at $t=1$. Note that the piece
+\[
+\int_1^\infty f(it/\sqrt{N}) t^s\frac{dt}{t}
+\]
+converges to an entire function of $s$, because $f(it/\sqrt{N})=O(e^{-2\pi t/\sqrt{N}})$ when $t\to \infty$. As for the other part, use that $(W_Nf)(i/(\sqrt N t)) = t^k f(it/\sqrt{N})$ to get
+\[
+\int_0^1 f(it/\sqrt{N}) t^s\frac{dt}{t} = \int_0^1 (W_Nf)(i/(\sqrt{N}t)) t^{s-k}\frac{dt}{t} = \int_1^\infty (W_Nf)(it/\sqrt{N})t^{k-s}\frac{dt}{t}.
+\]
+Again, since $W_nf = \pm f$ this converges to an entire function. As for the functional equation, note that we have obtained
+\[
+\Lambda_N(s) = \int_1^\infty\left(f(it/\sqrt{N})t^s \pm f(it/\sqrt{N})t^{k-s}\right)\frac{dt}{t} = \pm\Lambda_N(k-s).
+\]
+\end{proof}
+
+\section{Relation to elliptic curves}
+
+Let $E/\QQ$ be an elliptic curve. It can be thought of as the set cut out by an equation of the form
+\[
+E\colon Y^2 = X^3+AX+B,\quad A,B\in\ZZ,
+\]
+such that the discriminant $\Delta_E$ of $X^3+AX+B$ is nonzero. The coefficients of this equation can be reduced modulo any prime $p$ and the conductor $N_E$ of $E$ is an integer whose prime divisors are precisely the prime divisors of $N_E$ (although in general $N_E\neq \Delta_E$. One can define an L-function attached to $E$ via the following Euler product:
+\[
+L(E,s)=\prod_{p\mid N_E}(1-a_p(E)p^{-s})^{-1} \prod_{p\nmid N_E} (1-a_p(E)p^{-s} + p^{1-2s})^{-1},\quad \Re(s)>3/2.
+\]
+where $a_p(E) = 1+p-\# E(\FF_p)$. Here, by $E(\FF_p)$ we mean the set of points of (the reduction of) $E$ over the finite field $\FF_p$, where we always include the ``point at infinity''.
+
+It turns out that elliptic curves arise from modular forms, thanks to results of Eichler and Shimura.
+\begin{theorem}[Eichler--Shimura]
+  Let $f\in S_2(\Gamma_0(N))$ be a normalized eigenform whose Fourier coefficients $a_n(f)$ are all integers. Then there exists an elliptic curve $E_f$ defined over $\QQ$ such that $L(E_f,s)=L(f,s)$.
+\end{theorem}
+\begin{proof}[Construction of $E_f$]
+  Consider the differential form $\omega_f=2\pi i f(z)dz$, and write $\HH^*=\HH\cup\PP^1(\QQ)$. To a point $\tau\in\HH^*$ we attach the following complex number
+\[
+\varphi(\tau) = \int_{\infty}^\tau \omega_f \in\CC.
+\]
+Let $\gamma\in\Gamma_0(N)$. Then note that
+\[
+\beta_{\gamma} =\varphi(\gamma\tau)-\varphi(\tau) = \int_{\tau}^{\gamma_\tau} \omega_f
+\]
+does not depend on $\tau$:
+\begin{align*}
+\int_\tau^{\gamma\tau}\omega_f &= \int_\tau^\infty\omega_f+\int_\infty^{\gamma\infty}\omega_f+ \int_{\gamma\infty}^{\gamma\tau}\omega_f\\
+&= \int_\tau^\infty\omega_f+\int_\infty^{\gamma\infty}\omega_f+ \int_{\infty}^{\tau}\omega_f\\
+&=\int_\infty^{\gamma\infty}\omega_f.
+\end{align*}
+Therefore if denote by $\Lambda_f$ the following subset of complex numbers
+\[
+\Lambda_f=\left\{\beta_\gamma=\int_{\infty}^{\gamma\infty}\omega_f ~|~ \gamma\in\Gamma_0(N)\right\}\subset\CC,
+\]
+we get a well-defined map
+\[
+\Gamma_0(N)\backslash \HH^*\to \CC/\Lambda_f.
+\]
+One can show that $\Lambda_f$ is a lattice, and define $E_f$ to be the elliptic curve corresponding to the complex torus $\CC/\Lambda_f$. It is considerably harder to show that $E_f$ is defined over $\QQ$, and that $L(E_f,s)=L(f,s)$.
+\end{proof}
+
+We may wonder about a converse to the previous result. That is, given an elliptic curve $E$ of conductor $N_E$, can we find a cusp form of level $N_E$ having the same L-function as that of $E$? Let us give a name to the elliptic curves $E$ satisfying this property.
+
+\begin{definition}
+  We say that $E$ is \emphh{modular} if there is a newform $f\in S_2(\Gamma_0(N_E))$ with $a_p(E)=a_p(f)$.   Equivalently, if $L(E,s)=L(f,s)$.
+\end{definition}
+
+The following theorem, which gives a positive answer to the question we asked, is one of the hallmarks of XX-century number theory. Its proof, spanning hundreds of pages of difficult mathematics, relies on breakthrough work of Andrew Wiles in the nineties, although the full proof needed extra work of Taylor--Wiles and  Breuil--Conrad--Diamond--Taylor.
+\begin{theorem}
+  Let $E/\QQ$ be an elliptic curve. Then $E$ is modular.
+\end{theorem}
+
+Thanks to the above theorem, the L-function of $E$ extends to an entire function, which satisfies a functional equation relating $L(E,s)$ with $L(E,2-s)$. In fact, there is no known proof of these two facts that does not need modularity of $E$. Finally, the Birch--Swinnerton-Dyer conjecture is a prediction about the behavior of $L(E,s)$ near $s=1$. Recall that the set of points $E(\QQ)$ of $E$ which have coordinates in the rational numbers has a structure of a finitely-generated group (this is the Mordell--Weil theorem).
+\begin{conjecture}[Birch--Swinnerton-Dyer]
+Let $E$ be an elliptic curve defined over $\QQ$. Let $L(E,s)$ be its L-function. Then
+  \[
+\ord_{s=1} L(E,s) = \operatorname{rank}_{\ZZ} E(\QQ).
+\]
+\end{conjecture}
+This conjectures is one of the ten ``Millennium'' problems proposed in 2000 by the Clay Mathematics Institute, and it is worth $1\text{M}\$$. Very little is known of it. For instance, one does not yet know how to show the particular case
+\[
+L(E,1)=0\stackrel{?}{\implies} E(\QQ)\text{ infinite}.
+\]
+However, thanks to work of B.~Gross, D.~Zagier and V.~Kolyvagin, one has the following result.
+\begin{theorem}[Gross--Zagier, Kolyvagin]
+Let $E/\QQ$ be a modular elliptic curve.
+\begin{enumerate}
+\item Suppose that $L(E,1)\neq 0$. Then $E(\QQ)$ is finite.
+\item Suppose that $L(E,1)=0$ and $L'(E,1)\neq 0$. Then $E(\QQ)$ has rank one.
+\end{enumerate}
+That is, BSD holds if we assume \emph{a priori} that  $\ord_{s=1} L(E,s)$ is at most one.
+\end{theorem}
+The proof of this is also very difficult and uses crucially the modular form $f_E$ attached to $E$ by modularity. This is nowadays no restriction, since by the modularity theorem we know that all elliptic curves over $\QQ$ are modular. However, the result of Gross--Zagier and Kolyvagin was proven in the eighties, \emph{before} modularity was proven (or even thought to be attainable). A crucial ingredient that goes in the proof is to be able to produce, in the case of $L(E,1)=0$, a point $P \in E(\QQ)$ which has infinite order, as predicted by BSD. It is an open problem to find a point of infinite order in $E(\QQ)$ knowing that $\ord_{s=1} L(E,s)\geq 2$. This is an example of the recurring phenomenon in mathematics: it is easy to construct objects that are uniquely defined, in what could be thought of as a perverse manifestation of the ``axiom of choice''.
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 

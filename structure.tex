@@ -1,0 +1,671 @@
+%----------------------------------------------------------------------------------------
+%	VARIOUS REQUIRED PACKAGES
+%----------------------------------------------------------------------------------------
+
+\usepackage{titlesec} % Allows customization of titles
+
+\usepackage{graphicx} % Required for including pictures
+\graphicspath{{Pictures/}} % Specifies the directory where pictures are stored
+
+\usepackage{tikz} % Required for drawing custom shapes
+
+\usepackage[english]{babel} % English language/hyphenation
+
+\usepackage{enumitem} % Customize lists
+\setlist{nolistsep} % Reduce spacing between bullet points and numbered lists
+
+\usepackage{booktabs} % Required for nicer horizontal rules in tables
+
+\usepackage{eso-pic} % Required for specifying an image background in the title page
+
+%----------------------------------------------------------------------------------------
+%	MAIN TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\usepackage{titletoc} % Required for manipulating the table of contents
+
+\contentsmargin{0cm} % Removes the default margin
+% Chapter text styling
+\titlecontents{chapter}[1.25cm] % Indentation
+{\addvspace{15pt}\large\sffamily\bfseries} % Spacing and font options for chapters
+{\color{maincolor!60}\contentslabel[\Large\thecontentslabel]{1.25cm}\color{maincolor}} % Chapter number
+{}  
+{\color{maincolor!60}\normalsize\sffamily\bfseries\;\titlerule*[.5pc]{.}\;\thecontentspage} % Page number
+% Section text styling
+\titlecontents{section}[1.25cm] % Indentation
+{\addvspace{5pt}\sffamily\bfseries} % Spacing and font options for sections
+{\contentslabel[\thecontentslabel]{1.25cm}} % Section number
+{}
+{\sffamily\hfill\color{black}\thecontentspage} % Page number
+[]
+% Subsection text styling
+\titlecontents{subsection}[1.25cm] % Indentation
+{\addvspace{1pt}\sffamily\small} % Spacing and font options for subsections
+{\contentslabel[\thecontentslabel]{1.25cm}} % Subsection number
+{}
+{\sffamily\;\titlerule*[.5pc]{.}\;\thecontentspage} % Page number
+[] 
+
+%----------------------------------------------------------------------------------------
+%	MINI TABLE OF CONTENTS IN CHAPTER HEADS
+%----------------------------------------------------------------------------------------
+
+% Section text styling
+\titlecontents{lsection}[0em] % Indendating
+{\footnotesize\sffamily} % Font settings
+{}
+{}
+{}
+
+% Subsection text styling
+\titlecontents{lsubsection}[.5em] % Indentation
+{\normalfont\footnotesize\sffamily} % Font settings
+{}
+{}
+{}
+ 
+%----------------------------------------------------------------------------------------
+%	PAGE HEADERS
+%----------------------------------------------------------------------------------------
+
+\usepackage{fancyhdr} % Required for header and footer configuration
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\sffamily\normalsize\bfseries\chaptername\ \thechapter.\ #1}{}} % Chapter text font settings
+\renewcommand{\sectionmark}[1]{\markright{\sffamily\normalsize\thesection\hspace{5pt}#1}{}} % Section text font settings
+\fancyhf{} \fancyhead[LE,RO]{\sffamily\normalsize\thepage} % Font setting for the page number in the header
+\fancyhead[LO]{\rightmark} % Print the nearest section name on the left side of odd pages
+\fancyhead[RE]{\leftmark} % Print the current chapter name on the right side of even pages
+\renewcommand{\headrulewidth}{0.5pt} % Width of the rule under the header
+\addtolength{\headheight}{2.5pt} % Increase the spacing around the header slightly
+\renewcommand{\footrulewidth}{0pt} % Removes the rule in the footer
+\fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrulewidth}{0pt}} % Style for when a plain pagestyle is specified
+
+% Removes the header from odd empty pages at the end of chapters
+\makeatletter
+\renewcommand{\cleardoublepage}{
+\clearpage\ifodd\c@page\else
+\hbox{}
+\vspace*{\fill}
+\thispagestyle{empty}
+\newpage
+\fi}
+
+%----------------------------------------------------------------------------------------
+%	THEOREM STYLES
+%----------------------------------------------------------------------------------------
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm} % For math equations, theorems, symbols, etc
+
+\newcommand{\intoo}[2]{\mathopen{]}#1\,;#2\mathclose{[}}
+\newcommand{\ud}{\mathop{\mathrm{{}d}}\mathopen{}}
+\newcommand{\intff}[2]{\mathopen{[}#1\,;#2\mathclose{]}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% dedicated to boxed/framed environements %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{maincolornumbox}% % Theorem style name
+{0pt}% Space above
+{0pt}% Space below
+{\normalfont}% % Body font
+{}% Indent amount
+{\small\bf\sffamily\color{maincolor}}% % Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily\color{maincolor}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
+\renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
+
+\newtheoremstyle{blacknumex}% Theorem style name
+{5pt}% Space above
+{5pt}% Space below
+{\normalfont}% Body font
+{} % Indent amount
+{\small\bf\sffamily}% Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily{\tiny\ensuremath{\blacksquare}}\nobreakspace\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries---\nobreakspace#3.}}% Optional theorem note
+
+\newtheoremstyle{blacknumbox} % Theorem style name
+{0pt}% Space above
+{0pt}% Space below
+{\normalfont}% Body font
+{}% Indent amount
+{\small\bf\sffamily}% Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries---\nobreakspace#3.}}% Optional theorem note
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%% dedicated to non-boxed/non-framed environements %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{maincolornum}% % Theorem style name
+{5pt}% Space above
+{5pt}% Space below
+{\normalfont}% % Body font
+{}% Indent amount
+{\small\bf\sffamily\color{maincolor}}% % Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily\color{maincolor}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
+\renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
+\makeatother
+
+% Defines the theorem text style for each type of theorem to one of the three styles above
+\newcounter{dummy} 
+\numberwithin{dummy}{section}
+\theoremstyle{maincolornumbox}
+\newtheorem{theoremeT}[dummy]{Theorem}
+\newtheorem{propositionT}[dummy]{Proposition}
+\newtheorem{conjectureT}[dummy]{Conjecture}
+\newtheorem{lemmaT}[dummy]{Lemma}
+\newtheorem{corollaryT}[dummy]{Corollary}
+\newtheorem{problem}{Problem}[chapter]
+\newtheorem{exerciseT}{Exercise}[chapter]
+\theoremstyle{blacknumex}
+\newtheorem{exampleT}{Example}[chapter]
+\theoremstyle{blacknumbox}
+\newtheorem{vocabulary}{Vocabulary}[chapter]
+\newtheorem{definitionT}{Definition}[section]
+\theoremstyle{maincolornum}
+
+
+%----------------------------------------------------------------------------------------
+%	DEFINITION OF COLORED BOXES
+%----------------------------------------------------------------------------------------
+
+\RequirePackage[framemethod=default]{mdframed} % Required for creating the theorem, definition, exercise and corollary boxes
+
+% Theorem box
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+backgroundcolor=black!5,
+linecolor=maincolor,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+innerbottommargin=5pt]{tBox}
+
+% Exercise box	  
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+backgroundcolor=maincolor!10,
+linecolor=maincolor,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+innerbottommargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt]{eBox}	
+
+% Definition box
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=maincolor,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=0pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt,
+innerbottommargin=0pt]{dBox}	
+
+% Corollary box
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=gray,
+backgroundcolor=black!5,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt,
+innerbottommargin=5pt]{cBox}
+
+% Creates an environment for each type of theorem and assigns it a theorem text style from the "Theorem Styles" section above and a colored box from above
+\newenvironment{theorem}{\begin{tBox}\begin{theoremeT}}{\end{theoremeT}\end{tBox}}
+\newenvironment{conjecture}{\begin{tBox}\begin{conjectureT}}{\end{conjectureT}\end{tBox}}
+\newenvironment{proposition}{\begin{tBox}\begin{propositionT}}{\end{propositionT}\end{tBox}}
+\newenvironment{exercise}{\begin{eBox}\begin{exerciseT}}{\hfill{\color{maincolor}\tiny\ensuremath{\blacksquare}}\end{exerciseT}\end{eBox}}				  
+\newenvironment{definition}{\begin{dBox}\begin{definitionT}}{\end{definitionT}\end{dBox}}	
+\newenvironment{example}{\begin{exampleT}}{\hfill{\tiny\ensuremath{\blacksquare}}\end{exampleT}}		
+\newenvironment{corollary}{\begin{cBox}\begin{corollaryT}}{\end{corollaryT}\end{cBox}}	
+\newenvironment{lemma}{\begin{cBox}\begin{lemmaT}}{\end{lemmaT}\end{cBox}}	
+
+%----------------------------------------------------------------------------------------
+%	REMARK ENVIRONMENT
+%----------------------------------------------------------------------------------------
+
+\newenvironment{remark}{\par\vspace{10pt}\small % Vertical white space above the remark and smaller font size
+\begin{list}{}{
+\leftmargin=35pt % Indentation on the left
+\rightmargin=25pt}\item\ignorespaces % Indentation on the right
+\makebox[-2.5pt]{\begin{tikzpicture}[overlay]
+\node[draw=maincolor!60,line width=1pt,circle,fill=maincolor!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{maincolor}{R}};\end{tikzpicture}} % Orange R in a circle
+\advance\baselineskip -1pt}{\end{list}\vskip5pt} % Tighter line spacing and white space after remark
+
+%----------------------------------------------------------------------------------------
+%	SECTION NUMBERING IN THE MARGIN
+%----------------------------------------------------------------------------------------
+
+\makeatletter
+\renewcommand{\@seccntformat}[1]{\llap{\textcolor{maincolor}{\csname the#1\endcsname}\hspace{1em}}}                    
+\renewcommand{\section}{\@startsection{section}{1}{\z@}
+{-4ex \@plus -1ex \@minus -.4ex}
+{1ex \@plus.2ex }
+{\normalfont\large\sffamily\bfseries}}
+\renewcommand{\subsection}{\@startsection {subsection}{2}{\z@}
+{-3ex \@plus -0.1ex \@minus -.4ex}
+{0.5ex \@plus.2ex }
+{\normalfont\sffamily\bfseries}}
+\renewcommand{\subsubsection}{\@startsection {subsubsection}{3}{\z@}
+{-2ex \@plus -0.1ex \@minus -.2ex}
+{.2ex \@plus.2ex }
+{\normalfont\small\sffamily\bfseries}}                        
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}
+{-2ex \@plus-.2ex \@minus .2ex}
+{.1ex}
+{\normalfont\small\sffamily\bfseries}}
+
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS IN THE DOCUMENTS
+%----------------------------------------------------------------------------------------
+
+% For an unclear reason, the package should be loaded now and not later
+\usepackage{hyperref}
+\hypersetup{hidelinks,colorlinks=false,breaklinks=true,urlcolor= maincolor,bookmarksopen=false,pdftitle={Title},pdfauthor={Author}}
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER HEADINGS
+%----------------------------------------------------------------------------------------
+
+% The set-up below should be (sadly) manually adapted to the overall margin page septup controlled by the geometry package loaded in the main.tex document. It is possible to implement below the dimensions used in the goemetry package (top,bottom,left,right)... TO BE DONE
+
+\newcommand{\thechapterimage}{}
+\newcommand{\chapterimage}[1]{\renewcommand{\thechapterimage}{#1}}
+
+% Numbered chapters with mini tableofcontents
+\def\thechapter{\arabic{chapter}}
+\def\@makechapterhead#1{
+\thispagestyle{empty}
+{\centering \normalfont\sffamily
+\ifnum \c@secnumdepth >\m@ne
+\if@mainmatter
+\startcontents
+\begin{tikzpicture}[remember picture,overlay]
+\node at (current page.north west)
+{\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north west,inner sep=0pt] at (0,0) {\includegraphics[width=\paperwidth]{\thechapterimage}};
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Commenting the 3 lines below removes the small contents box in the chapter heading
+\fill[color=maincolor!10!white,opacity=.6] (1cm,0) rectangle (8cm,-7cm);
+\node[anchor=north west] at (1.1cm,-.35cm) {\parbox[t][8cm][t]{6.5cm}{\huge\bfseries\flushleft \printcontents{l}{1}{\setcounter{tocdepth}{2}}}};
+\draw[anchor=west] (5cm,-9cm) node [rounded corners=20pt,fill=maincolor!10!white,text opacity=1,draw=maincolor,draw opacity=1,line width=1.5pt,fill opacity=.6,inner sep=12pt]{\huge\sffamily\bfseries\textcolor{black}{\thechapter. #1\strut\makebox[22cm]{}}};
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{tikzpicture}};
+\end{tikzpicture}}
+\par\vspace*{230\p@}
+\fi
+\fi}
+
+% Unnumbered chapters without mini tableofcontents (could be added though) 
+\def\@makeschapterhead#1{
+\thispagestyle{empty}
+{\centering \normalfont\sffamily
+\ifnum \c@secnumdepth >\m@ne
+\if@mainmatter
+\begin{tikzpicture}[remember picture,overlay]
+\node at (current page.north west)
+{\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north west,inner sep=0pt] at (0,0) {\includegraphics[width=\paperwidth]{\thechapterimage}};
+\draw[anchor=west] (5cm,-9cm) node [rounded corners=20pt,fill=maincolor!10!white,fill opacity=.6,inner sep=12pt,text opacity=1,draw=maincolor,draw opacity=1,line width=1.5pt]{\huge\sffamily\bfseries\textcolor{black}{#1\strut\makebox[22cm]{}}};
+\end{tikzpicture}};
+\end{tikzpicture}}
+\par\vspace*{230\p@}
+\fi
+\fi
+}
+\makeatother
+
+%Blackboard Letters
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbV}{\mathbb{V}}
+
+%Bold Letters 
+\newcommand{\bQ}{\mathbf{Q}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bC}{\mathbf{C}}
+\newcommand{\bJ}{\mathbf{J}}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\bP}{\mathbf{P}}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\bH}{\mathbf{H}}
+\newcommand{\bN}{\mathbf{N}}
+
+%(for Q,R,N,C,...)
+\renewcommand{\AA}{\bbA}
+\newcommand{\BB}{\bbB}
+\newcommand{\DD}{\bbD}
+\newcommand{\QQ}{\bbQ}
+\newcommand{\II}{\bbI}
+\newcommand{\WW}{\bbW}
+\newcommand{\RR}{\bbR}
+\newcommand{\CC}{\bbC}
+\newcommand{\VV}{\bbV}
+\newcommand{\FF}{\bbF}
+\newcommand{\HH}{\bbH}
+\newcommand{\ZZ}{\bbZ}
+\newcommand{\NN}{\bbN}
+\newcommand{\PP}{\bbP}
+
+\newcommand{\Qbar}{\overline{\QQ}}
+
+%Caligraphic (Sheaves...)
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\chh}{\mathcal{h}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\cHom}{\operatorname{\mathcal{H}om}}
+\newcommand{\shomega}{\underline{\omega}}
+
+%Category names
+\newcommand{\AbGrp}{\textbf{Ab}}
+\newcommand{\Ab}{\AbGrp}
+\newcommand{\Sheaves}{\textbf{Sheaves}}
+\newcommand{\Rings}{\textbf{Rings}}
+\newcommand{\Mod}{\textbf{Mod}}
+\newcommand{\Sh}{\textbf{Sh}}
+\newcommand{\Sch}{\textbf{Sch}}
+\newcommand{\Sets}{\textbf{Sets}}
+\newcommand{\Mot}{\textbf{Mot}}
+
+%Fraktor letters, eg naming ideals
+
+\newcommand{\fA}{\mathfrak A}
+\newcommand{\fR}{\mathfrak R}
+\newcommand{\fp}{\mathfrak p}
+\newcommand{\fq}{\mathfrak q}
+\newcommand{\fP}{\mathfrak P}
+\newcommand{\fQ}{\mathfrak Q}
+\newcommand{\fa}{\mathfrak a}
+\newcommand{\fb}{\mathfrak b}
+\newcommand{\fc}{\mathfrak c}
+\newcommand{\fd}{\mathfrak d}
+\newcommand{\fm}{\mathfrak m}
+\newcommand{\fn}{\mathfrak n}
+\newcommand{\fo}{\mathfrak o}
+\newcommand{\fS}{\mathfrak S}
+\newcommand{\fN}{\mathfrak N}
+\newcommand{\fU}{\mathfrak U}
+\newcommand{\fX}{\mathfrak X}
+\newcommand{\fY}{\mathfrak Y}
+
+\def\wh{\widehat}
+
+%Some common math operators
+\DeclareMathOperator{\order}{ord}
+\DeclareMathOperator{\covol}{covol}
+\DeclareMathOperator{\Inf}{Inf}
+\DeclareMathOperator{\Cris}{Cris}
+% \DeclareMathOperator{\Sh}{Sh}
+\DeclareMathOperator{\val}{val}
+\DeclareMathOperator{\Ram}{Ram}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\St}{St}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\cork}{cork}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Max}{Max}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Mp}{Mp}
+\DeclareMathOperator{\Spf}{Spf}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Jacobson}{\mathfrak J}
+\DeclareMathOperator{\Nilradical}{\mathfrak N}
+\DeclareMathOperator{\rad}{\mathfrak{rad}}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\car}{char}
+\DeclareMathOperator{\gl}{GL}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\discrd}{discrd}
+\DeclareMathOperator{\supp}{Supp}
+\DeclareMathOperator{\Div}{Div}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\divv}{div}
+%\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\res}{Res}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\img}{img}
+\DeclareMathOperator{\Tate}{Tate}
+\DeclareMathOperator{\gr}{gr}
+\DeclareMathOperator{\Tot}{Tot}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\sym}{Sym}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\Symm}{Symm}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\dlog}{dlog}
+\DeclareMathOperator{\chow}{CH}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\AJ}{AJ}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Nm}{Nm}
+\DeclareMathOperator{\nrd}{Nrd}
+\DeclareMathOperator{\trd}{trd}
+\DeclareMathOperator{\Corr}{Corr}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\Graph}{Graph}
+\DeclareMathOperator{\Fil}{Fil}
+\DeclareMathOperator{\red}{red}
+\DeclareMathOperator{\MF}{MF}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Dst}{D_{\st}}
+\DeclareMathOperator{\Vst}{V_{\st}}
+\DeclareMathOperator{\NS}{NS}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\stab}{stab}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\cond}{cond}
+\DeclareMathOperator{\Sel}{Sel}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\cInd}{c-Ind}
+\def\det{\operatorname{det}}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Jet}{Jet}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\Coh}{Coh}
+\DeclareMathOperator{\QCoh}{QCoh}
+\DeclareMathOperator{\tors}{tors}
+
+%\DeclareSymbolFont{cyrletters}{OT2}{wncyr}{m}{n}
+%\DeclareMathSymbol{\Sha}{\mathalpha}{cyrletters}{"58}
+
+%Some common abreviations
+\newcommand{\lto}{\longrightarrow}
+\newcommand{\dfn}{\ensuremath{{:=}}}
+\newcommand{\nfd}{\ensuremath{{=:}}}
+\newcommand{\surjects}{\twoheadrightarrow}
+\newcommand{\injects}{\hookrightarrow}
+\newcommand{\id}{\ensuremath \text{Id}}
+\newcommand{\tns}[1][]{\otimes_{\!#1}}
+\newcommand{\mtx}[4]{\left(\begin{matrix}#1&#2\\#3&#4\end{matrix}\right)}
+\newcommand{\mat}[1]{\left(\begin{matrix}#1\end{matrix}\right)}
+\newcommand{\smat}[1]{\left(\begin{smallmatrix}#1\end{smallmatrix}\right)}
+\newcommand{\smtx}[4]{\left(\begin{smallmatrix}#1&#2\\#3&#4\end{smallmatrix}\right)}
+\newcommand{\slz}{\operatorname{SL}_2(\ZZ)}
+
+\newcommand{\emphh}[2][ ]{%
+\ifthenelse{\equal{#1}{ }}{\index{#2} {\emph{#2}}}{\index{#1@#2} {\emph{#2}}}%
+}
+
+%\def\emphh{\emph}
+
+\def\sumprime{\mathop{\sum{\raise3pt\hbox{${}'$}}}} %Copied from somewhere else...
+\def\prodprime{\mathop{\prod{\raise3pt\hbox{${}'$}}}} %Copied from somewhere else...
+
+\newcommand{\et}{{\text{et}}}
+\newcommand{\dR}{{\text{dR}}}
+\newcommand{\cont}{{\text{cont}}}
+\newcommand{\cris}{{\text{cris}}}
+\newcommand{\Het}{H_\et}
+\newcommand{\Hdr}{H_\dR}
+\newcommand{\Hcris}{H_\cris}
+\newcommand{\Bcris}{B_\cris}
+\newcommand{\Dcris}{D_\cris}
+\newcommand{\Vcris}{V_\cris}
+\newcommand{\cHdr}{\cH_\dR}
+\newcommand{\Hcont}{H_\cont}
+\newcommand{\Hst}{H_\st}
+\newcommand{\Char}{C_{\text{har}}}
+\newcommand{\frob}{{\text{frob}}}
+\newcommand{\hol}{{\text{hol}}}
+\newcommand{\sm}{{\text{sm}}}
+\newcommand{\usm}{{\text{usm}}}
+\newcommand{\llangle}{\langle\!\langle}
+\newcommand{\rrangle}{\rangle\!\rangle}
+
+\newcommand{\poinc}[2]{\langle{#1},{#2}\rangle_{\text{Poinc}}}
+
+\newcommand{\bbl}{[\hspace{-1.5pt}[}
+\newcommand{\bbr}{]\hspace{-1.5pt}]}
+\newcommand{\pseries}[2]{{#1}\bbl {#2}\bbr}
+
+\newcommand{\Oneforms}[2]{\ensuremath\Omega_{\cO_{#1}/\cO_{#2}}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\mmu}{\mu\!\!\!\mu}
+\newcommand{\Rmax}{{\cR^{\text{max}}}}
+\newcommand{\an}{\text{an}}
+\newcommand{\ur}{\text{ur}}
+\newcommand{\barrr}{\overline}
+
+\newcommand{\st}{\text{st}}
+\newcommand{\Bst}{B_{\st}}
+
+\newcommand{\tto}[1]{%
+\ifthenelse{\equal{#1}{}}{\to}{\stackrel{#1}{\to}}}
+
+\newcommand{\abs}[1]{|{#1}|}
+\newcommand{\fabs}[1]{\|{#1}\|}
+
+%Commands for fast typesetting
+\newcommand{\nc}[2]{\newcommand{#1}{#2}}
+\newcommand{\on}[2]{\operatorname{#1}{#2}}
+
+
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\dr}{\text{dR}}
+\newcommand{\Bdr}{{B_{\dr}}}
+\newcommand{\Ddr}{{D_{\dr}}}
+\newcommand{\Dsen}{{D_{\text{sen}}}}
+\newcommand{\ab}{\text{ab}}
+\newcommand{\HT}{\text{HT}}
+\newcommand{\Bht}{{B_{\HT}}}
+\newcommand{\repzpgamma}{\Rep_{\ZZ_p}(\Gamma)}
+\newcommand{\repqpgamma}{\Rep_{\QQ_p}(\Gamma)}
+\newcommand{\Dht}{{D_{\HT}}}
+\renewcommand{\Vec}{\text{Vec}}
+\newcommand{\EtPhiMod}[1][E]{{\phi M_{#1}^{\et}}}
+\newcommand{\cOE}{{\cO_\cE}}
+\newcommand{\hodge}{\text{Hodge}}
+\newcommand{\ock}{\cO_{\CC_K}}
+\newcommand{\ses}[4][]{ #1 #2\to #1 #3\to #1 #4 }
+\newcommand{\wa}{{\text{wa}}}
+\newcommand{\aR}{{\fA\fR}}
+\newcommand{\Aug}{{\fA u g }}
+\newcommand{\bOne}{{1\!\!1}}
+\newcommand{\Wedge}{\Lambda}
+\newcommand{\ord}{{\text{ord}}}
+\newcommand{\can}{{\text{can}}}
+\newcommand{\crit}{{\text{crit}}}
+\renewcommand{\ss}{{\text{ss}}}
+\newcommand{\bbf}{{\mathbbm{f}}}
+\newcommand{\hecke}{{\mathfrak h}}
+\newcommand{\Hecke}{{\mathfrak H}}
+
+%For warnings (editing)
+%\makeindex{fixmes}
+%\newcommand{\fixme}[1]{}
+\newcommand{\fixme}[1]{\footnote{\textbf{ FIXME: } \textrm{#1}}}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 

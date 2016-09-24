@@ -1,0 +1,245 @@
+
+The conclusion of the previous chapter has been that $S_k(\Gamma_1(N))$ has a
+basis of eigenforms each of them new at some level dividing $N$. For a general congruence
+subgroup $\Gamma$, recall that
+the Petersson inner product allowed us to define an ``orthogonal complement'' to
+$S_k(\Gamma)$, the Eisenstein subspace
+\[
+\cE_k(\Gamma)=\{f\in M_k(\Gamma) ~|~ \langle f,g\rangle_\Gamma=0\quad \forall g\in S_k(\Gamma)\}.
+\]
+The goal for this chapter is to find a natural basis for $\cE_k(\Gamma)$.
+
+\section{Eisenstein series for congruence subgroups}
+Recall the Eisenstein series  for $\SL_2(\ZZ)$ that we saw at the beginning:
+\[
+G_k(z)=\sumprime_{(m,n)\in\ZZ^2} \frac{1}{(mz+n)^k}.
+\]
+In order to generalize this construction, we need to put it in a more intrinsic form. Recall that the stabilizer of the cusp $\infty$ is
+\[
+P_\infty = \SL_2(\ZZ)_\infty = \{\pm \smtx 1b01 ~|~ b\in\ZZ\}.
+\]
+Write also $P_\infty^+=\{\smtx 1b01 ~|~ b\in\ZZ\}$.
+
+\begin{lemma}
+  The map $\smtx abcd\mapsto (c,d)$ induces  a bijection
+\[
+P_\infty^+\backslash \SL_2(\ZZ)\tto{\sim} \{(c,d)\in\ZZ^2~|~\gcd(c,d)=1\}.
+\]
+\end{lemma}
+\begin{proof}
+  Surjectivity of the map follows from B\'ezout: given $(c,d)$ with $\gcd(c,d)=1$ we can find $a,b\in\ZZ$ such that $ad-bc = 1$. Moreover, any solution to the equation $xd-yc = 1$ is of the form
+\[
+x = a+tc, y = b+td,\quad t\in \ZZ.
+\]
+That is, the preimage of $(c,d)$ consists of the set of matrices of the form
+\[
+\mtx{a+tc}{b+td}{c}{d} = \mtx{1}{t}{0}{1}\mtx abcd,\quad t\in\ZZ.
+\]
+\end{proof}
+
+This lemma allows us to rewrite $G_k(z)$ in a different way.
+\begin{proposition}
+  We have
+\[
+G_k(z)=\zeta(k)\sum_{\gamma\in P_\infty^+\backslash \SL_2(\ZZ)} j(\gamma,z)^{-k}.
+\]
+\end{proposition}
+\begin{proof}
+  Write a pair $(m,n)\in\ZZ^2\smallsetminus \{(0,0)\}$ as $(gc,gd)$, with $g=\gcd(m,n)$ and $(c,d)$ coprime. Therefore
+\begin{align*}
+G_k(z)&=\sum_{g=1}^\infty \sum_{\substack{(c,d)\in\ZZ^2\\\gcd(c,d)=1}} \frac{1}{g^k(cz+d)^k}=\sum_{g=1}^\infty \frac{1}{g^k} \sum_{\substack{(c,d)\in\ZZ^2\\\gcd(c,d)=1}} \frac{1}{(cz+d)^k}=\zeta(k) \sum_{\gamma\in P_\infty^+\backslash\SL_2(\ZZ)} j(\gamma,z)^{-k}.
+\end{align*}
+\end{proof}
+
+Let now $\Gamma$ be an arbitrary congruence subgroup, and define $\Gamma_\infty=\Gamma\cap P_\infty$ and $\Gamma_\infty^+=\Gamma\cap P_\infty^+$.
+
+\begin{definition}
+  The \emphh{Eisenstein series} of weight $k$ attached to  $\Gamma$ and to the cusp $\infty$ is
+\[
+G_{k,\Gamma,\infty}(z)=\sum_{\gamma\in \Gamma^+_\infty\backslash\Gamma} j(\gamma,z)^{-k}.
+\]
+\end{definition}
+\begin{remark}
+  Since $j(h\gamma,z)=j(\gamma,z)$ whenever $h\in \Gamma_\infty^+$, the terms in the above sum are well-defined. Moreover, since $\Gamma_\infty^+\backslash\Gamma$ injects in $P_\infty^+\backslash\SL_2(\ZZ)$, the series above is a sub-series of $G_k(z)$ and therefore it converges. So in particular, $G_{k,\Gamma,\infty}$ is holomorphic on $\HH$.
+\end{remark}
+
+\begin{proposition}
+If either
+\begin{enumerate}
+\item $k$ is even, or
+\item $k$ is odd, $-I\not\in\Gamma$ and $\infty$ is a regular cusp of $\Gamma$
+\end{enumerate}
+then $G_{k,\Gamma,\infty}$ belongs to $M_k(\Gamma)$. Moreover, $G_{k,\Gamma,\infty}(\infty)\neq 0$ and $G_{k,\Gamma,\infty}$ vanishes at all cusps $s\neq \infty$.
+
+If $k$ is odd and either $-I\in\Gamma$ or $\infty$ is an irregular cusp of $\Gamma$, then $G_{k,\Gamma,\infty}=0$.
+\end{proposition}
+\begin{proof}
+  It is easy to show that $G_{k,\Gamma,\infty}=0$ if the conditions stated in the proposition are satisfied. The computation showing that $G_{k,\Gamma,\infty}$ is weakly-modular of weight $k$ for $\Gamma$ is also straightforward, using the cocycle condition of $j(\gamma,z)$.
+
+Next we compute the value $G_{k,\Gamma,\infty}(\infty)$. We need to understand how $j(\gamma,z)^{-k}$ behaves when $\Im z\to\infty$. Suppose that $\gamma=\smtx abcd$. Then
+\[
+\lim_{\Im z\to\infty} j(\gamma,z)^{-k}=\lim_{\Im z\to \infty} (cz+d)^{-k} = \begin{cases}
+d^{-k}&\text{if }c=0,\\
+0&\text{if }c\neq 0.
+\end{cases}
+\]
+Note also that $c=0\iff \gamma\in\Gamma_\infty$. Therefore we may calculate
+\begin{align*}
+\lim_{\Im z\to \infty} G_{k,\Gamma,\infty}(z)&=\lim_{\Im z\to \infty} \sum_{\gamma\in\Gamma_\infty^+\backslash \Gamma} j(\gamma,z)^{-k}=\sum_{\gamma\in\Gamma_\infty^+\backslash\Gamma_\infty} j(\gamma,z)^{-k}=\begin{cases}
+1&\text{if }\Gamma_\infty^+=\Gamma_\infty,\\
+1+(-1)^k&\text{if }[\Gamma_\infty\colon\Gamma_\infty^+]=2.
+\end{cases}\\
+&=\begin{cases}
+1&\text{if } \Gamma_\infty^+=\Gamma_\infty,\\
+2&\text{if } [\Gamma_\infty\colon\Gamma_\infty^+]=2\text{ and } k\text{ is even,}\\
+0&\text{if } [\Gamma_\infty\colon\Gamma_\infty^+]=2\text{ and } k\text{ is odd.}
+\end{cases}
+\end{align*}
+The last case does not occur, by assumption. Hence $G_{k,\Gamma,\infty}(\infty)\in \{1,2\}$ is nonzero.
+
+Consider now a cusp $s$ of $\Gamma$, different from $\infty$. Let $\gamma_s\in \SL_2(\ZZ)$ satisfy $\gamma_s \infty = s$, so that $G_{k,\Gamma,\infty}(s) = (G_{k,\Gamma,\infty}|_k\gamma_s)(\infty)$. Note that
+\[
+(G_{k,\Gamma,\infty}|_k\gamma_s)(z) = \sum_{\gamma\in\Gamma_\infty^+\backslash\Gamma} j(\gamma,\gamma_s z)^{-k}j(\gamma_s,z)^{-k}=\sum_{\gamma\in\Gamma_\infty^+\backslash\Gamma} j(\gamma\gamma_s,z)^{-k}.
+\]
+Since $\gamma\gamma_s$ has nonzero bottom-left entry (otherwise $\gamma\gamma_s$ would stabilize infinity, which does not), then each of the terms approaches $0$ as $\Im z\to \infty$ and we obtain the desired vanishing.
+\end{proof}
+
+The next goal is to construct Eisenstein series that are non-vanishing at each of the other cusps $s$ of $\Gamma$ (and vanish at the cusps $s'\neq s$). This is done by translating $G_{k,\Gamma,\infty}$ by the matrices $\gamma_s$.
+
+\begin{lemma}
+  Let $s$ be a cusp of $\Gamma$ and let $\gamma_s\in\SL_2(\ZZ)$ be a matrix such that $\gamma_s \infty = s$. Define
+\[
+G_{k,\Gamma,s} = G_{k,\gamma_s^{-1}\Gamma\gamma_s,\infty}|_k \gamma_s^{-1} = \sum_{\gamma\in\Gamma_s^+\backslash \Gamma} j(\gamma_s^{-1}\gamma,z),\quad\text{where }\Gamma_s^+=\{\gamma\in\Gamma~|~ \gamma_s^{-1}\gamma\gamma_s = \smtx 1 {*} 0 1\}.
+\]
+If $k$ is odd, suppose that $-I\not\in\Gamma$, and $s$ is a regular cusp of $\Gamma$. Then $G_{k,\Gamma,s}$ belongs to $\cE_k(\Gamma)$, does not vanish at $s$ and vanishes at all other cusps $s'\neq s$ of $\Gamma$.
+\end{lemma}
+
+\begin{remark}
+  Although there is a choice of $\gamma_s$ involved, the form $G_{k,\Gamma,s}$ is well defined when $k$ is even, and well-defined  up to sign when $k$ is odd.
+\end{remark}
+
+We next show that the Eisenstein series we have just introduced belong in fact to the Eisenstein subspace $\cE_k(\Gamma$).
+\begin{proposition}
+ Let $\Gamma$ be a congruence subgroup, let $k\geq 3$ be an integer and let $s$ be a cusp of $\Gamma$. Then $G_{k,\Gamma,s}$ belongs to $\cE_k(\Gamma)$.
+\end{proposition}
+\begin{proof}
+  We need to prove that for each $f\in S_k(\Gamma)$ we have $\langle f,G_{k,\Gamma,s}\rangle_\Gamma = 0$. From the definition of the Petersson inner product there is an equality
+\[
+\langle f,g\rangle_\Gamma = \langle f|_k\gamma,g|_k\gamma\rangle_{\gamma^{-1}\Gamma\gamma}.
+\]
+Thus we may reduce to showing $\langle f,G_{k,\Gamma,\infty}\rangle_\Gamma=0$ for all $f\in S_k(\Gamma)$. Writing the definition of the pairing and exchanging the sum with the integral gives
+\[
+\langle f,G_{k,\Gamma,\infty}\rangle_\Gamma = \sum_{\gamma\in \Gamma_\infty^+\backslash \Gamma} \int_{D_\Gamma} f(z)\ol{j(\gamma,z)^{-k}} \Im(z)^kd\mu(z).
+\]
+Make the change of variables $w=\gamma z$, so
+\[
+f(w)=j(\gamma,z)^kf(z),\quad \Im(w)=|j(\gamma,z)|^{-2}\Im(z).
+\]
+This gives
+\[
+\langle f,G_{k,\Gamma,\infty}\rangle_\Gamma = \sum_{\gamma\in\Gamma_\infty^+\backslash \Gamma}\int_{w\in \gamma D_\Gamma} f(w) y^k\frac{dxdy}{y^2} = \int_{w\in\Gamma_\infty^+\backslash\HH} f(w)y^{k-2}dxdy.
+\]
+Suppose now that $\infty$ has width $h$ and that the $q$-expansion of $f$ is $\sum a_n q_h^n$. Then
+\begin{align*}
+\langle f,G_{k,\Gamma,\infty}\rangle_\Gamma &= \int_{\Gamma_\infty^+\backslash \HH}\left(\sum_{n=1}^\infty a_n e^{2\pi i nw/h}\right)y^{k-2}dxdy= \int_{x=0}^h\int_{y=0}^\infty\left(\sum_{n=1}^\infty a_n e^{2\pi i nx/h}e^{-2\pi ny/h}\right)y^{k-2}dxdy\\
+&=\sum_{n=1}^\infty a_n \int_{x=0}^h e^{2\pi i nx/h} dx\int_{y=0}^\infty e^{-2\pi ny/h} y^{k-2}dy.
+\end{align*}
+Since $n\geq 1$, the integrals on $x$ vanish and thus we get the result.
+\end{proof}
+
+
+We end the section by stating essentially that the Eisenstein series give a basis for $\cE_k(\Gamma)$. We do this by giving the dimension of the Eisenstein space, and then exhibiting a the explicit basis.
+\begin{theorem}
+  Let $\Gamma$ be a congruence subgroup, let $k$ be an integer, let $\eps_\Gamma$ be the number of cusps of $\Gamma$ and let $\eps^\text{reg}_\Gamma\leq\eps_\Gamma$ be the number of regular cusps. Then:
+\[
+\dim_\CC \cE_k(\Gamma)=\begin{cases}
+0&\text{ if }k<0,\text{ or }k\text{ odd and }-I\in\Gamma,\\
+1&\text{ if }k=0,\\
+\eps_\Gamma^\text{reg}/2&\text{ if }k=1\text{ and } -I\not\in\Gamma,\\
+\eps_\Gamma-1&\text{ if }k=2,\\
+\eps_\Gamma&\text{ if }k\text{ even, and } k\geq 4,\\
+\eps_\Gamma^\text{reg}&\text{ if }k\text{ odd, }k\geq 3\text{, and } -I\not\in\Gamma.\\
+\end{cases}
+\]
+\end{theorem}
+
+\section{Eisenstein series for $\Gamma_1(N)$}
+We now specialize the above construction in the case where $\Gamma=\Gamma_1(N)$ for any positive integer $N$. In fact, we will construct a basis of Hecke eigenforms.
+
+Recall that in Chapter~\ref{chap:hecke} we introduced Dirichlet characters modulo $N$. Let $M$ and $N$ be positive integers with $M\mid N$. A Dirichlet character $\chi$ modulo $M$ can be lifted to a Dirichlet character $\chi^{(N)}$ modulo $N$, by
+\[
+\chi^{(N)}(m)=\begin{cases}
+\chi(m)&\text{ if }\gcd(m,N)=1,\\
+0&\text{ if }\gcd(m,N)>1.
+\end{cases}
+\]
+\begin{definition}
+  Let $\chi\colon \ZZ\to\CC$ be a Dirichlet character modulo $N$. The \emphh{conductor} of $\chi$ is the smallest divisor $M$ of $N$ such that $\chi$ is the lift of a Dirichlet character modulo $M$. A Dirichlet character modulo $N$ is \emphh{primitive} if it has conductor $N$.
+\end{definition}
+
+\begin{example}
+  The only character modulo one is $1\colon \ZZ\to\CC$, the constant function $1$. If $N$ is any positive integer, the lift of $1$ to a Dirichlet character modulo $N$ is the function
+\[
+1^{(N)}\colon\ZZ\to\CC,\quad m\mapsto \begin{cases}1&\gcd(m,N)=1,\\0&\gcd(m,N)>1.
+\end{cases}
+\]
+\end{example}
+\begin{example}
+  For each prime number $p$, and each integer $a$ we define the \emphh{Legendre symbol}
+\[
+\left(\frac a p\right)=\begin{cases}
+0&\text{ if }p\mid a,\\
+1&\text{ if }p\mid a\text{ and $a$ is a square modulo $p$},\\
+-1&\text{ if }p\mid a\text{ and $a$ is not a square modulo $p$},\\
+\end{cases}
+\]
+Then $\left(\frac\bullet p\right)$ is a Dirichlet character modulo $p$. Its conductor is $p$ if $p\neq 2$, and  $1$ if $p=2$.
+\end{example}
+
+\begin{example}
+  Let $\chi_1$ be a Dirichlet character modulo $N_1$ and let $\chi_2$ be a Dirichlet character modulo $N_2$. If $M$ is a common multiple of $N_1$ and $N_2$, one may consider the product $\chi=\chi_1\chi_2 = \chi_1^{(M)}\chi_2^{(M)}$. This is a character with modulus $M$. Note however that the conductor is not multiplicative: if $\chi$ is a quadratic character of conductor $N$, say, then $\chi^2$ is the trivial character which will have conductor $1$.
+\end{example}
+
+In order to give the $q$-expansions of the Eisenstein series attached to a pair of characters, we need some new notation. We will need the folloing generalization of the divisor function. If $\chi_1$ and $\chi_2$ are Dirichlet characters, define
+\[
+\sigma_{k-1}^{\chi_1,\chi_2}(n)=\sum_{d\mid n}\chi_1(n/d)\chi_2(d)d^{k-1}.
+\]
+The following theorem gives the $q$-expansions of Eisenstein series that will form a basis of eigenforms for the Eisenstein space.
+\begin{theorem}
+\label{th:eisenstein-gamma1}
+  Let $\chi_1,\chi_2$ be primitive Dirichlet characters modulo $N_1$ and $N_2$, respectively. Let $\chi=\chi_1\chi_2$ be the product as a character modulo $N_1N_2$ (not necessarily primitive). Let $k\geq 3$ be such that $\chi(-1)=(-1)^k$. Define
+\[
+\delta(\chi_1)=\begin{cases}
+1&\text{if } \chi_1=1_1,\\
+0&\text{else.}
+\end{cases}
+\]
+and let $L(\chi_2,s)=\sum_{n=1}^\infty \chi_2(n)n^{-s}$ be the $L$-series of $\chi_2$. Then the function $E_k^{\chi_1,\chi_2}$ defined by
+\[
+E_k^{\chi_1,\chi_2}(z) = \delta(\chi_1)L(\chi_2,1-k) + 2\sum_{n=1}^\infty\sigma_{k-1}^{\chi_1,\chi_2}(n)q^n
+\]
+belongs to $\cE_k(\Gamma_1(N_1N_2))$. Moreover, it is a Hecke eigenform with character $\chi$.
+\end{theorem}
+
+The modular form $E_k^{\chi_1,\chi_2}$ is called the \emph{Eisenstein series of weight $k$ associated to $(\chi_1,\chi_2)$}.
+
+\begin{remark}
+When $k=1$ the theorem remains true, although in this case $E_1^{\chi_1,\chi_2} = E_1^{\chi_2,\chi_1}$. When $k=2$, then we must require in addition that $\chi_1$ and $\chi_2$ must not be both trivial. If both $\chi_1$ and $\chi_2$ are trivial, then we know that $E_2(z)=1-24\sum_{n\geq 1} \sigma_1(n)q^n$ is not a modular form. However, for any $N>1$ the function
+\[
+E_2^{(N)}(z)=E_2(z)-NE_2(Nz)
+\]
+belongs to $M_2(\Gamma_1(N))$.
+\end{remark}
+
+\begin{theorem}
+  Let $k\geq 3$, let $N\geq 1$ and let $\chi$ be a Dirichlet character modulo $N$ such that $\chi(-1) = (-1)^k$. Then there is a decomposition
+\[
+\cE_k(\Gamma_0(N),\chi) = \bigoplus_{d\mid N}\bigoplus_{N_1N_2 \mid\frac Nd} \bigoplus_{\chi_1\chi_2=\chi}\CC V_d(E_k^{\chi_1,\chi_2}),
+\]
+where the inner sum runs through factorizations of $\chi$ into primitive Dirichlet characters $\chi_1$ and $\chi_2$ modulo $N_1$ and $N_2$.
+\end{theorem}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 

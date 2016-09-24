@@ -1,0 +1,472 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage{multicol}
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsfonts,amssymb,latexsym,amsmath,amsthm,amscd}
+
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+
+%%%%%%%%%% Commands
+\usepackage[all]{xy}
+\xyoption{arc}
+
+\usepackage{graphicx}
+\usepackage{cmap}
+
+%Blackboard Letters
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbV}{\mathbb{V}}
+
+%Bold Letters 
+\newcommand{\bQ}{\mathbf{Q}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bC}{\mathbf{C}}
+\newcommand{\bJ}{\mathbf{J}}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\bP}{\mathbf{P}}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\bH}{\mathbf{H}}
+\newcommand{\bN}{\mathbf{N}}
+
+%(for Q,R,N,C,...)
+\renewcommand{\AA}{\bbA}
+\newcommand{\BB}{\bbB}
+\newcommand{\DD}{\bbD}
+\newcommand{\QQ}{\bbQ}
+\newcommand{\II}{\bbI}
+\newcommand{\WW}{\bbW}
+\newcommand{\RR}{\bbR}
+\newcommand{\CC}{\bbC}
+\newcommand{\VV}{\bbV}
+\newcommand{\FF}{\bbF}
+\newcommand{\HH}{\bbH}
+\newcommand{\ZZ}{\bbZ}
+\newcommand{\NN}{\bbN}
+\newcommand{\PP}{\bbP}
+
+\newcommand{\Qbar}{\overline{\QQ}}
+
+%Caligraphic (Sheaves...)
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\chh}{\mathcal{h}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\cHom}{\operatorname{\mathcal{H}om}}
+\newcommand{\shomega}{\underline{\omega}}
+
+%Category names
+\newcommand{\AbGrp}{\textbf{Ab}}
+\newcommand{\Ab}{\AbGrp}
+\newcommand{\Sheaves}{\textbf{Sheaves}}
+\newcommand{\Rings}{\textbf{Rings}}
+\newcommand{\Mod}{\textbf{Mod}}
+\newcommand{\Sh}{\textbf{Sh}}
+\newcommand{\Sch}{\textbf{Sch}}
+\newcommand{\Sets}{\textbf{Sets}}
+\newcommand{\Mot}{\textbf{Mot}}
+
+%Fraktor letters, eg naming ideals
+
+\newcommand{\fA}{\mathfrak A}
+\newcommand{\fR}{\mathfrak R}
+\newcommand{\fp}{\mathfrak p}
+\newcommand{\fq}{\mathfrak q}
+\newcommand{\fP}{\mathfrak P}
+\newcommand{\fQ}{\mathfrak Q}
+\newcommand{\fa}{\mathfrak a}
+\newcommand{\fb}{\mathfrak b}
+\newcommand{\fc}{\mathfrak c}
+\newcommand{\fd}{\mathfrak d}
+\newcommand{\fm}{\mathfrak m}
+\newcommand{\fn}{\mathfrak n}
+\newcommand{\fo}{\mathfrak o}
+\newcommand{\fS}{\mathfrak S}
+\newcommand{\fN}{\mathfrak N}
+\newcommand{\fU}{\mathfrak U}
+\newcommand{\fX}{\mathfrak X}
+\newcommand{\fY}{\mathfrak Y}
+
+\def\wh{\widehat}
+
+%Some common math operators
+\DeclareMathOperator{\order}{ord}
+\DeclareMathOperator{\Inf}{Inf}
+\DeclareMathOperator{\Cris}{Cris}
+% \DeclareMathOperator{\Sh}{Sh}
+\DeclareMathOperator{\val}{val}
+\DeclareMathOperator{\Ram}{Ram}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\St}{St}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\cork}{cork}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Max}{Max}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Mp}{Mp}
+\DeclareMathOperator{\Spf}{Spf}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Jacobson}{\mathfrak J}
+\DeclareMathOperator{\Nilradical}{\mathfrak N}
+\DeclareMathOperator{\rad}{\mathfrak{rad}}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\car}{char}
+\DeclareMathOperator{\gl}{GL}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\discrd}{discrd}
+\DeclareMathOperator{\supp}{Supp}
+\DeclareMathOperator{\Div}{Div}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\divv}{div}
+%\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\res}{Res}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\img}{img}
+\DeclareMathOperator{\Tate}{Tate}
+\DeclareMathOperator{\gr}{gr}
+\DeclareMathOperator{\Tot}{Tot}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\sym}{Sym}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\Symm}{Symm}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\dlog}{dlog}
+\DeclareMathOperator{\chow}{CH}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\AJ}{AJ}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Nm}{Nm}
+\DeclareMathOperator{\nrd}{Nrd}
+\DeclareMathOperator{\trd}{trd}
+\DeclareMathOperator{\Corr}{Corr}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\Graph}{Graph}
+\DeclareMathOperator{\Fil}{Fil}
+\DeclareMathOperator{\red}{red}
+\DeclareMathOperator{\MF}{MF}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Dst}{D_{\st}}
+\DeclareMathOperator{\Vst}{V_{\st}}
+\DeclareMathOperator{\NS}{NS}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\stab}{stab}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\cond}{cond}
+\DeclareMathOperator{\Sel}{Sel}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\cInd}{c-Ind}
+\def\det{\operatorname{det}}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Jet}{Jet}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\LIM}{LIM}
+
+% Some common abreviations
+\newcommand{\lto}{\longrightarrow}
+\newcommand{\dfn}{\ensuremath{{:=}}}
+\newcommand{\nfd}{\ensuremath{{=:}}}
+\newcommand{\surjects}{\twoheadrightarrow}
+\newcommand{\injects}{\hookrightarrow}
+\newcommand{\id}{\ensuremath \text{Id}}
+\newcommand{\tns}[1][]{\otimes_{\!#1}}
+\newcommand{\mtx}[4]{\left(\begin{matrix}#1&#2\\#3&#4\end{matrix}\right)}
+\newcommand{\mat}[1]{\left(\begin{matrix}#1\end{matrix}\right)}
+\newcommand{\smat}[1]{\left(\begin{smallmatrix}#1\end{smallmatrix}\right)}
+\newcommand{\smtx}[4]{\left(\begin{smallmatrix}#1&#2\\#3&#4\end{smallmatrix}\right)}
+\newcommand{\slz}{\operatorname{SL}_2(\ZZ)}
+
+\def\sumprime{\mathop{\sum{\raise3pt\hbox{${}'$}}}} %Copied from somewhere else...
+\def\prodprime{\mathop{\prod{\raise3pt\hbox{${}'$}}}} %Copied from somewhere else...
+
+\newcommand{\et}{{\text{et}}}
+\newcommand{\dR}{{\text{dR}}}
+\newcommand{\cont}{{\text{cont}}}
+\newcommand{\cris}{{\text{cris}}}
+\newcommand{\Het}{H_\et}
+\newcommand{\Hdr}{H_\dR}
+\newcommand{\Hcris}{H_\cris}
+\newcommand{\Bcris}{B_\cris}
+\newcommand{\Dcris}{D_\cris}
+\newcommand{\Vcris}{V_\cris}
+\newcommand{\cHdr}{\cH_\dR}
+\newcommand{\Hcont}{H_\cont}
+\newcommand{\Hst}{H_\st}
+\newcommand{\Char}{C_{\text{har}}}
+\newcommand{\frob}{{\text{frob}}}
+\newcommand{\hol}{{\text{hol}}}
+\newcommand{\sm}{{\text{sm}}}
+\newcommand{\usm}{{\text{usm}}}
+\newcommand{\llangle}{\langle\!\langle}
+\newcommand{\rrangle}{\rangle\!\rangle}
+
+\newcommand{\poinc}[2]{\langle{#1},{#2}\rangle_{\text{Poinc}}}
+
+\newcommand{\bbl}{[\hspace{-1.5pt}[}
+\newcommand{\bbr}{]\hspace{-1.5pt}]}
+\newcommand{\pseries}[2]{{#1}\bbl {#2}\bbr}
+
+\newcommand{\Oneforms}[2]{\ensuremath\Omega_{\cO_{#1}/\cO_{#2}}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\mmu}{\mu\!\!\!\mu}
+\newcommand{\Rmax}{{\cR^{\text{max}}}}
+\newcommand{\an}{\text{an}}
+\newcommand{\ur}{\text{ur}}
+\newcommand{\barrr}{\overline}
+
+\newcommand{\st}{\text{st}}
+\newcommand{\Bst}{B_{\st}}
+
+\newcommand{\tto}[1]{%
+\ifthenelse{\equal{#1}{}}{\to}{\stackrel{#1}{\to}}}
+
+\newcommand{\abs}[1]{|{#1}|}
+\newcommand{\fabs}[1]{\|{#1}\|}
+
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\dr}{\text{dR}}
+\newcommand{\Bdr}{{B_{\dr}}}
+\newcommand{\Ddr}{{D_{\dr}}}
+\newcommand{\Dsen}{{D_{\text{sen}}}}
+\newcommand{\ab}{\text{ab}}
+\newcommand{\HT}{\text{HT}}
+\newcommand{\Bht}{{B_{\HT}}}
+\newcommand{\repzpgamma}{\Rep_{\ZZ_p}(\Gamma)}
+\newcommand{\repqpgamma}{\Rep_{\QQ_p}(\Gamma)}
+\newcommand{\Dht}{{D_{\HT}}}
+\renewcommand{\Vec}{\text{Vec}}
+\newcommand{\EtPhiMod}[1][E]{{\phi M_{#1}^{\et}}}
+\newcommand{\cOE}{{\cO_\cE}}
+\newcommand{\hodge}{\text{Hodge}}
+\newcommand{\ock}{\cO_{\CC_K}}
+\newcommand{\ses}[4][]{ #1 #2\to #1 #3\to #1 #4 }
+\newcommand{\wa}{{\text{wa}}}
+\newcommand{\aR}{{\fA\fR}}
+\newcommand{\Aug}{{\fA u g }}
+\newcommand{\bOne}{{1\!\!1}}
+\newcommand{\Wedge}{\Lambda}
+\newcommand{\ord}{{\text{ord}}}
+\newcommand{\can}{{\text{can}}}
+\newcommand{\crit}{{\text{crit}}}
+\renewcommand{\ss}{{\text{ss}}}
+\newcommand{\bbf}{{\mathbbm{f}}}
+\newcommand{\hecke}{{\mathfrak h}}
+\newcommand{\Hecke}{{\mathfrak H}}
+
+\newcommand{\If}{\text{if }}
+\newcommand{\Else}{\text{else.}}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{Mathematics Department, University of Warwick} \\ [20pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Modular Forms -- Problem Set 1 \\ % The assignment title
+\horrule{2pt} \\ % Thick bottom horizontal rule
+}
+
+%\author{Marc Masdeu}
+
+\date{Deadline: Monday October 19, by 3PM.}
+
+\begin{document}
+
+\maketitle % Print the title
+
+Each exercise is worth $20\%$ of the total marks.
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section{The slash operator}
+
+Let $\gamma$ and $\gamma'$ be in $\GL_2^+(\RR)$, $k$ and $\ell$ integers, and let $f,g\colon \HH\to \CC$ be arbitrary functions. Define
+\[
+f|_k\gamma = (\det\gamma)^{k-1}j(\gamma,z)^{-k} f(\gamma z).
+\]
+\begin{enumerate}
+\item Show that:
+\[
+(f|_k\gamma)|_k\gamma' = f|_k(\gamma\gamma').
+\]
+\item Show that, if $\gamma$ is in $\SL_2(\RR)$, then
+\[
+(f|_k\gamma)(g|_\ell \gamma)=(fg)|_{k+\ell}\gamma.
+\]
+\end{enumerate}
+
+\section{The divisor function}
+
+Recall that we have defined, for $r\geq 0$ and $n\geq 1$,
+\[
+\sigma_{r}(n)=\sum_{d\mid n} d^{r},
+\]
+where the sum runs over all positive divisors $d$ of $n$.
+\begin{enumerate}
+\item Suppose that $m$ and $n$ are coprime. Show that
+\[
+\sigma_{r}(mn)=\sigma_{r}(m)\sigma_{r}(n).
+\]
+In number theory, such a function is called ``multiplicative''.
+\item Let $n=\prod_p p^{e_p}$ be the prime factorization of $n$. Prove that
+\[
+\sigma_{r}(n)=\prod_p \frac{p^{r(e_p+1)} -1 }{p^{r}-1}.
+\]
+\end{enumerate}
+
+\section{Integrality of the Delta function}
+
+Define $\Delta$ in terms of $E_4$ and $E_6$ as follows:
+\[
+\Delta = \frac{E_4^3-E_6^2}{1728}.
+\]
+Show that if $\Delta(q)=\sum \tau(n)q^n$, then $\tau(n)\in\ZZ$ for all $n\geq 1$. Do not use the product formula for $\Delta$.
+
+
+\section{Invariant functions from modular forms}
+
+Let $f$ and $g$ be modular forms of weight $k$.
+\begin{enumerate}
+\item Show that the function
+\[
+\varphi\colon \HH\to \CC,\quad z\mapsto f(z)\ol{g(z)}(\Im z)^k
+\]
+is $\SL_2(\ZZ)$-invariant. That is, $\varphi(\gamma z)=\varphi(z)$ for all $\gamma\in\SL_2(\ZZ)$.
+\item Suppose that either $f$ or $g$ is a cusp form. Show that the function $z\mapsto |\varphi(z)|$ is bounded on $\HH$.
+\end{enumerate}
+
+
+\section{Bernoulli numbers}
+Define the Bernoulli numbers $B_k$ by the formal power series expansion
+\[
+\frac{t}{e^t-1} = \sum_{k=0}^\infty B_k\frac{t^k}{k!}.
+\]
+\begin{enumerate}
+\item Show that $B_1 = -1/2$ and $B_k=0$ for all other odd $k$.
+\item Show that $B_2=1/6$, $B_4=-1/30$ and $B_6=1/42$.
+\item Let $\zeta(k) = \sum_{n=1}^\infty n^{-k}$. Show that for all even $k\geq 2$ we have
+\[
+2\zeta(k) = -\frac{(2\pi i)^k}{k!}B_k.
+\]
+You can use without proof
+the formula (see Lemma~1.4.4 in the notes)
+\[
+\frac{1}{z} + \sum_{d=1}^\infty \left(\frac{1}{z-d} +\frac{1}{z+d}\right) = \pi i-2\pi i\sum_{m=0}^\infty e^{2\pi i m z},\quad z\in \HH.
+\]
+In particular, we obtain the well known formulas $\zeta(2) = \pi^2/6$, $\zeta(4) = \pi^4/90$, $\zeta(6) = \pi^6/945$, \ldots
+\end{enumerate}
+
+\horrule{1pt}
+\section*{Useful Formulas}
+These formulas may be used through the course. Here, $q=e^{2\pi i z}$.
+\begin{align*}
+E_4(z) &= 1+240\sum_{n=1}^\infty \sigma_3(n)q^n,& E_6(z) &= 1-504\sum_{n=1}^\infty \sigma_5(n)q^n,\\
+E_8(z) &= 1+480\sum_{n=1}^\infty \sigma_7(n)q^n,& E_{10}(z) &= 1-264\sum_{n=1}^\infty \sigma_9(n)q^n,\\
+E_{12}(z) &= 1+\frac{65520}{691}\sum_{n=1}^\infty \sigma_{11}(n)q^n,\\
+\Delta(z) &= \sum_{n=1}^{\infty} \tau(n)q^n= q-24q+252q^3-\cdots
+\end{align*}
+\end{document}

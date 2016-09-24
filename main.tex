@@ -1,0 +1,309 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The Legrand Orange Book
+% LaTeX Template
+% Version 1.4 (12/4/14)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Mathias Legrand (legrand.mathias@gmail.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Compiling this template:
+% This template uses biber for its bibliography and makeindex for its index.
+% When you first open the template, compile it from the command line with the 
+% commands below to make sure your LaTeX distribution is configured correctly:
+%
+% 1) pdflatex main
+% 2) makeindex main.idx -s StyleInd.ist
+% 3) biber main
+% 4) pdflatex main x 2
+%
+% After this, when you wish to update the bibliography/index use the appropriate
+% command above and make sure to compile with pdflatex several times 
+% afterwards to propagate your changes to the document.
+%
+% This template also uses a number of packages which may need to be
+% updated to the newest versions for the template to compile. It is strongly
+% recommended you update your LaTeX distribution if you have any
+% compilation errors.
+%
+% Important note:
+% Chapter heading images should have a 2:1 width:height ratio,
+% e.g. 920px width and 460px height.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass[10pt,fleqn]{book} % Default font size and left-justified equations
+\usepackage{booktabs}
+\usepackage[top=3cm,bottom=3cm,left=3.2cm,right=3.2cm,headsep=10pt,a4paper]{geometry} % Page margins orig
+%\usepackage[top=3cm,bottom=2.5cm,left=2.7cm,right=2.7cm,headsep=10pt,a4paper]{geometry} % Page margins
+\usepackage[all]{xy}
+\xyoption{arc}
+\usepackage{stackrel}
+\usepackage{enumitem}
+\usepackage{xcolor} % Required for specifying colors by name
+%\definecolor{maincolor}{RGB}{243,102,25} % Define the orange color used for highlighting throughout the book
+\definecolor{maincolor}{rgb}{0.01, 0.31, 0.59}  % Define the blueish color used for highlighting throughout the book
+
+% Font Settings
+\usepackage{avant} % Use the Avantgarde font for headings
+%\usepackage{times} % Use the Times font for headings
+\usepackage{mathptmx} % Use the Adobe Times Roman as the default text font together with math symbols from the Sym­bol, Chancery and Com­puter Modern fonts
+
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+\usepackage[utf8]{inputenc} % Required for including letters with accents
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+
+% Bibliography
+\usepackage[style=alphabetic,sorting=nyt,sortcites=true,autopunct=true,autolang=hyphen,hyperref=true,abbreviate=false,backref=true,backend=biber]{biblatex}
+\addbibresource{bibliography.bib} % BibTeX bibliography file
+\defbibheading{bibempty}{}
+
+% Index
+\usepackage{calc} % For simpler calculation - used for spacing the index letter headings correctly
+\usepackage{makeidx} % Required to make an index
+\makeindex % Tells LaTeX to create the files required for indexing
+
+% Listings
+
+\usepackage{listings} % Required for inserting code snippets
+%\usepackage[usenames,dvipsnames]{color} % Required for specifying custom colors and referring to colors by name
+
+\definecolor{DarkGreen}{rgb}{0.0,0.4,0.0} % Comment color
+\definecolor{highlight}{RGB}{255,251,204} % Code highlight color
+
+\lstdefinestyle{Style1}{ % Define a style for your code snippet, multiple definitions can be made if, for example, you wish to insert multiple code snippets using different programming languages into one document
+language=Perl, % Detects keywords, comments, strings, functions, etc for the language specified
+backgroundcolor=\color{highlight}, % Set the background color for the snippet - useful for highlighting
+basicstyle=\footnotesize\ttfamily, % The default font size and style of the code
+breakatwhitespace=false, % If true, only allows line breaks at white space
+breaklines=true, % Automatic line breaking (prevents code from protruding outside the box)
+captionpos=b, % Sets the caption position: b for bottom; t for top
+commentstyle=\usefont{T1}{pcr}{m}{sl}\color{DarkGreen}, % Style of comments within the code - dark green courier font
+deletekeywords={}, % If you want to delete any keywords from the current language separate them by commas
+%escapeinside={\%}, % This allows you to escape to LaTeX using the character in the bracket
+firstnumber=1, % Line numbers begin at line 1
+frame=single, % Frame around the code box, value can be: none, leftline, topline, bottomline, lines, single, shadowbox
+frameround=tttt, % Rounds the corners of the frame for the top left, top right, bottom left and bottom right positions
+keywordstyle=\color{Blue}\bf, % Functions are bold and blue
+morekeywords={}, % Add any functions no included by default here separated by commas
+numbers=left, % Location of line numbers, can take the values of: none, left, right
+numbersep=10pt, % Distance of line numbers from the code box
+numberstyle=\tiny\color{Gray}, % Style used for line numbers
+rulecolor=\color{black}, % Frame border color
+showstringspaces=false, % Don't put marks in string spaces
+showtabs=false, % Display tabs in the code as lines
+stepnumber=5, % The step distance between line numbers, i.e. how often will lines be numbered
+stringstyle=\color{Purple}, % Strings are purple
+tabsize=2, % Number of spaces per tab in the code
+}
+
+% Create a command to cleanly insert a snippet with the style above anywhere in the document
+\newcommand{\insertcode}[2]{\begin{itemize}\item[]\lstinputlisting[caption=#2,label=#1,style=Style1]{#1}\end{itemize}} % The first argument is the script location/filename and the second is a caption for the listing
+
+%----------------------------------------------------------------------------------------
+
+\input{structure} % Insert the commands.tex file which contains the majority of the structure behind the template
+\setcounter{tocdepth}{1}
+
+%----------------------------------------------------------------------------------------
+%	HIDE BLOCKS OF TEXT
+%----------------------------------------------------------------------------------------
+
+\usepackage{expl3,xparse}
+\ExplSyntaxOn
+\box_new:N \l_mypkg_box
+\int_new:N \l_mypkg_cleanup_int
+\DeclareDocumentCommand{\hideit}{O{1}+m}
+  {
+    \tex_setbox:D \l_mypkg_box \tex_vbox:D
+      {
+        #2\par
+        \dim_zero:N \tex_baselineskip:D
+        \dim_zero:N \tex_lineskip:D
+        \dim_zero:N \tex_lineskiplimit:D
+        \int_set:Nn \l_mypkg_cleanup_int {#1}
+        \mypkg_dismantle_loop:
+      }
+    \tex_unvbox:D \l_mypkg_box
+  }
+\cs_new_protected:Npn \mypkg_dismantle_loop:
+  {
+    \prg_replicate:nn { \l_mypkg_cleanup_int }
+      {
+        \skip_if_eq:nnT { \tex_lastskip:D } { \c_zero_skip } { \tex_unskip:D }
+        \dim_compare:nT { \tex_lastkern:D = \c_zero_dim } { \tex_unkern:D }
+        \int_compare:nT { \tex_lastpenalty:D = \c_zero } { \tex_unpenalty:D }
+      }
+    \skip_if_eq:nnTF { \tex_lastskip:D } { \c_zero_skip }
+      {
+        \dim_compare:nTF { \tex_lastkern:D = \c_zero_dim }
+          {
+            \int_compare:nTF { \tex_lastpenalty:D = \c_zero }
+              {
+                \box_set_to_last:N \l_mypkg_box
+                \box_if_empty:NF \l_mypkg_box
+                  { \mypkg_dismantle_box: }
+              }
+              { \mypkg_dismantle_penalty: }
+          }
+          { \mypkg_dismantle_kern: }
+      }
+      { \mypkg_dismantle_skip: }
+  }
+\cs_new_protected:Npn \mypkg_dismantle_skip:
+  { \mypkg_dismantle_aux:nN { \tex_vskip:D \skip_use:N \tex_lastskip:D } \tex_unskip:D }
+\cs_new_protected:Npn \mypkg_dismantle_kern:
+  { \mypkg_dismantle_aux:nN { \tex_kern:D \dim_use:N \tex_lastkern:D } \tex_unkern:D }
+\cs_new_protected:Npn \mypkg_dismantle_penalty:
+  { \mypkg_dismantle_aux:nN { \tex_penalty:D \int_use:N \tex_lastpenalty:D } \tex_unpenalty:D }
+\cs_new_protected:Npn \mypkg_dismantle_box:
+  { \mypkg_dismantle_aux:nN { \tex_vbox:D to \dim_eval:n { \box_ht:N \l_mypkg_box + \box_dp:N \l_mypkg_box } { } } \scan_stop: }
+\cs_new_protected:Npn \mypkg_dismantle_aux:nN #1#2
+  {
+    \use:x
+      {
+        #2
+        \mypkg_dismantle_loop:
+        #1 \scan_stop:
+      }
+  }
+\ExplSyntaxOff
+
+\newenvironment{hiddenproof}{\textbf{Assigned exercise}\begin{proof}\hideit\{}{\}\end{proof}}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begingroup
+\thispagestyle{empty}
+\AddToShipoutPicture*{\put(6,5){\includegraphics[scale=1]{background}}} % Image background
+\centering
+\vspace*{9cm}
+\par\normalfont\fontsize{35}{35}\sffamily\selectfont
+Modular Forms (MA4H9)\par % Book title
+\vspace*{1cm}
+{\Huge Marc Masdeu}\par % Author name
+{\small\url{http://www.warwick.ac.uk/mmasdeu/}}\par
+\endgroup
+
+%----------------------------------------------------------------------------------------
+%	COPYRIGHT PAGE
+%----------------------------------------------------------------------------------------
+
+\newpage
+~\vfill
+\thispagestyle{empty}
+
+\noindent Copyright \copyright\ 2015 Marc Masdeu\\ % Copyright notice
+
+% \noindent \textsc{Published by Publisher}\\ % Publisher
+
+\noindent \texttt{http://www.warwick.ac.uk/mmasdeu/}\\ % URL
+
+\noindent These are notes used by the author on a course on Modular Forms taught at the University of Warwick during autumn of 2015. They are based on a variety of sources, mainly:
+\begin{enumerate}
+\item The books~\cite{diamond-shurman,serre-course-arithmetic,darmon-book} listed in the bibliography.
+\item Notes from a course taught by Peter Bruin in the spring term of 2014, which in turn are based on
+\item Notes from a course taught by David Loeffler in the autumn term of 2011;
+\item Notes from a course taught by Scott Ahlgren (UIUC) in 2006.
+\end{enumerate}
+
+% \noindent Licensed under the Creative Commons Attribution-NonCommercial 3.0 Unported License (the ``License''). You may not use this file except in compliance with the License. You may obtain a copy of the License at \url{http://creativecommons.org/licenses/by-nc/3.0}. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \textsc{``as is'' basis, without warranties or conditions of any kind}, either express or implied. See the License for the specific language governing permissions and limitations under the License.\\ % License information
+
+% \noindent \textit{First printing, December 2014} % Printing/edition date
+
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\chapterimage{day_and_night.jpg} % Table of contents heading image
+
+\pagestyle{empty} % No headers
+
+\tableofcontents % Print the table of contents itself
+
+\cleardoublepage % Forces the first chapter to start on an odd page so it's on the right
+
+\pagestyle{fancy} % Print headers again
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER 1
+%----------------------------------------------------------------------------------------
+
+%\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapterimage{chapter_head_empty.pdf}%blue_wallpaper_transparent.jpg}
+
+\chapter{Modular Forms for \texorpdfstring{$\SL_2(\ZZ)$}{SL2Z}}
+\label{chap:modforms-full-level}
+\input{1_modformslevelone}
+
+\chapter{Congruence Subgroups}
+\label{chap:modforms-higher-level}
+\input{2_modformscongruence}
+
+\chapter{Complex Tori}
+\label{chap:complextori}
+\input{3_complextori}
+
+\chapter{Hecke Theory}
+\label{chap:hecke}
+\input{4_hecke}
+
+\chapter{Eisenstein Series}
+\label{chap:eisenstein}
+\input{5_eisenstein}
+
+\chapter{L-functions}
+\label{chap:Lfunctions}
+\input{6_lfunctions}
+
+\chapter{Modular Symbols}
+\label{chap:modsym}
+\input{7_modsym}
+
+% \chapter{Exercises}
+% \input{exercises}
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\nocite{*}
+
+\chapter*{Bibliography}
+\addcontentsline{toc}{chapter}{\textcolor{maincolor}{Bibliography}}
+% \section*{Books}
+% \addcontentsline{toc}{section}{Books}
+% \printbibliography[heading=bibempty,type=book]
+% \section*{Articles}
+% \addcontentsline{toc}{section}{Articles}
+% \printbibliography[heading=bibempty,type=article]
+
+\printbibliography[heading=bibempty]
+
+%----------------------------------------------------------------------------------------
+%	INDEX
+%----------------------------------------------------------------------------------------
+
+\cleardoublepage
+\phantomsection
+\setlength{\columnsep}{0.75cm}
+\addcontentsline{toc}{chapter}{\textcolor{maincolor}{Index}}
+\printindex
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

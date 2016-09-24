@@ -1,0 +1,307 @@
+\section{First definitions}
+Let $A$ be an abelian group.
+
+\begin{definition}
+  An $A$-valued \emphh{modular symbol} is a function
+\[
+m\colon \PP_1(\QQ)\times \PP_1(\QQ) \to A, \quad (r,s)\mapsto m\{r\to s\}
+\]
+satisfying, for all $r$, $s$ and $t$ in $\PP_1(\QQ)$,
+\begin{enumerate}
+  \item $m\{r\to s\} = -m\{s\to r\}$,
+  \item $m\{r\to s\} + m\{s\to t\} = m\{r\to t\}$.
+\end{enumerate}
+Denote by $\cM(A)$ the abelian group of all $A$-valued modular symbols. We will also write $\cM=\cM(\CC)$.
+\end{definition}
+The group $\GL_2(\QQ)$ acts on $\cM(A)$ on the left, by the rule
+\[
+(\gamma m)\{r\to s\} = m\{\gamma^{-1} r\to\gamma^{-1} s\}.
+\]
+
+We are interested in modular symbols invariant under a congruence subgroup $\Gamma\subset SL_2(\ZZ)$ and, to simplify the exposition, we will concentrate on $\Gamma=\Gamma_0(N)$. The most important examples of modular symbols will arise
+from integrating modular forms. Let $f\in S_2(\Gamma_0(N))$ be a \emph{newform}, and define
+\[
+\lambda_f \{r\to s\} = \int_r^s 2\pi i f(z) dz.
+\]
+
+Note that since $f$ is a cusp form the above integrals converge. Moreover, they can be explicitly computed: choose some $\tau\in\HH$ and write
+\[
+\int_r^s 2\pi i f(z)dz = \int_r^\tau 2\pi i f(z)dz + \int_\tau^s 2\pi i f(z)dz.
+\]
+If $r=\infty$ then the integral from $x$ to $\tau$ can be calculated with the formula
+\[
+\int_\infty^\tau 2\pi i f(z)dz=\sum_{n=1}^\infty \frac{a_n}{n} e^{2\pi i n \tau}.
+\]
+Otherwise, choose a matrix $\gamma\in\SL_2(\ZZ)$ with $\gamma \infty = r$ and reduce to the case above, using the change of variables
+\[
+\int_r^\tau 2\pi i f(z)dz = \int_\infty^{\gamma^{-1}\tau} 2\pi if(\gamma z)d(\gamma z)=\int_\infty^{\gamma^{-1}\tau} 2\pi i (f|_2\gamma)(z)dz.
+\]
+A priori the modular symbol $\lambda_f$ belongs to $\cM(\CC)$, although a deep theorem of Shimura gives a much more precise description of its values. Define the plus-minus symbols
+\[
+\lambda_f^\pm \{r\to s\} = 2\pi i \left(\int_r^s f(z) dz \pm \int_{-r}^{-s} f(z)dz\right).
+\]
+
+\begin{theorem}[Shimura]
+  Let $f\in S_2(\Gamma_0(N))$ be a newform such that
+\[
+f(q)=\sum_{n=1}^\infty a_n q^n,\quad a_1=1, a_n\in\ZZ.
+\]
+There exists $\Omega_f^+\in\RR$ and $\Omega_f^-\in i\RR$ such that
+\[
+\lambda_f^\pm\{r\to s\}\in \Omega_f^\pm\ZZ.
+\]
+Therefore $\frac{1}{\Omega_f^\pm}\lambda_f^\pm\in \cM(\ZZ)$.
+\end{theorem}
+
+A crucial property of $\lambda_f$ and thus of $\lambda_f^\pm$ is their invariance with respect to $\Gamma_0(N)$:
+\begin{proposition}
+  We have, for all $\gamma\in\Gamma_0(N)$,
+\[
+\lambda_f\{\gamma r\to \gamma s\} = \lambda_f\{r\to s\}.
+\]
+\end{proposition}
+\begin{proof}
+  Write $\omega_f = 2\pi i f(z)dz$, and note that:
+\[
+\lambda_f\{\gamma r\to \gamma s\}=\int_{\gamma r}^{\gamma s}\omega_f = \int_{r}^{s} \omega_f|\gamma = \int_r^s \omega_f=m_f\{r\to s\}.
+\]
+\end{proof}
+In the next section we will study the space of $\Gamma_0(N)$-invariant modular symbols in more detail.
+
+\section{The Eichler--Shimura isomorphism}
+
+Write $\cM^{\Gamma_0(N)}$ for the space of $\Gamma_0(N)$-invariant modular symbols. It is equipped with an action of the Hecke operators $T_p$ with $p\nmid N$, via the formula
+\[
+(T_p m)\{r\to s\} = m\{pr\to ps\} + \sum_{j=0}^{p-1}m\left\{\frac{r+j}{p}\to\frac{s+j}{p}\right\}.
+\]
+
+\begin{proposition}
+  The map $f\mapsto \lambda_f$ is an injective, $\CC$-linear Hecke-equivariant map.
+\end{proposition}
+\begin{proof}
+  Assuming that $\lambda_f=0$, define the following holomorphic function on $\HH\cup \PP^1(\QQ)$:
+\[
+F(\tau) = \int_\infty^\tau 2\pi i f(z)dz.
+\]
+Note that $F(\gamma\tau)-F(\tau) = \lambda_f\{r\to\gamma r\}$ for any choice of $r\in\PP^1(\QQ)$. Since by assumption $\lambda_f\{r\to\gamma r\}$ is zero, we get that $F$ is $\Gamma_0(N)$-invariant. Therefore $F$ is bounded on $\HH$, and hence is constant by Liouville's theorem. Therefore $F'(\tau)=0$. But note that by the fundamental theorem of Calculus $F'(\tau)=2\pi i f(\tau)$. Hence $f=0$.
+\end{proof}
+
+In order to investigate the image of $f\mapsto \lambda_f$, we first need to know the dimension of $\cM^{\Gamma_0(N)}$. Let $g=\dim S_2(\Gamma_0(N))$ and let $s$ be the number of cusps of $\Gamma_0(N)$.
+\begin{theorem}
+The space $\cM^{\Gamma_0(N)}$ has dimension $2g+s-1$.
+\end{theorem}
+
+Therefore the map $f\mapsto \lambda_f$ cannot be surjective, and in fact it will fail to be surjective in two ways. First, complex conjugation gives a natural action on $\cM^{\Gamma_0(N)}$, by
+\[
+\ol m\{r\to s\} = \ol{m\{r\to s\}}.
+\]
+However $\ol{\lambda}_f$ is the modular symbol attached to $\ol{2\pi i f(z)dz} = -2\pi i j\bar f(z) d\bar z$, which we didn't consider. Therefore we get a new homomorphism
+\[
+\lambda\colon S_2(\Gamma_0(N))\oplus\ol{S_2(\Gamma_0(N))} \to \cM^{\Gamma_0(N)},
+\]
+which is still injective and its image has thus dimension $2g$ inside the $2g+s-1$-dimensional space $\cM^{\Gamma_0(N)}$.
+
+Secondly, we need to consider the so-called \emphh{Eisenstein symbols}.
+\begin{definition}
+  A $\Gamma_0(N)$-invariant modular symbol $m$ is called \emph{Eisenstein} if there exists a $\Gamma_0(N)$-invariant function $M\colon \PP^1(\QQ)\to \CC$ such that
+\[
+m\{r\to s\} = M(s)-M(r),\quad r,s\in \PP^1(\QQ).
+\]
+\end{definition}
+The space of Eisenstein modular symbols has dimension $s-1$ and is linearly disjoint from the image of $\lambda$ above. This gives a complete description of $\cM^{\Gamma_0(N)}$.
+\begin{theorem}[Eichler--Shimura isomorphism]
+  The map $\lambda$ gives a Hecke-equivariant isomorphism
+\[
+M_2(\Gamma_0(N))\oplus \ol{S_2(\Gamma_0(N))} \to \cM^{\Gamma_0(N)}.
+\]
+\end{theorem}
+
+\section{Computation of modular symbols}
+
+One important feature of modular symbols is that they are computable. That is, we can calculate the space $\cM^{\Gamma_0(N)}$ without using the Eichler--Shimura isomorphism and thus avoiding the computation of path integrals. The key to making this possible consists in noticing that a modular symbol $m$ is determined by ``a few'' of its values $m\{r\to s\}$.
+
+\begin{definition}
+  Two elements $a/b$ and $c/d$ in $\PP^1(\QQ)$ are \emphh{adjacent} if $ad-bc=\pm 1$. Here, we use the convention that these fractions are in reduced terms, and $\infty = 1/0$.
+\end{definition}
+
+The following lemma is crucial in the algorithms for computing with modular symbols.
+\begin{lemma}
+  Any two elements $a/b$ and $c/d$ in $\PP^1(\QQ)$ can be joined by a succession of paths between adjacent cusps.
+\end{lemma}
+\begin{proof}
+  It is enough to see how to join $a/b$ to $\infty$. We will find $t/a'\in\PP_1(\QQ)$ such that:
+\[
+\{a/b\to \infty\} = \{a/b\to t/a'\}+\{t/a'\to \infty\}.
+\]
+Choose $a'$ satisfying
+\[
+a'a\equiv 1\pmod{b},\quad |a'|\leq b/2.
+\]
+Next, choose $t$ such that
+\[
+aa'-bt = 1.
+\]
+Then $\{a/b\to t/a'\}$ is a path joining adjacent cusps, and we reduced to a problem of smaller size, since $|a'|\leq b/2$. One can see how to adapt the Euclidean algorithm that computes the greatest common divisor of $a$ and $b$ to perform the above calculation.
+\end{proof}
+
+\begin{example}
+  Consider $a/b = 2/3$ and $c/d = 1/0=\infty$. Then these are not adjacent, but note that $2/3$ is adjacent to $1/2$, that $1/2$ is adjacent to $1/1$, and $1/1$ is adjacent to $1/0$. Therefore we have have joined the cusps $2/3$ and $\infty$ with a chain of adjacent cusps.
+\[
+2/3\sim 1/2\sim 1/0 \sim 1/0
+\]
+\end{example}
+
+Using the first defining property of modular symbols, the above proposition says that a modular symbol is determined by the values $m\{r\to s\}$ where $r$ and $s$ are adjacent. That is, a modular symbol is completely determined by its values on
+\[
+\Gamma_0(N)\backslash \left\{\left(\frac ab,\frac cd\right) ~|~ ad-bc = 1\right\}.
+\]
+To study this set, define the projective line over $\ZZ/N\ZZ$ as
+\[
+\PP^1(\ZZ/N\ZZ) = \{(x:y)\in (\ZZ/N\ZZ)^2 ~|~ \gcd(x,y,N)=1\}/\sim,
+\]
+where $(x:y)\sim (x':y')$ if and only if there is $u\in(\ZZ/N\ZZ)^\times$ such that $x'=ux$ and $y'=uy$.
+\begin{lemma}
+  The set $\Gamma_0(N)\backslash \left\{\left(\frac ab,\frac cd\right) ~|~ ad-bc = 1\right\}$ is in natural bijection with $\PP^1(\ZZ/N\ZZ)$.
+\end{lemma}
+\begin{proof}
+First, note that the set $\left\{\left(\frac ab,\frac cd\right) ~|~ ad-bc = 1\right\}$ is in bijection with $\SL_2(\ZZ)$ via $(a/b,c/d)\mapsto \smtx acbd$. So to conclude the proof we need to show that the map $\smtx abcd\mapsto (c\colon d)$ induces a bijection
+\[
+\Gamma_0(N)\backslash \SL_2(\ZZ)\to \PP^1(\ZZ/N\ZZ).
+\]
+To see this, note that the map is surjective, since given $(c:d)\in \PP^1(\ZZ/N\ZZ)$ we can find a matrix in $\SL_2(\ZZ/N\ZZ)$ whose second row is $(c,d)$. Using that $\SL_2(\ZZ)\to \SL_2(\ZZ/N\ZZ)$ is surjective we can lift this matrix to $\SL_2(\ZZ)$. Secondly, if two matrices in $\SL_2(\ZZ)$ map to the same element in $\PP^1(\ZZ/N\ZZ)$ then modulo $N$ these matrices are of the form
+\[
+\gamma_1\equiv \mtx abcd\pmod{N},\quad \gamma_2 \equiv \mtx{au^{-1}}{bu^{-1}}{cu}{du}\pmod{N}.
+\]
+Then note that the product $\gamma_1\gamma_2^{-1}$ is $\gamma_1\gamma_2^{-1} \equiv \smtx 1001\pmod{N}$,
+and hence the matrices in $\SL_2(\ZZ)$ are in the same coset for $\Gamma_0(N)$.
+\end{proof}
+
+Therefore a modular symbol $m$ is determined by function
+\[
+[\cdot]_m\colon \PP^1(\ZZ/N\ZZ)\to\CC,\quad [b\colon d]_m =m\{a/b\to c/d\},\quad ad-bc = 1.
+\]
+In particular, the dimension of $\cM^{\Gamma_0(N)}$ is finite, bounded by $\#\PP^1(\ZZ/N\ZZ)$.
+
+Note, however, that not all functions $\PP^1(\ZZ/N\ZZ)\to\CC$ represent a modular symbol. In fact, for such a function to be a modular symbol it has to satisfy some linear relations coming from the two axioms defining modular symbols.
+\begin{proposition}
+\label{prop:msym-relations}
+  A function $\varphi\colon \PP^1(\ZZ/N\ZZ)\to \CC$ satisfies $\varphi=[\cdot]_m$ for some modular symbol $m\in\cM^{\Gamma_0(N)}$ if and only if
+  \begin{enumerate}
+  \item $\varphi(x) = -\varphi(\frac{-1}{x})$,  for all $x\in\PP^1(\ZZ/N\ZZ)$.
+  \item $\varphi(x) = \varphi(\frac{x}{x+1}) + \varphi(x+1)$, for all $x\in \PP^1(\ZZ/N\ZZ)$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Suppose that $\varphi=[\cdot]_m$ for some modular symbol $m\in\cM^{\Gamma_0(N)}$, and let $x=[b\colon d]\in \PP^1(\ZZ/N\ZZ)$. Then
+\[
+\varphi(x)=\varphi(b\colon d) = [b\colon d]_m = m\left\{\frac ab\to \frac cd\right\} = -m\left\{\frac{-c}{-d}\to \frac ab\right\} = -[-d\colon b]_m=-\varphi(-1/x).
+\]
+Similarly, we compute
+\begin{align*}
+\varphi(x)&=\varphi(b\colon d) = [b\colon d]_m = m\left\{\frac ab\to \frac cd\right\} = m\left\{\frac ab\to\frac{a+c}{b+d}\right\} + m\left\{\frac{a+c}{b+d}\to \frac cd\right\}\\
+&=[b\colon b+d]_m+[b+d\colon d]_m = \varphi\left(\frac{x}{x+1}\right) + \varphi(x+1).
+\end{align*}
+\end{proof}
+
+The above proposition allows for an algorithm that computes the space $\cM^{\Gamma_0(N)}$, by solving the linear system of equations for $\varphi$. Moreover, the Hecke action is also computable on this resulting representation. The details of this were worked out for the first time by J.~Cremona in~\cite{cremona-book}.
+
+\section{A worked out example}
+We compute the space of modular symbols for $\Gamma_0(11)$. First we enumerate the elements of $\PP^1(\ZZ/11\ZZ)$:
+\[
+\PP^1(\ZZ/11\ZZ) = \{\infty,0,1,\ldots,10\}.
+\]
+Using the two-term relations of~\ref{prop:msym-relations} we find that if $\varphi\in \mathbb{M}(\Gamma_0(11))$ then:
+\[
+\varphi(\infty) = -\varphi(-1/\infty) = -\varphi(0).
+\]
+Similarly, we find:
+\begin{align*}
+\varphi(1)&=-\varphi(10)\\
+\varphi(2)&=-\varphi(5)\\
+\varphi(3)&=-\varphi(7)\\
+\varphi(4)&=-\varphi(8)\\
+\varphi(6)&=-\varphi(9).\\
+\end{align*}
+Therefore an M-symbol $\varphi$ is determined by its values on $0,1,2,3,4,6$. Now we find the $3$-term relations:
+\begin{table}[h!]
+\begin{tabular}{ccccccccccccc}
+\toprule
+$x$  &$\infty$&0&1&2&3&4&5&6&7&8&9&10\\
+\midrule
+$x+1$&$\infty$&1&2&3&4&5&6&7&8&9&10&0\\
+$\frac{x}{x+1}$& 1&0&6&8&9&3&10&4&5&7&2&$\infty$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The table above is to be read as follows. For example, the first column says $\varphi(\infty)=\varphi(\infty) + \varphi(1)$. The last column implies, in turn, $\varphi(10)=\varphi(0)+\varphi(\infty)$. We see from the first column that $\varphi(1)=0$ (and thus $\varphi(10)=0$). Column 3 gives then that $\varphi(6)=-\varphi(2)$, and Column 4 gives $\varphi(4)=\varphi(3)-\varphi(2)$. All the other columns are redundant, and so our $\varphi$ is (freely) determined by its values on $0$, $2$ and $3$. We can write down a basis $\{f,g,h\}=\mathbb{M}(\Gamma_0(11))$.
+\begin{table}[h!]
+\begin{centering}
+\begin{tabular}{ccccccccccccc}
+\toprule
+  &$\infty$&0&1&2&3&4&5&6&7&8&9&10\\
+\midrule
+f&-1&1&0&0&0&0&0&0&0&0&0&0\\
+g&0&0&0&1&0&-1&-1&-1&0&1&1&0\\
+h&0&0&0&0&1&1&0&0&-1&-1&0&0\\
+\bottomrule
+\end{tabular}
+\end{centering}
+\end{table}
+
+Next we calculate $T_2$ acting on the basis $\{f,g,h\}$. Since we have only given the definition of $T_p$ on modular symbols, we will need to relate the M-symbols $\{f,g,h\}$ to their corresponding modular symbols. We will abuse notation and use the same notation for those. Each element of $\PP^1(\ZZ/N\ZZ)$ can be lifted to a matrix in $\SL_2(\ZZ)$. In fact, we can write the following table:
+\begin{table}[h!]
+\begin{centering}
+\begin{tabular}{ccc}
+\toprule
+$x=(c\colon d)\in\PP^1(\ZZ/N\ZZ)$&$\smtx abcd\in\SL_2(\ZZ)$&$\frac{a}{c}\to\frac{b}{d}$\\
+\midrule
+$0$&$\smtx 1001$&$\infty \to 0$\\
+$1$&$\smtx {-1}{-1}{2}{1}$&$-1/2\to -1$\\
+$2$&$\smtx {-2}{-1}{3}{1}$&$-2/3\to -1$\\
+\bottomrule
+\end{tabular}
+\end{centering}
+\end{table}
+
+Let us write $T_2 f = af+bg+ch$, with $a,b,c$ to be determined. Note that $a=(T_2f)(0)$, and thus we compute:
+\begin{align*}
+[0]_{T_2(m)}  (T_2m)\{\infty \to 0\} &= m\{\frac 20\to \frac 01\}+m\{\frac{\infty + 0}{2}\to \frac{0+0}{2}\}+m\{\frac{\infty+1}{2}\to \frac{0+1}{2}\}\\
+&=m\{\infty\to 0\} + m\{\infty \to 0\} + m\{\infty \to \frac 12\}\\
+&=2m\{\infty\to 0\} + m\{\infty\to 1\}+m\{1\to\frac 12\}\\
+&=2[0]_m + [(0\colon 1)]_m + [1\colon 2]_m\\
+&=3[0]_m + [1/2]_m = 3[0]_m + [6]_m.
+\end{align*}
+Analogous computations give
+\[
+[2]_{T_2(m)} = [1]_m+[4]_m+[5]_m+[7]_m,\quad [3]_{T_2(m)} = [1]_m+[6]_m+[7]_m+[8]_m
+\]
+Note that we could express the resulting values in other ways using the relations for M-symbols, so the above equations are not unique. In any way, this allows us to find that
+\[
+T_2f = 3f,\quad T_2g = -f-2g,\quad T_2h = -2h.
+\]
+We find then that the matrix of $T_2$ in the basis $\{f,g,h\}$ is
+\[
+[T_2] = \mat{3&-1&0\\0&-2&0\\0&0&-2},
+\]
+whose eigenvalues are $3$ and $-2$ (the eigenvalue $-2$ with multiplicity $2$). Since we have a decomposition $\cM(\Gamma_0(11))\cong \cE\oplus S_2(\Gamma_0(11))\oplus \ol{S_2(\Gamma_0(11))}$, we deduce that $\dim S_2(\Gamma_0(11))=1$ (and also $\dim\cE = 1$). Moreover, if $F\in S_2(\Gamma_0(11))$ is any nonzero cusp form, then we know that $T_2F = -2$.
+
+Similar computations would give us the Hecke eigenvalues for all $T_p$ operators (with $p\neq 11$). By the Eichler--Shimura construction, these numbers are telling us the number of points of a certain elliptic curve. In fact, let $E$ be the elliptic curve of conductor $11$ given by the equation
+\[
+E_{/\QQ} \colon y^2+y=x^3-x^2-10x-20.
+\]
+When reduced modulo $2$, we get $\ol E$:
+\[
+\ol E_{\FF_2} \colon y^2+y=x^3+x^2.
+\]
+Note that
+\[
+\#\ol E(\FF_2)=\#\{\infty, (0,0),(0,1),(1,0),(1,1)\} =5,
+\]
+which matches with the prediction from the modular symbols computation: we expected $p+1-\#E(\FF_p) = a_p$ and, in fact: $2+1-5 = -2$.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 

@@ -1,0 +1,482 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage{multicol}
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsfonts,amssymb,latexsym,amsmath,amsthm,amscd}
+
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+
+%%%%%%%%%% Commands
+\usepackage[all]{xy}
+\xyoption{arc}
+
+\usepackage{graphicx}
+\usepackage{cmap}
+
+%Blackboard Letters
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbV}{\mathbb{V}}
+
+%Bold Letters 
+\newcommand{\bQ}{\mathbf{Q}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bC}{\mathbf{C}}
+\newcommand{\bJ}{\mathbf{J}}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\bP}{\mathbf{P}}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\bH}{\mathbf{H}}
+\newcommand{\bN}{\mathbf{N}}
+
+%(for Q,R,N,C,...)
+\renewcommand{\AA}{\bbA}
+\newcommand{\BB}{\bbB}
+\newcommand{\DD}{\bbD}
+\newcommand{\QQ}{\bbQ}
+\newcommand{\II}{\bbI}
+\newcommand{\WW}{\bbW}
+\newcommand{\RR}{\bbR}
+\newcommand{\CC}{\bbC}
+\newcommand{\VV}{\bbV}
+\newcommand{\FF}{\bbF}
+\newcommand{\HH}{\bbH}
+\newcommand{\ZZ}{\bbZ}
+\newcommand{\NN}{\bbN}
+\newcommand{\PP}{\bbP}
+
+\newcommand{\Qbar}{\overline{\QQ}}
+
+%Caligraphic (Sheaves...)
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\chh}{\mathcal{h}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\cHom}{\operatorname{\mathcal{H}om}}
+\newcommand{\shomega}{\underline{\omega}}
+
+%Category names
+\newcommand{\AbGrp}{\textbf{Ab}}
+\newcommand{\Ab}{\AbGrp}
+\newcommand{\Sheaves}{\textbf{Sheaves}}
+\newcommand{\Rings}{\textbf{Rings}}
+\newcommand{\Mod}{\textbf{Mod}}
+\newcommand{\Sh}{\textbf{Sh}}
+\newcommand{\Sch}{\textbf{Sch}}
+\newcommand{\Sets}{\textbf{Sets}}
+\newcommand{\Mot}{\textbf{Mot}}
+
+%Fraktor letters, eg naming ideals
+
+\newcommand{\fA}{\mathfrak A}
+\newcommand{\fR}{\mathfrak R}
+\newcommand{\fp}{\mathfrak p}
+\newcommand{\fq}{\mathfrak q}
+\newcommand{\fP}{\mathfrak P}
+\newcommand{\fQ}{\mathfrak Q}
+\newcommand{\fa}{\mathfrak a}
+\newcommand{\fb}{\mathfrak b}
+\newcommand{\fc}{\mathfrak c}
+\newcommand{\fd}{\mathfrak d}
+\newcommand{\fm}{\mathfrak m}
+\newcommand{\fn}{\mathfrak n}
+\newcommand{\fo}{\mathfrak o}
+\newcommand{\fS}{\mathfrak S}
+\newcommand{\fN}{\mathfrak N}
+\newcommand{\fU}{\mathfrak U}
+\newcommand{\fX}{\mathfrak X}
+\newcommand{\fY}{\mathfrak Y}
+
+\def\wh{\widehat}
+
+%Some common math operators
+\DeclareMathOperator{\order}{ord}
+\DeclareMathOperator{\Inf}{Inf}
+\DeclareMathOperator{\Cris}{Cris}
+% \DeclareMathOperator{\Sh}{Sh}
+\DeclareMathOperator{\val}{val}
+\DeclareMathOperator{\Ram}{Ram}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\St}{St}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\cork}{cork}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Max}{Max}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Mp}{Mp}
+\DeclareMathOperator{\Spf}{Spf}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Jacobson}{\mathfrak J}
+\DeclareMathOperator{\Nilradical}{\mathfrak N}
+\DeclareMathOperator{\rad}{\mathfrak{rad}}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\car}{char}
+\DeclareMathOperator{\gl}{GL}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\discrd}{discrd}
+\DeclareMathOperator{\supp}{Supp}
+\DeclareMathOperator{\Div}{Div}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\divv}{div}
+%\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\res}{Res}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\img}{img}
+\DeclareMathOperator{\Tate}{Tate}
+\DeclareMathOperator{\gr}{gr}
+\DeclareMathOperator{\Tot}{Tot}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\sym}{Sym}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\Symm}{Symm}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\dlog}{dlog}
+\DeclareMathOperator{\chow}{CH}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\AJ}{AJ}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Nm}{Nm}
+\DeclareMathOperator{\nrd}{Nrd}
+\DeclareMathOperator{\trd}{trd}
+\DeclareMathOperator{\Corr}{Corr}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\Graph}{Graph}
+\DeclareMathOperator{\Fil}{Fil}
+\DeclareMathOperator{\red}{red}
+\DeclareMathOperator{\MF}{MF}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Dst}{D_{\st}}
+\DeclareMathOperator{\Vst}{V_{\st}}
+\DeclareMathOperator{\NS}{NS}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\stab}{stab}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\cond}{cond}
+\DeclareMathOperator{\Sel}{Sel}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\cInd}{c-Ind}
+\def\det{\operatorname{det}}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Jet}{Jet}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\LIM}{LIM}
+
+% Some common abreviations
+\newcommand{\lto}{\longrightarrow}
+\newcommand{\dfn}{\ensuremath{{:=}}}
+\newcommand{\nfd}{\ensuremath{{=:}}}
+\newcommand{\surjects}{\twoheadrightarrow}
+\newcommand{\injects}{\hookrightarrow}
+\newcommand{\id}{\ensuremath \text{Id}}
+\newcommand{\tns}[1][]{\otimes_{\!#1}}
+\newcommand{\mtx}[4]{\left(\begin{matrix}#1&#2\\#3&#4\end{matrix}\right)}
+\newcommand{\mat}[1]{\left(\begin{matrix}#1\end{matrix}\right)}
+\newcommand{\smat}[1]{\left(\begin{smallmatrix}#1\end{smallmatrix}\right)}
+\newcommand{\smtx}[4]{\left(\begin{smallmatrix}#1&#2\\#3&#4\end{smallmatrix}\right)}
+\newcommand{\slz}{\operatorname{SL}_2(\ZZ)}
+
+\def\sumprime{\mathop{\sum{\raise3pt\hbox{${}'$}}}} %Copied from somewhere else...
+\def\prodprime{\mathop{\prod{\raise3pt\hbox{${}'$}}}} %Copied from somewhere else...
+
+\newcommand{\et}{{\text{et}}}
+\newcommand{\dR}{{\text{dR}}}
+\newcommand{\cont}{{\text{cont}}}
+\newcommand{\cris}{{\text{cris}}}
+\newcommand{\Het}{H_\et}
+\newcommand{\Hdr}{H_\dR}
+\newcommand{\Hcris}{H_\cris}
+\newcommand{\Bcris}{B_\cris}
+\newcommand{\Dcris}{D_\cris}
+\newcommand{\Vcris}{V_\cris}
+\newcommand{\cHdr}{\cH_\dR}
+\newcommand{\Hcont}{H_\cont}
+\newcommand{\Hst}{H_\st}
+\newcommand{\Char}{C_{\text{har}}}
+\newcommand{\frob}{{\text{frob}}}
+\newcommand{\hol}{{\text{hol}}}
+\newcommand{\sm}{{\text{sm}}}
+\newcommand{\usm}{{\text{usm}}}
+\newcommand{\llangle}{\langle\!\langle}
+\newcommand{\rrangle}{\rangle\!\rangle}
+
+\newcommand{\poinc}[2]{\langle{#1},{#2}\rangle_{\text{Poinc}}}
+
+\newcommand{\bbl}{[\hspace{-1.5pt}[}
+\newcommand{\bbr}{]\hspace{-1.5pt}]}
+\newcommand{\pseries}[2]{{#1}\bbl {#2}\bbr}
+
+\newcommand{\Oneforms}[2]{\ensuremath\Omega_{\cO_{#1}/\cO_{#2}}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\mmu}{\mu\!\!\!\mu}
+\newcommand{\Rmax}{{\cR^{\text{max}}}}
+\newcommand{\an}{\text{an}}
+\newcommand{\ur}{\text{ur}}
+\newcommand{\barrr}{\overline}
+
+\newcommand{\st}{\text{st}}
+\newcommand{\Bst}{B_{\st}}
+
+\newcommand{\tto}[1]{%
+\ifthenelse{\equal{#1}{}}{\to}{\stackrel{#1}{\to}}}
+
+\newcommand{\abs}[1]{|{#1}|}
+\newcommand{\fabs}[1]{\|{#1}\|}
+
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\dr}{\text{dR}}
+\newcommand{\Bdr}{{B_{\dr}}}
+\newcommand{\Ddr}{{D_{\dr}}}
+\newcommand{\Dsen}{{D_{\text{sen}}}}
+\newcommand{\ab}{\text{ab}}
+\newcommand{\HT}{\text{HT}}
+\newcommand{\Bht}{{B_{\HT}}}
+\newcommand{\repzpgamma}{\Rep_{\ZZ_p}(\Gamma)}
+\newcommand{\repqpgamma}{\Rep_{\QQ_p}(\Gamma)}
+\newcommand{\Dht}{{D_{\HT}}}
+\renewcommand{\Vec}{\text{Vec}}
+\newcommand{\EtPhiMod}[1][E]{{\phi M_{#1}^{\et}}}
+\newcommand{\cOE}{{\cO_\cE}}
+\newcommand{\hodge}{\text{Hodge}}
+\newcommand{\ock}{\cO_{\CC_K}}
+\newcommand{\ses}[4][]{ #1 #2\to #1 #3\to #1 #4 }
+\newcommand{\wa}{{\text{wa}}}
+\newcommand{\aR}{{\fA\fR}}
+\newcommand{\Aug}{{\fA u g }}
+\newcommand{\bOne}{{1\!\!1}}
+\newcommand{\Wedge}{\Lambda}
+\newcommand{\ord}{{\text{ord}}}
+\newcommand{\can}{{\text{can}}}
+\newcommand{\crit}{{\text{crit}}}
+\renewcommand{\ss}{{\text{ss}}}
+\newcommand{\bbf}{{\mathbbm{f}}}
+\newcommand{\hecke}{{\mathfrak h}}
+\newcommand{\Hecke}{{\mathfrak H}}
+
+\newcommand{\If}{\text{if }}
+\newcommand{\Else}{\text{else.}}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{Mathematics Department, University of Warwick} \\ [20pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Modular Forms -- Problem Set 4 \\ % The assignment title
+\horrule{2pt} \\ % Thick bottom horizontal rule
+}
+
+%\author{Marc Masdeu}
+
+\date{Deadline: Monday November 30th, by 3PM.}
+
+\begin{document}
+
+\maketitle % Print the title
+
+
+\section{Computing Hecke operators (2 pt.)}
+Calculate the matrix of the Hecke operator $T_2$ on the space $S_{24}(\SL_2(\ZZ))$ with respect to some basis of your choice. Find its characteristic polynomial.
+
+Although you may use a computer to help in your calculations, do not use software making it trivial, as in:
+\begin{verbatim}
+sage: CuspForms(SL2Z,24).hecke_matrix(2)
+\end{verbatim}
+
+% The answer is the matrix
+% \[
+% \left(\begin{array}{rr}
+% 0 & 20468736 \\
+% 1 & 1080
+% \end{array}\right)
+% \]
+% or some conjugate of it. Its characteristic polynomial is $f(x) = x^{2} - 1080x - 20468736$.
+
+\section{The Hasse bound (2 pt.)}
+Let $f\in M_k(\SL_2(\ZZ))$ be an eigenform, normalized such that $a_1(f)=1$. Let $p$ be a prime, and let $\alpha$ and $\beta\in \CC$ be the roots of the polynomial $t^2-a_p(f)t+p^{k-1}$.
+\begin{enumerate}
+\item Prove the formula
+\[
+a_{p^r}(f) = \sum_{j=0}^r \alpha^j \beta^{r-j},\quad r\geq 0.
+\]
+\item Prove that the two following conditions are equivalent:
+  \begin{enumerate}
+  \item $|a_p(f)|\leq 2p^{(k-1)/2}$,
+  \item $\alpha$ and $\beta$ are complex conjugates of absolute value $p^{(k-1)/2}$.
+  \end{enumerate}
+\item Show that if the equivalent conditions of the previous part hold for all primes $p$, then the coefficients of the $q$-expansion of $f$ satisfy
+\[
+|a_n(f)|\leq d(n)n^{(k-1)/2},\quad n\geq 1,
+\]
+where $d(n)=\sigma_0(n)$ is the number of positive divisors of $n$.
+\end{enumerate}
+  If $f$ is a cusp form, two very deep results of P.~Deligne (1968,  1974) show that the conditions of $(b)$ hold.
+
+\section{Normalized Hecke eigenforms with character are quasi real (1 pt.)}
+Suppose that $f\in S_k(\Gamma_0(N),\chi)$ is a normalized Hecke eigenform, with $q$-expansion $f=\sum_{n\geq 1} a_nq^n$. Prove that
+\[
+\overline{a_m} = \chi(m)^{-1}a_m,\quad \text{ for all } m\geq 1 \text{ such that } \gcd(m,N)=1.
+\]
+From this, deduce that for these $m$ the quantity $a_m^2/\chi(m)$ is real.
+\section{Study of the space $S_2(\Gamma_1(18))$ (3 pts.)}
+In this exercise you may use that $S_2(\Gamma_1(18))$ is two dimensional, and a basis for it consists of $f_1$ and $f_2$, with $q$-expansions at $\infty$ given by
+\[
+f_1=\sum a_n(f_1)q^n = q - 2q^{3} - q^{4} + q^{6} + q^{8} + 3q^{9} + O(q^{12})
+\]
+\[
+f_2=\sum a_n(f_2)q^n = q^{2} - q^{3} - q^{4} - q^{6} + 2q^{7} + 3q^{9} -3q^{11}+ O(q^{12})
+\]
+\begin{enumerate}
+\item Show that $S_2(\Gamma_1(9))=S_2(\Gamma_1(6))=\{0\}$ and that $S_2(\Gamma_1(18))=S_2(\Gamma_1(18))_{\text{new}}$.
+\item Compute the matrix of the Hecke operator $T_2$ on $S_2(\Gamma_1(18))$ with respect to $\{f_1,f_2\}$.
+
+% Answer:
+% \[
+% \left(\begin{array}{rr}
+% 0 & -1 \\
+% 1 & -1
+% \end{array}\right).
+% \]
+
+\item Find a basis $g_1$, $g_2$ of normalized eigenforms for $T_2$.
+They are $g_i  = f_1 +\frac{-1\pm \sqrt{-3}}{2} f_2$.
+\item Show that $g_1$ and $g_2$ are eigenforms for the full Hecke algebra $\bbT(S_2(\Gamma_1(18)))$.
+\item Using the fact that $a_{121}(f_1) = a_{121}(f_2) = 2$, compute the action of the diamond operator $\langle 11\rangle$ on the forms $g_1$ and $g_2$.
+\item Describe two Dirichlet characters $\chi_1$ and $\chi_2$ from $(\ZZ/18\ZZ)^\times\to\CC^\times$ such that
+\[
+\langle d\rangle g_i = \chi_i(d) g_i,\quad d\in (\ZZ/18\ZZ)^\times.
+\]
+\end{enumerate}
+
+
+% The answer to the first part is that
+% \[
+% \langle 11\rangle g_1 = (-\alpha-1)g_1,\quad \langle 11\rangle g_2 = (-\bar \alpha-1)g_2,
+% \]
+% where $\alpha = \frac{-1+\sqrt{-3}}{2}$ and $\bar\alpha = \frac{-1-\sqrt{-3}}{2}$. For the second part, just note that the image of $11\in(\ZZ/18\ZZ)^\times$ determines the characters $\chi_i$, since $11$ is a multiplicative generator.
+% \section{The Fricke operator ($12.5 \%$)}
+% Let $N$ and $k$ be positive integers. Let $\alpha_N = \smtx{0}{-1}{N}{0}$. This defines a double coset operator $w_N = [\Gamma_1(N)\alpha_N\Gamma_1(N)]$ acting on $S_k(\Gamma_1(N))$.
+% \begin{enumerate}
+% \item Prove that $w_N^2 = -(-N)^{k-1} \operatorname{id}$, and that its adjoint satisfies $w_N^* = (-1)^kw_N$.
+% \item Prove that for every $d\in (\ZZ/N\ZZ)^\times$ the diamond operator on $S_k(\Gamma_1(N))$ satisfies
+% \[
+% \langle d \rangle^{-1} = w_N^{-1}\langle d\rangle w_N.
+% \]
+% \end{enumerate}
+\section{Complex conjugation of modular forms (2 pts.)}
+Let $\Gamma$ be a congruence subgroup, and let $k$ be a positive integer. Given $f\in M_k(\Gamma)$, define a function $f^\vee$:
+\[
+f^\vee(z)=\ol{f(-\bar z)},\quad f^\vee\colon \HH\to \CC.
+\]
+\begin{enumerate}
+\item Show that $f^\vee$ belongs to $M_k(\sigma^{-1}\Gamma\sigma)$, where $\sigma=\smtx{-1}001$.
+\item Suppose that both $\Gamma$ and $\sigma^{-1}\Gamma\sigma$ have fan width $1$ (that is, they both contain the matrix $\smtx 1101$). Show that the $q$-expansions of $f^\vee$ and $f$ at the cusp $\infty$ satisfy:
+\[
+a_n(f^\vee)=\ol{a_n(f)}.
+\]
+\item Show that if $\Gamma=\Gamma_0(N)$ or $\Gamma=\Gamma_1(N)$ then $\sigma^{-1}\Gamma\sigma=\Gamma$. Can you think of a congruence subgroup $\Gamma$ for which $\sigma^{-1}\Gamma\sigma\neq \Gamma$?
+\end{enumerate}
+
+\end{document}
