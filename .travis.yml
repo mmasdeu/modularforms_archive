@@ -2,17 +2,16 @@ sudo: required
 dist: trusty
 before_install:
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends pgf texlive-fonts-recommended
-  texlive-latex-extra texlive-pictures texlive-math-extra texlive-lang-spanish texlive-bibtex-extra texlive-fonts-extra dvipng texlive-latex-recommended
+  texlive-latex-extra texlive-pictures texlive-math-extra texlive-lang-spanish texlive-bibtex-extra
+  texlive-fonts-extra dvipng texlive-latex-recommended
 script:
 - mkdir -p _build
 - pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build main.tex
-
 deploy:
   provider: releases
   api_key:
-    secure: AGS7ESntvkctDLE38UWtC2bK4SbLFCHN4Jwl1D66mewQJ5hYYD+zgkrDyoa3F4bbwOKCl7aIxJzRcPt0KQ/wnkuPO0X2jHd8v3MsxM3PDTlVkLokcljd6c6Jj6OBtVIh6EOiobwtuWfxg71f5ofW6YjC8FdYrEmQk58Co+UzDGAL1ddVtZ7wAQdxwv+t9K5DbMste+EJLxRTvhiSpn4sSq/s5gWeysz9NPphxyYPZJY0s9DTyyZ9b59vHJxDAklF9oetIm45JiLjNKnqyOmGEUEbnl7gJzdlZzVwd5VKVPPYD3JBej1XWrmzvoHbKDZY1Hg1p/VcYYPHcHOVggJb/Pr7Tn720xDJ/H3x6WABZ1A6/3/kcEpYINfGO0wBlDYcsTzk73o3i1v5/YPGtdGbPoczXfRLP09ZYV9epQUsYtGOoYTLv6xu8Y7w6hy5EGenrgL1YHeGpAwxpFntj63saaMNHAn7G/zxYO0dTi8taD6fZnxpNhQ8zTyWO737oxcPG22D9o3kY721xQwKop1PteHN9BiZAx1qpyYFXv0bGnIfLA/42uMBgUg/lCa5QV3na7adgJISapnNOtgn3htiTAml+e99wsLAdo3goL4MLMY8z94fv5YAf/0F3w20uxjpuy9s6/TYmE7hejVTz9SSezQSKNrtsji9+L8JBJs5cHY=
-  file:
-  - _build/main.pdf
+    secure: qEWR9ecu3DoINoq+wGEbLLeNHlZhuSxDKwP+Km9MMv3QUy8tIEUs4w62uWJp5AOR/FGnocao0v0I5zDmUG5+fpOxahmhFUIiCfulqqRjz60D2Z8gkGvBTh+LhN75DWEKQHVmA0V8WF4aIrWLr4mXpDLNoy7VSGY4HTb//se2Gi0XVEaKa/Hpc9x8wWaV/UPl0Hl5o3CmaONMgqw26qr1BSLw0UD/uhDvB8E4loVL1RiuEoVp9zPIePCnObHdz98gMFWpsP/MfiTJ5+WUxlubSI5Omp/cZenAxCGR/gsvlrkSzvppuTEvKbFrpOV6pRhOEA0yCK3xK56B2y1pFHr6ABtPK/Gt1Gcuov2FpWlqztZKjRK6+b9HuWYxYc9ypFSroWB5QvY+3WzzMHwFbLxx9cGq8ZliZfzgtxsEx3BQflcB/AG3JEoK9Y0IGWQI2GqOZhvVfNalfbfiCIJmtWjXphLhQfGYJczpvsdgu/QyOHLKyDQr4zqMfUMBREMCqOBIUWR68QBURJ++IapKIyZgKczKdwXJ2YPmfwJ4SLYDnWp95S/rldfPmIga+eIBjkWtvRua+7T1M3JIIMHU1fTDR5QCbIvTT5bR4CKggIJNqosUtQufAJke1XQqrG39kH50LUc7/yeUcJ8V+jYpReMnHgDNfqArKCbL8ojc/SjBofE=
+  file: ''
   on:
     branches:
       only:
