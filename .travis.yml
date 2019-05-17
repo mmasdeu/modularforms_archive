@@ -11,9 +11,11 @@ deploy:
   provider: releases
   api_key:
     secure: qEWR9ecu3DoINoq+wGEbLLeNHlZhuSxDKwP+Km9MMv3QUy8tIEUs4w62uWJp5AOR/FGnocao0v0I5zDmUG5+fpOxahmhFUIiCfulqqRjz60D2Z8gkGvBTh+LhN75DWEKQHVmA0V8WF4aIrWLr4mXpDLNoy7VSGY4HTb//se2Gi0XVEaKa/Hpc9x8wWaV/UPl0Hl5o3CmaONMgqw26qr1BSLw0UD/uhDvB8E4loVL1RiuEoVp9zPIePCnObHdz98gMFWpsP/MfiTJ5+WUxlubSI5Omp/cZenAxCGR/gsvlrkSzvppuTEvKbFrpOV6pRhOEA0yCK3xK56B2y1pFHr6ABtPK/Gt1Gcuov2FpWlqztZKjRK6+b9HuWYxYc9ypFSroWB5QvY+3WzzMHwFbLxx9cGq8ZliZfzgtxsEx3BQflcB/AG3JEoK9Y0IGWQI2GqOZhvVfNalfbfiCIJmtWjXphLhQfGYJczpvsdgu/QyOHLKyDQr4zqMfUMBREMCqOBIUWR68QBURJ++IapKIyZgKczKdwXJ2YPmfwJ4SLYDnWp95S/rldfPmIga+eIBjkWtvRua+7T1M3JIIMHU1fTDR5QCbIvTT5bR4CKggIJNqosUtQufAJke1XQqrG39kH50LUc7/yeUcJ8V+jYpReMnHgDNfqArKCbL8ojc/SjBofE=
+  file:
+   - _build/main.pdf
   on:
+    tags: true
     branches:
       only:
         - master
   skip_cleanup: true
- 
