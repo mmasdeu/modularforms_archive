@@ -1,9 +1,11 @@
 sudo: required
 dist: trusty
 before_install:
+- openssl aes-256-cbc -K $encrypted_046f1c06c172_key -iv $encrypted_046f1c06c172_iv -in github_deploy_key.enc -out github_deploy_key -d
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends pgf texlive-fonts-recommended
   texlive-latex-extra texlive-pictures texlive-math-extra texlive-lang-spanish texlive-bibtex-extra
   texlive-fonts-extra dvipng texlive-latex-recommended
+
 script:
 - mkdir -p _build
 - pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build main.tex
