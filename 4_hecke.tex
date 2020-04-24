@@ -346,6 +346,7 @@ Moreover, the relation between $U_p$ and $T_P$ allows us to think of $U_p$ as an
 E_k(z)=1-\frac{2k}{B_k}\sum_{n=1}^\infty \sigma_{k-1}(n)q^n\in M_k(\Gamma_1(1)).
 \]
 \begin{proposition}
+  \label{prop:Ek-is-eigen}
 We have:
 \[
 T_p E_k = \sigma_{k-1}(p) E_k = (1+p^{k-1})E_k.
@@ -747,7 +748,7 @@ Therefore $\Delta(z)$ and $\Delta(2z)$ have, when considered in $S_{12}(\Gamma_1
 
 However, the Hecke operator $T_2=U_2$ as acting on $S_{12}(\Gamma_1(2))$ satisfies:
 \[
-U_2(\Delta(2z)) = \Delta(z),\text{ and } U_2(\Delta(z)) = T_2\Delta - 2^{11}V_2(\Delta) = -24\Delta - 2^{11} \Delta(2z).
+U_2(\Delta(2z)) = \Delta(z),\text{ and } U_2(\Delta(z)) = T_2\Delta - 2^{11}V_2(\Delta) = -24\Delta(z) - 2^{11} \Delta(2z).
 \]
 Therefore $U_2$ acts on $S_{12}(\Gamma_1(2))$ with matrix
 \[
@@ -755,7 +756,7 @@ Therefore $U_2$ acts on $S_{12}(\Gamma_1(2))$ with matrix
 \]
 which is diagonalizable. The eigenvectors
 \[
-f_{\pm} = \frac{-3 \pm \sqrt{137}}{512} \Delta(z) + \Delta(2z)
+f_{\pm} = \Delta(z) +  (12 \pm 4\sqrt{-119})\Delta(2z)
 \]
 can be completed to give a basis of eigenforms for all the $T_n$.
 
