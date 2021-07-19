@@ -9,6 +9,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+    - name: Update packages
+      run: sudo apt install -y  texlive-bibtex-extra biber
     - name: Convert to pdf
       id: convert-to-pdf
       uses: closoco/pdflatex-action@v1.0.0
